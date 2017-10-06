@@ -1,5 +1,5 @@
 public class BlockChain {
-    private Node last;
+    private Block last;
     private int zeros;
 
     public BlockChain(int zeros)
@@ -7,42 +7,42 @@ public class BlockChain {
         this.zeros = zeros;
     }
 
-    private static class Node {
-        private long block;
+    private static class Block {
+        private long blockId;
         private long nonce;
         private String data;
         private String previous;
-        private Node previousNode;
+        private Block previousBlock;
         private String hash;
 
-        public Node(long block, long nonce, String data, String previous, String hash, Node previousNode)
+        public Block(long blockId, long nonce, String data, String previous, String hash, Block previousBlock)
         {
-            this.block = block;
+            this.blockId = blockId;
             this.nonce = nonce;
             this.data = data;
             this.previous = previous;
             this.hash = hash;
-            this.previousNode = previousNode;
+            this.previousBlock = previousBlock;
         }
 
         /*public String toString()
         {
-            return block + " : " + data;
+            return blockId + " : " + data;
         }*/
     }
 
     public void add(String data)
     {
-        long block = (last == null) ? 1 : last.block + 1;
+        long blockId = (last == null) ? 1 : last.blockId + 1;
         String previous = (last == null) ? "0000000000000" : last.hash;
         long nonce = 123;
         String hash = "0000AAAAAA";
 
         /*nonce = 1;
-        while(!isValid(hash = getHash(block, nonce, data, previous)))
+        while(!isValid(hash = getHash(blockId, nonce, data, previous)))
             nonce ++;*/
 
-        last = new Node(block, nonce, data, previous, hash, last);
+        last = new Block(blockId, nonce, data, previous, hash, last);
     }
 
     private boolean isValid(String hash) {
@@ -54,30 +54,30 @@ public class BlockChain {
         return true;
     }
 
-    /*private String getHash(long block, long nonce, String data, String previous) {
-        return String.valueOf(((Long)block).hashCode() + ((Long)nonce).hashCode() + data.hashCode() + previous.hashCode());
+    /*private String getHash(long blockId, long nonce, String data, String previous) {
+        return String.valueOf(((Long)blockId).hashCode() + ((Long)nonce).hashCode() + data.hashCode() + previous.hashCode());
     }*/
 
     public int count()
     {
         return count(last);
     }
-    private int count(Node current)
+    private int count(Block current)
     {
         if(current == null)
             return 0;
-        return 1 + count(current.previousNode);
+        return 1 + count(current.previousBlock);
     }
 
     /*public String toString()
     {
         String blocks = "";
-        Node current = last;
+        Block current = last;
 
         while(current != null)
         {
             blocks += current.toString() + "\n";
-            current = current.previousNode;
+            current = current.previousBlock;
         }
         return blocks;
     }*/
