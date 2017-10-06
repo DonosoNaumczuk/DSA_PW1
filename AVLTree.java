@@ -47,5 +47,49 @@ public class AVLTree {
         current.left = aux;
         return current;
     }
+    //nada de abajo esta testeado
+     public void print()
+    {
+        if(root!=null) {
+            System.out.println("\\-" + root.toString());
+            printTree(root,0);
+        }
+        //se puede agregar algo para cuando es null
+    }
 
+    private void print(Node n, int depth, boolean last){
+        if(n!=null){
+            String aux=" ";
+            for (int i=1;i<depth;i++){
+                aux=aux.concat(" ");
+            }
+            if(last){
+                aux=aux.concat("\\");
+            }else{
+                aux=aux.concat("|");
+            }
+            System.out.println(aux+n.value);
+        }
+    }
+    
+    private void printTree(Node n, int depth){
+        boolean right=n.right==null;
+        boolean left=n.left==null;
+        if(!right){
+            if(!left) {
+                print(n.right, depth+1, false);    //no me convence
+                printTree(n.right,depth+1);        //lo que hice
+                print(n.left, depth+1, true);
+                printTree(n.left,depth+1);
+            }else{
+                print(n.right, depth+1, true);
+                printTree(n.right,depth+1);
+            }
+        }else{
+            if(!left){
+                print(n.left, depth+1, true);
+                printTree(n.left,depth+1);
+            }
+        }
+    }
 }
