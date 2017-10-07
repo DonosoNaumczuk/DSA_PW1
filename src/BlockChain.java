@@ -1,10 +1,12 @@
 public class BlockChain {
     private Block last;
     private int zeros;
+    private HashFunction hashingMethod;
 
     public BlockChain(int zeros)
     {
         this.zeros = zeros;
+        this.hashingMethod = hashingMethod;
     }
 
     private static class Block {
@@ -31,18 +33,24 @@ public class BlockChain {
         }*/
     }
 
-    public void add(String data)
+  public void add(String data)
     {
-        long blockId = (last == null) ? 1 : last.blockId + 1;
+        long index = (last == null) ? 1 : last.index + 1;
         String previous = (last == null) ? "0000000000000" : last.hash;
-        long nonce = 123;
-        String hash = "0000AAAAAA";
-
-        /*nonce = 1;
+        long nonce=0;
+        String hash;
+        //String hash = "0000AAAAAA"; //hay que generarlo
+        do {
+            nonce++;
+            String message = data + "" + index + "" + previous + "" + nonce;
+            hash = hashingMethod.hashData(message);
+        }while(!isValid(hash));
+        //System.out.println("El hash es: " + hash);
+            /*nonce = 1;
         while(!isValid(hash = getHash(blockId, nonce, data, previous)))
             nonce ++;*/
 
-        last = new Block(blockId, nonce, data, previous, hash, last);
+        last = new Block(index, nonce, data, previous, hash, last);
     }
 
     private boolean isValid(String hash) {
