@@ -19,21 +19,21 @@ public class Master {
     public void run() {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int print_id;
-        String input = null;
+        String input;
         boolean flag = true;
-        while (flag) {
-            try {
+        try{
+            while (flag) {
                 input = br.readLine();
-            } catch (IOException e) {
-                e.printStackTrace();
+                print_id = command(input);
+                if (print_id != -1) {
+                    System.out.println(prints[print_id]);
+                }
+                if (print_id == 0){
+                    flag = false;
+                }
             }
-            print_id = command(input);
-            if (print_id != -1) {
-                System.out.println(prints[print_id]);
-            }
-            if (print_id == 0){
-                flag = false;
-            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -42,7 +42,7 @@ public class Master {
                                           "modify ","exit"};
 
     //valida y ejecuta
-    private int command(String s){   //se podra hacer mejor?
+    private int command(String s) {   //se podra hacer mejor?
         int aux = 1;
         if (s.matches(fliter[0])){
             add(getNumber(s.toCharArray(),4, s.length()));
