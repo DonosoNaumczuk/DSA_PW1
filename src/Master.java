@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 public class Master {
     private BlockChain blockChain;
     private AVLTree avlTree;
+    private HashFunction hash;
 
     public Master(int zeros) throws Exception {
         if(zeros <= 0)
