@@ -14,7 +14,7 @@ public class Master {
         this.avlTree = new AVLTree();
     }
 
-    public void run(){
+    public void run(){//falta el ciclo
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int error;
         String input = new String();
