@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f23327ae-1612-4942-939f-8e6d8848202d" name="Default" comment="Algo turbio: filtro de los comandos-2.0">
+    <list default="true" id="f23327ae-1612-4942-939f-8e6d8848202d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -613,7 +613,7 @@
       <option name="presentableId" value="Default" />
       <updated>1507310350593</updated>
       <workItem from="1507380893038" duration="4258000" />
-      <workItem from="1507395647656" duration="11093000" />
+      <workItem from="1507395647656" duration="11103000" />
     </task>
     <task id="LOCAL-00001" summary="print?">
       <created>1507395470763</created>
@@ -636,11 +636,18 @@
       <option name="project" value="LOCAL" />
       <updated>1507410324922</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Algo turbio: filtro de los comandos-2.0">
+      <created>1507410407972</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1507410407972</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15351000" />
+    <option name="totallyTimeSpent" value="15361000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="55" y="-4" width="1311" height="772" extended-state="6" />
