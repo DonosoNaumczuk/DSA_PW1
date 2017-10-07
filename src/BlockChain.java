@@ -35,7 +35,7 @@ public class BlockChain {
         }*/
 
 
-    public void add(String data)
+  public void add(String data)
     {
         long index = (last == null) ? 1 : last.index + 1;
         String previous = (last == null) ? "0000000000000" : last.hash;

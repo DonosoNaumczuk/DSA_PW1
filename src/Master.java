@@ -1,9 +1,7 @@
-
-
 public class Master {
-    public BlockChain blockChain;
+    private BlockChain blockChain;
     private AVLTree avlTree;
-    private HashFunction hash;
+private HashFunction hash;
     public Master(int zeros) throws Exception {
         if(zeros <= 0)
             throw new Exception("Error, la cantidad de ceros debe ser positiva");
@@ -41,12 +39,7 @@ public class Master {
         return true;
     }
 
-    public static void main(String[] args) throws Exception{
-        Master prueba = new Master(4);
-        // String data = "hola";
-        // prueba.blockChain.add(data);
-        // String hash = prueba.blockChain.getLast().getHash();
-
+    public static void main(String[] args) {
         /*BlockChain b = new BlockChain(4);
 
         b.add("Hola");

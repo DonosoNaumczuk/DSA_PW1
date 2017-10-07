@@ -75,45 +75,41 @@ public class AVLTree {
     //nada de abajo esta testeado
      public void print() {
         if(root!=null) {
-            System.out.println("\\-" + root.toString());
-            printTree(root,0);
+            System.out.println("\\- " + root.value);
+            printTree(root,"   ");
         }
         //se puede agregar algo para cuando es null
     }
 
-    private void print(Node n, int depth, boolean last) {
+    private void print(Node n, String prev, boolean last) {
         if(n!=null) {
-            String aux=" ";
-            for (int i=1;i<depth;i++){
-                aux=aux.concat(" ");
-            }
             if(last) {
-                aux=aux.concat("\\");
+                prev=prev.concat("\\- ");
             }
             else {
-                aux=aux.concat("|");
+                prev=prev.concat("|- ");
             }
-            System.out.println(aux+n.value);
+            System.out.println(prev+n.value);
         }
     }
     
-    private void printTree(Node n, int depth){
+    private void printTree(Node n, String prev){
         boolean right=n.right==null;
         boolean left=n.left==null;
         if(!right){
             if(!left) {
-                print(n.right, depth+1, false);    //no me convence
-                printTree(n.right,depth+1);        //lo que hice
-                print(n.left, depth+1, true);
-                printTree(n.left,depth+1);
+                print(n.right, prev, false);          //puede cambiar
+                printTree(n.right, prev+"|  ");
+                print(n.left, prev, true);
+                printTree(n.left,prev+"   ");
             }else{
-                print(n.right, depth+1, true);
-                printTree(n.right,depth+1);
+                print(n.right, prev, true);
+                printTree(n.right,prev+"   ");
             }
         }else{
             if(!left){
-                print(n.left, depth+1, true);
-                printTree(n.left,depth+1);
+                print(n.left, prev, true);
+                printTree(n.left,prev+"   ");
             }
         }
     }
