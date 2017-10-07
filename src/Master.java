@@ -1,13 +1,16 @@
-public class Master {
-    private BlockChain blockChain;
-    private AVLTree avlTree;
 
+
+public class Master {
+    public BlockChain blockChain;
+    private AVLTree avlTree;
+    private HashFunction hash;
     public Master(int zeros) throws Exception {
         if(zeros <= 0)
             throw new Exception("Error, la cantidad de ceros debe ser positiva");
 
-        this.blockChain = new BlockChain(zeros);
-        this.avlTree = new AVLTree();
+        hash = new SHA256();
+        blockChain = new BlockChain(zeros, hash);
+        avlTree = new AVLTree();
     }
 
     public void add(int number)
@@ -38,7 +41,12 @@ public class Master {
         return true;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
+        Master prueba = new Master(4);
+        // String data = "hola";
+        // prueba.blockChain.add(data);
+        // String hash = prueba.blockChain.getLast().getHash();
+
         /*BlockChain b = new BlockChain(4);
 
         b.add("Hola");
