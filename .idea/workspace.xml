@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f23327ae-1612-4942-939f-8e6d8848202d" name="Default" comment="print?">
+    <list default="true" id="f23327ae-1612-4942-939f-8e6d8848202d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Master.java" afterPath="$PROJECT_DIR$/src/Master.java" />
     </list>
@@ -19,10 +19,14 @@
       <file leaf-file-name="Master.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Master.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="27" column="28" lean-forward="true" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
+            <state relative-caret-position="299">
+              <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#add#0;class#Master#0" expanded="false" />
+                <element signature="method#remove#0;class#Master#0" expanded="false" />
+                <element signature="method#lookup#0;class#Master#0" expanded="false" />
+                <element signature="method#validate#0;class#Master#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -610,7 +614,7 @@
       <option name="presentableId" value="Default" />
       <updated>1507310350593</updated>
       <workItem from="1507380893038" duration="4258000" />
-      <workItem from="1507395647656" duration="9513000" />
+      <workItem from="1507395647656" duration="10983000" />
     </task>
     <task id="LOCAL-00001" summary="print?">
       <created>1507395470763</created>
@@ -619,11 +623,18 @@
       <option name="project" value="LOCAL" />
       <updated>1507395470763</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Algo turbio: filtro de los comandos">
+      <created>1507408868412</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1507408868412</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13771000" />
+    <option name="totallyTimeSpent" value="15241000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="55" y="-4" width="1311" height="772" extended-state="6" />
@@ -672,7 +683,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="print?" />
-    <option name="LAST_COMMIT_MESSAGE" value="print?" />
+    <MESSAGE value="Algo turbio: filtro de los comandos" />
+    <option name="LAST_COMMIT_MESSAGE" value="Algo turbio: filtro de los comandos" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -691,6 +703,10 @@
           <caret line="0" column="19" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#add#0;class#Master#0" expanded="false" />
+            <element signature="method#remove#0;class#Master#0" expanded="false" />
+            <element signature="method#lookup#0;class#Master#0" expanded="false" />
+            <element signature="method#validate#0;class#Master#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -730,6 +746,10 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#add#0;class#Master#0" expanded="false" />
+            <element signature="method#remove#0;class#Master#0" expanded="false" />
+            <element signature="method#lookup#0;class#Master#0" expanded="false" />
+            <element signature="method#validate#0;class#Master#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -773,10 +793,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Master.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="27" column="28" lean-forward="true" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
+        <state relative-caret-position="299">
+          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#add#0;class#Master#0" expanded="false" />
+            <element signature="method#remove#0;class#Master#0" expanded="false" />
+            <element signature="method#lookup#0;class#Master#0" expanded="false" />
+            <element signature="method#validate#0;class#Master#0" expanded="false" />
           </folding>
         </state>
       </provider>

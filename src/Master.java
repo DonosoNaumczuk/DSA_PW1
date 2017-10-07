@@ -14,25 +14,36 @@ public class Master {
         this.avlTree = new AVLTree();
     }
 
-    public void run(){
+    private static final String prints[]={"Adios","Error, comando o parametro invalido"};
+
+    public void run() {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int error;
-        String input = new String();
-        error = 0;
-        try {
-            input = br.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
+        int print_id;
+        String input = null;
+        boolean flag = true;
+        while (flag) {
+            try {
+                input = br.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            print_id = command(input);
+            if (print_id != -1) {
+                System.out.println(prints[print_id]);
+            }
+            if (print_id == 0){
+                flag = false;
+            }
         }
-        error = command(input);
-        //printError(error);
     }
 
-    private static String fliter[]={"add [0-9]+","remove [0-9]+", "lookup [0-9]+", "validate", "modify "};
+    private static final String fliter[]={"add [0-9]+","remove [0-9]+",
+                                          "lookup [0-9]+", "validate",
+                                          "modify ","exit"};
 
     //valida y ejecuta
-    public int command(String s){   //se podra hacer mejor?
-        int aux = 0;
+    private int command(String s){   //se podra hacer mejor?
+        int aux = 1;
         if (s.matches(fliter[0])){
             add(getNumber(s.toCharArray(),4, s.length()));
         }
@@ -48,11 +59,13 @@ public class Master {
         if (s.matches(fliter[4])){
             //validar el path del archivo
         }
-
+        if (s.matches(fliter[5])){
+            aux = 0;
+        }
         return aux;
     }
-
-    public static int getNumber(char c[],int first, int last){
+    //nose donde moverla pero para mi hay que sacarla de aca
+    private static int getNumber(char c[], int first, int last){
         int aux=c[first]-'0';
         while (first<last){
             first++;
@@ -61,7 +74,7 @@ public class Master {
         return aux;
     }
 
-    public void add(int number)
+    private void add(int number)
     {
         if(avlTree.add(number))
             blockChain.add("Insert " + number);
@@ -69,7 +82,7 @@ public class Master {
             blockChain.add("Insertion failed");
     }
 
-    public void remove(int number)
+    private void remove(int number)
     {
         //if(avlTree.remove(number))
         blockChain.add("Remove " + number);
@@ -77,13 +90,13 @@ public class Master {
         //blockChain.add("Removal failed");
     }
 
-    public int[] lookup(int number)
+    private int[] lookup(int number)
     {
         //Not implemented
         return new int[0];
     }
 
-    public boolean validate()
+    private boolean validate()
     {
         //Not implemented
         return true;
