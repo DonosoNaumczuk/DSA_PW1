@@ -9,9 +9,9 @@ public class Master {
     public Master(int zeros) throws Exception {
         if(zeros <= 0)
             throw new Exception("Error, la cantidad de ceros debe ser positiva");
-
-        this.blockChain = new BlockChain(zeros);
-        this.avlTree = new AVLTree();
+        hash = new SHA256();
+        blockChain = new BlockChain(zeros, hash);
+        avlTree = new AVLTree();
     }
 
     private static final String prints[]={"Adios","Error, comando o parametro invalido"};
