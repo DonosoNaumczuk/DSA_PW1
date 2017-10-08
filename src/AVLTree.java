@@ -2,19 +2,51 @@ public class AVLTree {
     private Node root;
 
     private static class Node {
+        int height;
         int value;
         Node left;
         Node right;
 
-        public Node(int value) {
+        private Node(int value) {
             this.value = value;
+            height = 1;
+        }
+
+        private Node getLeft(){
+            return left;
+        }
+
+        private Node getRight(){
+            return right;
+        }
+
+        private void setLeft(Node left){
+            this.left = left;
+            int heightl = (left==null)?0:left.height;
+            int heightr = (right==null)?0:right.height;
+            height = (heightl>heightr)?heightl:heightr;
+            height++;
+        }
+
+        private void setRight(Node right){
+            this.right = right;
+            int heightl = (left==null)?0:left.height;
+            int heightr = (right==null)?0:right.height;
+            height = (heightl>heightr)?heightl:heightr;
+            height++;
+        }
+
+        private int getBalanceFactor(){
+            int heightl = (left==null)?0:left.height;
+            int heightr = (right==null)?0:right.height;
+            return heightr-heightl;
         }
     }
 
     public boolean add(int number) {
         Node aux = add(root, number);
         if(aux != null) {
-            root = aux;
+            root = rotate(aux);
             return true;
         }
         return false;
@@ -24,27 +56,27 @@ public class AVLTree {
     /* Right-Right case */
     private Node rotateLeft(Node root) {
         Node newRoot = root.right;
-        root.right = newRoot.left;
-        newRoot.left = root;
+        root.setRight(newRoot.left);
+        newRoot.setLeft(root);
         return newRoot;
     }
 
     /* Left-Left case */
     private Node rotateRight(Node root) {
         Node newRoot = root.left;
-        root.left = newRoot.right;
-        newRoot.right = root;
+        root.setLeft(newRoot.right);
+        newRoot.setRight(root);
         return newRoot;
     }
 
     /* Left-Right case */
     private Node rotateLeftRight(Node root) {
-        root.left = rotateLeft(root.left);
+        root.setLeft(rotateLeft(root.left));
         return rotateRight(root);
     }
 
     private Node rotateRightLeft(Node root) {
-        root.right = rotateRight(root.right);
+        root.setRight(rotateRight(root.right));
         return rotateLeft(root);
     }
 
@@ -60,17 +92,36 @@ public class AVLTree {
             aux = add(current.right, number);
             if(aux == null)
                 return null;
-            current.right = aux;
-            return current;
+            current.setRight(aux);
+        } else {
+            aux = add(current.left, number);
+            if(aux == null)
+                return null;
+            current.setLeft(aux);
         }
-
-        aux = add(current.left, number);
-        if(aux == null)
-            return null;
-        current.left = aux;
-        return current;
+        return rotate(current);
     }
 
+    private Node rotate(Node current){
+        int bf = current.getBalanceFactor();
+        if (bf < -1 && current.value < current.left.value)
+            return rotateRight(current);
+
+        // Right Right Case
+        if (bf > 1 && current.value < current.right.value)
+            return rotateLeft(current);
+
+        // Left Right Case
+        if (bf < -1 && current.value > current.left.value) {
+            return rotateLeftRight(current);
+        }
+
+        // Right Left Case
+        if (bf > 1 && current.value < current.right.value) {
+            return rotateRightLeft(current);
+        }
+        return current;
+    }
 
     //nada de abajo esta testeado
      public void print() {
