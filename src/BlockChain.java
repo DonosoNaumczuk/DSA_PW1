@@ -45,7 +45,7 @@ public class BlockChain {
             String message = data + "" + index + "" + previous + "" + nonce;
             hash = hashingMethod.hashData(message);
         }while(!isValid(hash));
-        //System.out.println("El hash es: " + hash);
+        System.out.println("El hash es: " + hash);
             /*nonce = 1;
         while(!isValid(hash = getHash(blockId, nonce, data, previous)))
             nonce ++;*/

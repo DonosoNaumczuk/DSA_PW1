@@ -12,7 +12,79 @@ public class AVLTree {
         return false;
     }
 
-    public boolean remove(int value) { //Se podra mejorar?
+    public boolean remove(int value) {
+        if(root.left == null && root.right==null) {
+            if (root.value == value) {
+                root = null;
+                return true;
+            }
+            return false;
+        }
+        root = remove(root,value);
+        return (root == null)?false:true;
+    }
+
+    private Node remove(Node n,int value){
+        if(n.value == value){
+            if(n.right!=null) {
+                Node aux = minimum(n.right);
+                aux.setLeft(n.left);
+                if(aux.value != n.right.value)
+                    aux.setRight(n.right);
+                return aux;
+            }
+            else if(n.left!=null) {
+                Node aux = maximum(n.left);
+                aux.setRight(n.right);
+                if(aux.value != n.left.value)
+                    aux.setLeft(n.left);
+                return aux;
+            }
+            return null;
+        }
+        else if(n.value < value && n.right !=null) {
+            n.setRight(remove(n.right, value));
+            return n;
+        }
+        else if(n.value > value && n.left!= null){
+            n.setLeft(remove(n.left,value));
+            return n;
+        }
+        else
+            return n;
+    }
+
+    private Node minimum(Node n){
+        if(n.left != null){
+            Node aux = n.left;
+            if(aux.left!=null)
+                return minimum(aux);
+            else {
+                n.setLeft(aux.right);
+                return aux;
+            }
+        }
+        else
+            return n;
+    }
+
+    private Node maximum(Node n){
+
+        if(n.right!=null){
+            Node aux = n.right;
+            if(aux.right!=null)
+                return maximum(aux);
+            else {
+                n.setRight(aux.left);
+                return aux;
+            }
+        }
+        else
+            return n;
+    }
+
+
+    /*    public boolean remove(int value) { //Se podra mejorar?
         Boolean flag = false;
         root = remove(root,value,flag);
         return flag;
@@ -53,7 +125,7 @@ public class AVLTree {
         }
         return aux;
     }
-
+*/
     private Node add(Node current, int value) {
         if(current == null)
             return new Node(value);
