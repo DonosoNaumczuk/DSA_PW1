@@ -1,56 +1,32 @@
 public class AVLTree {
     private Node root;
 
-    private static class Node {
-        int height;
-        int value;
-        Node left;
-        Node right;
-
-        private Node(int value) {
-            this.value = value;
-            height = 1;
-        }
-
-        private Node getLeft(){
-            return left;
-        }
-
-        private Node getRight(){
-            return right;
-        }
-
-        private void setLeft(Node left){
-            this.left = left;
-            int heightl = (left==null)?0:left.height;
-            int heightr = (right==null)?0:right.height;
-            height = (heightl>heightr)?heightl:heightr;
-            height++;
-        }
-
-        private void setRight(Node right){
-            this.right = right;
-            int heightl = (left==null)?0:left.height;
-            int heightr = (right==null)?0:right.height;
-            height = (heightl>heightr)?heightl:heightr;
-            height++;
-        }
-
-        private int getBalanceFactor(){
-            int heightl = (left==null)?0:left.height;
-            int heightr = (right==null)?0:right.height;
-            return heightr-heightl;
-        }
+    /* Returns true if value is not already in the tree.
+       Otherwise, return false. */
+    public boolean add(int value) {
+        return add(root, value) != null;
     }
 
-    public boolean add(int number) {
-        Node aux = add(root, number);
-        if(aux != null) {
-            root = rotate(aux);
-            return true;
-        }
-        return false;
+    private Node add(Node current, int value) {
+        if(current == null)
+            return new Node(value);
+        if(value == current.value)
+            return null;
 
+        Node aux;
+        if(value > current.value) {
+            aux = add(current.right, value);
+            if(aux == null)
+                return null;
+            current.setRight(aux);
+        }
+        else {
+            aux = add(current.left, value);
+            if(aux == null)
+                return null;
+            current.setLeft(aux);
+        }
+        return rotate(current, value);
     }
 
     /* Right-Right case */
@@ -75,53 +51,74 @@ public class AVLTree {
         return rotateRight(root);
     }
 
+    /* Right-Left case */
     private Node rotateRightLeft(Node root) {
         root.setRight(rotateRight(root.right));
         return rotateLeft(root);
     }
 
-    //Faltarian hacer los rotate
-    private Node add(Node current, int number) {
-        if(current == null)
-            return new Node(number);
-        if(number == current.value)
-            return null;
-
-        Node aux;
-        if(number > current.value) {
-            aux = add(current.right, number);
-            if(aux == null)
-                return null;
-            current.setRight(aux);
-        } else {
-            aux = add(current.left, number);
-            if(aux == null)
-                return null;
-            current.setLeft(aux);
-        }
-        return rotate(current);
-    }
-
-    private Node rotate(Node current){
+    private Node rotate(Node current, int value){
         int bf = current.getBalanceFactor();
-        if (bf < -1 && current.value < current.left.value)
+
+        /* Left-Left case */
+        if (bf > 1 && current.left.value > value)
             return rotateRight(current);
 
-        // Right Right Case
-        if (bf > 1 && current.value < current.right.value)
+        /* Right-Right case */
+        if (bf < -1 && current.right.value < value)
             return rotateLeft(current);
 
-        // Left Right Case
-        if (bf < -1 && current.value > current.left.value) {
+        /* Left-Right case */
+        if (bf > 1 && current.left.value < value) {
             return rotateLeftRight(current);
         }
 
-        // Right Left Case
-        if (bf > 1 && current.value < current.right.value) {
+        /* Right-Left case */
+        if (bf < -1 && current.right.value > value) {
             return rotateRightLeft(current);
         }
+
         return current;
     }
+
+    private static class Node {
+        int value;
+        int height;
+        Node left;
+        Node right;
+
+        private Node(int value) {
+            this.value = value;
+            height = 1;
+        }
+
+        private void setLeft(Node left){
+            this.left = left;
+            computeHeight();
+        }
+
+        private void setRight(Node right){
+            this.right = right;
+            computeHeight();
+        }
+
+        /* Computes height and update it */
+        private void computeHeight() {
+            int heightl = (left==null)?0:left.height;
+            int heightr = (right==null)?0:right.height;
+            height = (heightl>heightr)?heightl:heightr + 1;
+        }
+
+        private int getBalanceFactor(){
+            int heightl = (left==null)?0:left.height;
+            int heightr = (right==null)?0:right.height;
+            return heightl-heightr;
+        }
+    }
+
+    /*----------------------------------------------------------------
+    ---------------------------- PRINT -------------------------------
+    ----------------------------------------------------------------*/
 
     //nada de abajo esta testeado
      public void print() {
