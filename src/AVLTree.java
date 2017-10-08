@@ -20,37 +20,39 @@ public class AVLTree {
             }
             return false;
         }
-        root = remove(root,value);
-        return (root == null)?false:true;
+        Boolean flag = Boolean.FALSE;
+        root = remove(root,value,flag);
+        return flag.booleanValue();
     }
 
-    private Node remove(Node n,int value){
+    private Node remove(Node n,int value, Boolean flag){
         if(n.value == value){
+            flag = Boolean.TRUE;
             if(n.right!=null) {
                 Node aux = minimum(n.right);
                 aux.setLeft(n.left);
                 if(aux.value != n.right.value)
                     aux.setRight(n.right);
-                return aux;
+                return rotate(aux,0);
             }
             else if(n.left!=null) {
                 Node aux = maximum(n.left);
                 aux.setRight(n.right);
                 if(aux.value != n.left.value)
                     aux.setLeft(n.left);
-                return aux;
+                return rotate(aux,0);
             }
             return null;
         }
         else if(n.value < value && n.right !=null) {
-            n.setRight(remove(n.right, value));
-            return n;
+            n.setRight(remove(n.right, value, flag));
         }
         else if(n.value > value && n.left!= null){
-            n.setLeft(remove(n.left,value));
-            return n;
+            n.setLeft(remove(n.left,value, flag));
         }
-        else
+        if(flag.booleanValue()){
+            return rotate(n,0);
+        }
             return n;
     }
 
@@ -84,7 +86,7 @@ public class AVLTree {
     }
 
 
-    /*    public boolean remove(int value) { //Se podra mejorar?
+    /*public boolean remove(int value) { //Se podra mejorar?
         Boolean flag = false;
         root = remove(root,value,flag);
         return flag;
@@ -180,20 +182,20 @@ public class AVLTree {
         int bf = current.getBalanceFactor();
 
         /* Left-Left case */
-        if (bf > 1 && current.left != null && current.left.value > value)
+        if (bf > 1 && current.left != null && current.left.getBalanceFactor() >= 0)
             return rotateRight(current);
 
         /* Right-Right case */
-        if (bf < -1 && current.right != null && current.right.value < value)
+        if (bf < -1 && current.right != null && current.right.getBalanceFactor() < 0)
             return rotateLeft(current);
 
         /* Left-Right case */
-        if (bf > 1 && current.left != null && current.left.value < value) {
+        if (bf > 1 && current.left != null && current.left.getBalanceFactor() <= 0) {
             return rotateLeftRight(current);
         }
 
         /* Right-Left case */
-        if (bf < -1 && current.right != null && current.right.value > value) {
+        if (bf < -1 && current.right != null && current.right.getBalanceFactor() > 0) {
             return rotateRightLeft(current);
         }
 
