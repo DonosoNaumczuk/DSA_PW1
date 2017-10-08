@@ -3,7 +3,7 @@ public class BlockChain {
     private int zeros;
     private HashFunction hashingMethod;
 
-    public BlockChain(int zeros)
+    public BlockChain(int zeros, HashFunction hashingMethod)
     {
         this.zeros = zeros;
         this.hashingMethod = hashingMethod;
@@ -35,7 +35,7 @@ public class BlockChain {
 
   public void add(String data)
     {
-        long index = (last == null) ? 1 : last.index + 1;
+        long index = (last == null) ? 1 : last.blockId + 1;
         String previous = (last == null) ? "0000000000000" : last.hash;
         long nonce=0;
         String hash;

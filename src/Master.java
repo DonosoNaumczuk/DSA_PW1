@@ -24,7 +24,7 @@ public class Master {
         boolean flag = true;
         while (flag) {
             try {
-                input = br.readLine();
+                input = br.readLine();  //sacar el try/catch?
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -104,12 +104,15 @@ public class Master {
     }
 
     public static void main(String[] args) {
-        /*BlockChain b = new BlockChain(4);
-
-        b.add("Hola");
-        b.add("Como");
-        b.add("Estas");
-
-        System.out.println(b);*/
+       /* int zeros;
+        Master m;
+        if(args.length<2 && args[0].matches("zero") && args[1].matches("[0-9]+")){
+            zeros = getNumber(args[1].toCharArray(),0, args[1].length());
+        } else {
+            System.out.println("Comando invalido, se setea la cantidad de ceros a 4");
+            zeros = 4;
+        }
+        m = new Master(zeros);
+        m.run();*/
     }
 }
