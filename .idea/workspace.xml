@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f23327ae-1612-4942-939f-8e6d8848202d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AVLTree.java" afterPath="$PROJECT_DIR$/src/AVLTree.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BlockChain.java" afterPath="$PROJECT_DIR$/src/BlockChain.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -49,7 +46,7 @@
       <file leaf-file-name="AVLTree.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AVLTree.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
+            <state relative-caret-position="-990">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
@@ -497,7 +494,14 @@
       <option name="project" value="LOCAL" />
       <updated>1507488090195</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="AVL remove without Flag">
+      <created>1507498456817</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1507498456817</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -554,7 +558,8 @@
     <MESSAGE value="Algo turbio: filtro de los comandos-2.0" />
     <MESSAGE value="Fix errors" />
     <MESSAGE value="AVL try to balance" />
-    <option name="LAST_COMMIT_MESSAGE" value="AVL try to balance" />
+    <MESSAGE value="AVL remove without Flag" />
+    <option name="LAST_COMMIT_MESSAGE" value="AVL remove without Flag" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -819,7 +824,7 @@
     <entry file="file://$PROJECT_DIR$/src/Prueba.java" />
     <entry file="file://$PROJECT_DIR$/src/AVLTree.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="-990">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
