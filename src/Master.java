@@ -1,17 +1,81 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class Master {
     private BlockChain blockChain;
     private AVLTree avlTree;
-private HashFunction hash;
+    private HashFunction hash;
+
     public Master(int zeros) throws Exception {
         if(zeros <= 0)
             throw new Exception("Error, la cantidad de ceros debe ser positiva");
-
         hash = new SHA256();
         blockChain = new BlockChain(zeros, hash);
         avlTree = new AVLTree();
     }
 
-    public void add(int number)
+    private static final String prints[]={"Adios","Error, comando o parametro invalido"};
+
+    public void run() {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int print_id;
+        String input = null;
+        boolean flag = true;
+        while (flag) {
+            try {
+                input = br.readLine();  //sacar el try/catch?
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            print_id = command(input);
+            if (print_id != -1) {
+                System.out.println(prints[print_id]);
+            }
+            if (print_id == 0){
+                flag = false;
+            }
+        }
+    }
+
+    private static final String fliter[]={"add [0-9]+","remove [0-9]+",
+                                          "lookup [0-9]+", "validate",
+                                          "modify ","exit"};
+
+    //valida y ejecuta
+    private int command(String s){   //se podra hacer mejor?
+        int aux = 1;
+        if (s.matches(fliter[0])){
+            add(getNumber(s.toCharArray(),4, s.length()));
+        }
+        if (s.matches(fliter[1])){
+            remove(getNumber(s.toCharArray(),7, s.length()));
+        }
+        if (s.matches(fliter[2])){
+            lookup(getNumber(s.toCharArray(),7, s.length()));
+        }
+        if (s.matches(fliter[3])){
+            validate();
+        }
+        if (s.matches(fliter[4])){
+            //validar el path del archivo
+        }
+        if (s.matches(fliter[5])){
+            aux = 0;
+        }
+        return aux;
+    }
+    //nose donde moverla pero para mi hay que sacarla de aca
+    private static int getNumber(char c[], int first, int last){
+        int aux=c[first]-'0';
+        while (first<last){
+            first++;
+            aux=aux*10+c[first]-'0';
+        }
+        return aux;
+    }
+
+    private void add(int number)
     {
         if(avlTree.add(number))
             blockChain.add("Insert " + number);
@@ -19,7 +83,7 @@ private HashFunction hash;
             blockChain.add("Insertion failed");
     }
 
-    public void remove(int number)
+    private void remove(int number)
     {
         //if(avlTree.remove(number))
         blockChain.add("Remove " + number);
@@ -27,25 +91,28 @@ private HashFunction hash;
         //blockChain.add("Removal failed");
     }
 
-    public int[] lookup(int number)
+    private int[] lookup(int number)
     {
         //Not implemented
         return new int[0];
     }
 
-    public boolean validate()
+    private boolean validate()
     {
         //Not implemented
         return true;
     }
 
     public static void main(String[] args) {
-        /*BlockChain b = new BlockChain(4);
-
-        b.add("Hola");
-        b.add("Como");
-        b.add("Estas");
-
-        System.out.println(b);*/
+       /* int zeros;
+        Master m;
+        if(args.length<2 && args[0].matches("zero") && args[1].matches("[0-9]+")){
+            zeros = getNumber(args[1].toCharArray(),0, args[1].length());
+        } else {
+            System.out.println("Comando invalido, se setea la cantidad de ceros a 4");
+            zeros = 4;
+        }
+        m = new Master(zeros);
+        m.run();*/
     }
 }

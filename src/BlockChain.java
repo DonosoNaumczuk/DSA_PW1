@@ -3,41 +3,39 @@ public class BlockChain {
     private int zeros;
     private HashFunction hashingMethod;
 
-    public BlockChain(int zeros, HashFunction hashingMethod) {
+    public BlockChain(int zeros, HashFunction hashingMethod)
+    {
         this.zeros = zeros;
         this.hashingMethod = hashingMethod;
     }
 
     private static class Block {
-        private long index;
+        private long blockId;
         private long nonce;
         private String data;
         private String previous;
         private Block previousBlock;
         private String hash;
 
-        public Block(long index, long nonce, String data, String previous, String hash, Block previousBlock)
+        public Block(long blockId, long nonce, String data, String previous, String hash, Block previousBlock)
         {
-            this.index = index;
+            this.blockId = blockId;
             this.nonce = nonce;
             this.data = data;
             this.previous = previous;
             this.hash = hash;
             this.previousBlock = previousBlock;
-
         }
-
-    }
 
         /*public String toString()
         {
             return blockId + " : " + data;
         }*/
-
+    }
 
   public void add(String data)
     {
-        long index = (last == null) ? 1 : last.index + 1;
+        long index = (last == null) ? 1 : last.blockId + 1;
         String previous = (last == null) ? "0000000000000" : last.hash;
         long nonce=0;
         String hash;

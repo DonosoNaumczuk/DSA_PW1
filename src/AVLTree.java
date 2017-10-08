@@ -1,76 +1,124 @@
 public class AVLTree {
     private Node root;
 
-    private static class Node {
-        int value;
-        Node left;
-        Node right;
-
-        public Node(int value) {
-            this.value = value;
-        }
+    /* Returns true if value is not already in the tree.
+       Otherwise, return false. */
+    public boolean add(int value) {
+        return add(root, value) != null;
     }
 
-    public boolean add(int number) {
-        Node aux = add(root, number);
-        if(aux != null) {
-            root = aux;
-            return true;
-        }
-        return false;
+    private Node add(Node current, int value) {
+        if(current == null)
+            return new Node(value);
+        if(value == current.value)
+            return null;
 
+        Node aux;
+        if(value > current.value) {
+            aux = add(current.right, value);
+            if(aux == null)
+                return null;
+            current.setRight(aux);
+        }
+        else {
+            aux = add(current.left, value);
+            if(aux == null)
+                return null;
+            current.setLeft(aux);
+        }
+        return rotate(current, value);
     }
 
     /* Right-Right case */
     private Node rotateLeft(Node root) {
         Node newRoot = root.right;
-        root.right = newRoot.left;
-        newRoot.left = root;
+        root.setRight(newRoot.left);
+        newRoot.setLeft(root);
         return newRoot;
     }
 
     /* Left-Left case */
     private Node rotateRight(Node root) {
         Node newRoot = root.left;
-        root.left = newRoot.right;
-        newRoot.right = root;
+        root.setLeft(newRoot.right);
+        newRoot.setRight(root);
         return newRoot;
     }
 
     /* Left-Right case */
     private Node rotateLeftRight(Node root) {
-        root.left = rotateLeft(root.left);
+        root.setLeft(rotateLeft(root.left));
         return rotateRight(root);
     }
 
+    /* Right-Left case */
     private Node rotateRightLeft(Node root) {
-        root.right = rotateRight(root.right);
+        root.setRight(rotateRight(root.right));
         return rotateLeft(root);
     }
 
-    //Faltarian hacer los rotate
-    private Node add(Node current, int number) {
-        if(current == null)
-            return new Node(number);
-        if(number == current.value)
-            return null;
+    private Node rotate(Node current, int value){
+        int bf = current.getBalanceFactor();
 
-        Node aux;
-        if(number > current.value) {
-            aux = add(current.right, number);
-            if(aux == null)
-                return null;
-            current.right = aux;
-            return current;
+        /* Left-Left case */
+        if (bf > 1 && current.left.value > value)
+            return rotateRight(current);
+
+        /* Right-Right case */
+        if (bf < -1 && current.right.value < value)
+            return rotateLeft(current);
+
+        /* Left-Right case */
+        if (bf > 1 && current.left.value < value) {
+            return rotateLeftRight(current);
         }
 
-        aux = add(current.left, number);
-        if(aux == null)
-            return null;
-        current.left = aux;
+        /* Right-Left case */
+        if (bf < -1 && current.right.value > value) {
+            return rotateRightLeft(current);
+        }
+
         return current;
     }
 
+    private static class Node {
+        int value;
+        int height;
+        Node left;
+        Node right;
+
+        private Node(int value) {
+            this.value = value;
+            height = 1;
+        }
+
+        private void setLeft(Node left){
+            this.left = left;
+            computeHeight();
+        }
+
+        private void setRight(Node right){
+            this.right = right;
+            computeHeight();
+        }
+
+        /* Computes height and update it */
+        private void computeHeight() {
+            int heightl = (left==null)?0:left.height;
+            int heightr = (right==null)?0:right.height;
+            height = (heightl>heightr)?heightl:heightr + 1;
+        }
+
+        private int getBalanceFactor(){
+            int heightl = (left==null)?0:left.height;
+            int heightr = (right==null)?0:right.height;
+            return heightl-heightr;
+        }
+    }
+
+    /*----------------------------------------------------------------
+    ---------------------------- PRINT -------------------------------
+    ----------------------------------------------------------------*/
 
     //nada de abajo esta testeado
      public void print() {
