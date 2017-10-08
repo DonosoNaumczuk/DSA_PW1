@@ -38,7 +38,7 @@ public class AVLTree {
         }
         //intento de balaceo :)
         if (flag){
-            rotate(current,0);
+            current = rotate(current,0);
         }
         return current;
     }
