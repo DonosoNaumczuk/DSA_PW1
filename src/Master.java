@@ -5,13 +5,14 @@ import java.io.InputStreamReader;
 public class Master {
     private BlockChain blockChain;
     private AVLTree avlTree;
+    private HashFunction hash;
 
     public Master(int zeros) throws Exception {
         if(zeros <= 0)
             throw new Exception("Error, la cantidad de ceros debe ser positiva");
-
-        this.blockChain = new BlockChain(zeros);
-        this.avlTree = new AVLTree();
+        hash = new SHA256();
+        blockChain = new BlockChain(zeros, hash);
+        avlTree = new AVLTree();
     }
 
     private static final String prints[]={"Adios","Error, comando o parametro invalido"};
@@ -19,21 +20,21 @@ public class Master {
     public void run() {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int print_id;
-        String input;
+        String input = null;
         boolean flag = true;
-        try{
-            while (flag) {
+        while (flag) {
+            try {
                 input = br.readLine();
-                print_id = command(input);
-                if (print_id != -1) {
-                    System.out.println(prints[print_id]);
-                }
-                if (print_id == 0){
-                    flag = false;
-                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+            print_id = command(input);
+            if (print_id != -1) {
+                System.out.println(prints[print_id]);
+            }
+            if (print_id == 0){
+                flag = false;
+            }
         }
     }
 
@@ -42,7 +43,7 @@ public class Master {
                                           "modify ","exit"};
 
     //valida y ejecuta
-    private int command(String s) {   //se podra hacer mejor?
+    private int command(String s){   //se podra hacer mejor?
         int aux = 1;
         if (s.matches(fliter[0])){
             add(getNumber(s.toCharArray(),4, s.length()));
