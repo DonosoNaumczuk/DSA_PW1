@@ -4,6 +4,11 @@ public class AVLTree {
     /* Returns true if value is not already in the tree.
        Otherwise, return false. */
     public boolean add(int value) {
+        if(root == null) {
+            root = new Node(value);
+            return true;
+        }
+
         return add(root, value) != null;
     }
 
