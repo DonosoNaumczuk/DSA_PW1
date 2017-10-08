@@ -4,11 +4,12 @@ public class AVLTree {
     /* Returns true if value is not already in the tree.
        Otherwise, return false. */
     public boolean add(int value) {
-        if(root == null) {
-            root = new Node(value);
+        Node aux = add(root,value);
+        if(aux != null){
+            root = aux;
             return true;
         }
-        return add(root, value) != null;
+        return false;
     }
 
     public boolean remove(int value) { //Se podra mejorar?
@@ -22,9 +23,9 @@ public class AVLTree {
             return current;
         }
         if(current.value > value){
-            current.setLeft(remove(current,value,flag));
+            current.setLeft(remove(current.left,value,flag));
         } else if(current.value < value){
-            current.setRight(remove(current,value,flag));
+            current.setRight(remove(current.right,value,flag));
         } else {
             flag = true;
             if (current.left == null){
@@ -107,20 +108,20 @@ public class AVLTree {
         int bf = current.getBalanceFactor();
 
         /* Left-Left case */
-        if (bf > 1 && current.left.value >= value)
+        if (bf > 1 && current.left != null && current.left.value > value)
             return rotateRight(current);
 
         /* Right-Right case */
-        if (bf < -1 && current.right.value <= value)
+        if (bf < -1 && current.right != null && current.right.value < value)
             return rotateLeft(current);
 
         /* Left-Right case */
-        if (bf > 1 && current.left.value < value) {
+        if (bf > 1 && current.left != null && current.left.value < value) {
             return rotateLeftRight(current);
         }
 
         /* Right-Left case */
-        if (bf < -1 && current.right.value > value) {
+        if (bf < -1 && current.right != null && current.right.value > value) {
             return rotateRightLeft(current);
         }
 
@@ -152,7 +153,7 @@ public class AVLTree {
         private void computeHeight() {
             int heightl = (left==null)?0:left.height;
             int heightr = (right==null)?0:right.height;
-            height = (heightl>heightr)?heightl:heightr + 1;
+            height = ((heightl>heightr)?heightl:heightr) + 1;
         }
 
         private int getBalanceFactor(){
