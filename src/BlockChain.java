@@ -10,16 +10,16 @@ public class BlockChain {
     }
 
     private static class Block {
-        private long blockId;
+        private long index;
         private long nonce;
         private String data;
         private String previous;
         private Block previousBlock;
         private String hash;
 
-        public Block(long blockId, long nonce, String data, String previous, String hash, Block previousBlock)
+        public Block(long index, long nonce, String data, String previous, String hash, Block previousBlock)
         {
-            this.blockId = blockId;
+            this.index = index;
             this.nonce = nonce;
             this.data = data;
             this.previous = previous;
@@ -35,7 +35,7 @@ public class BlockChain {
 
   public void add(String data)
     {
-        long index = (last == null) ? 1 : last.blockId + 1;
+        long index = (last == null) ? 1 : last.index + 1;
         String previous = (last == null) ? "0000000000000" : last.hash;
         long nonce=0;
         String hash;
@@ -77,6 +77,17 @@ public class BlockChain {
         return 1 + count(current.previousBlock);
     }
 
+    public boolean validate(){
+        Block curr = last;
+        Block prev = null;
+        while(curr.index > 1){
+            prev = curr.previousBlock;
+            if(!curr.previous.equals(prev.hash))
+                return false;
+            curr = prev;
+        }
+        return true;
+    }
     /*public String toString()
     {
         String blocks = "";
