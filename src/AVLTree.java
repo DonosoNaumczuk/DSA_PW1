@@ -1,5 +1,11 @@
 public class AVLTree {
     private Node root;
+    private int nodeQty;
+
+    public AVLTree() {
+        root = null;
+        nodeQty = 0;
+    }
 
     /* Returns true if value is not already in the tree.
        Otherwise, return false. */
@@ -7,171 +13,95 @@ public class AVLTree {
         Node aux = add(root,value);
         if(aux != null){
             root = aux;
+            nodeQty++;
             return true;
         }
         return false;
     }
-    /*public boolean remove(int value) {
-        if(root.left == null && root.right==null) {
-            if (root.value == value) {
-                root = null;
-                return true;
-            }
-            return false;
-        }
-        Boolean flag = Boolean.FALSE;
-        root = remove(root,value,flag);
-        return flag.booleanValue();
+    
+
+    public int nodeQuantity() {
+        return nodeQty;
     }
 
-    private Node remove(Node n,int value, Boolean flag){
-        if(n.value == value){
-            flag = Boolean.TRUE;
-            if(n.right!=null) {
-                Node aux = minimum(n.right);
-                aux.setLeft(n.left);
-                if(aux.value != n.right.value)
-                    aux.setRight(n.right);
-                return balance(aux,0);
-            }
-            else if(n.left!=null) {
-                Node aux = maximum(n.left);
-                aux.setRight(n.right);
-                if(aux.value != n.left.value)
-                    aux.setLeft(n.left);
-                return balance(aux,0);
-            }
-            return null;
-        }
-        else if(n.value < value && n.right !=null) {
-            n.setRight(remove(n.right, value, flag));
-        }
-        else if(n.value > value && n.left!= null){
-            n.setLeft(remove(n.left,value, flag));
-        }
-        if(flag.booleanValue()){
-            return balance(n,0);
-        }
-        return n;
-    }
-
-    private Node minimum(Node n){
-        if(n.left != null){
-            Node aux = n.left;
-            if(aux.left!=null)
-                return minimum(aux);
-            else {
-                n.setLeft(aux.right);
-                return aux;
-            }
-        }
-        else
-            return n;
-    }
-
-    private Node maximum(Node n){
-
-        if(n.right!=null){
-            Node aux = n.right;
-            if(aux.right!=null)
-                return maximum(aux);
-            else {
-                n.setRight(aux.left);
-                return aux;
-            }
-        }
-        else
-            return n;
-    }
-   */
-    public int countR(Node n){
-        if(n ==null)
-            return 0;
-        int leftn = 0;
-        int rightn = 0;
-        if(n.left!=null)
-            leftn = countR(n.left);
-        if(n.right!=null)
-            rightn = countR(n.right);
-        return 1 + leftn + rightn;
-    }
     public boolean remove(int value) {
-        if(root.left == null && root.right==null) {
+        if(root == null)
+            return false;
+
+        if(nodeQty == 1) {
             if (root.value == value) {
                 root = null;
+                nodeQty = 0;
                 return true;
             }
-            return false;
+            else {
+                return false;
+            }
         }
-        int dim = countR(root);
+
+        int oldQty = nodeQty;
         root = remove(root,value);
-        return(dim == countR(root))?false:true;
+        return oldQty != nodeQuantity();
     }
 
-    private Node remove(Node n,int value){
-        if(n.value == value){
-            if(n.right!=null) {
-                Node aux = minimum(n.right);
-                aux.setLeft(n.left);
-                if(aux.value != n.right.value)
-                    aux.setRight(n.right);
+    private Node remove(Node current,int value) {
+        if(current.value == value){
+            nodeQty--;
+            if(current.right!=null) {
+                Node aux = minimum(current.right);
+                aux.setLeft(current.left);
+                if(aux.value != current.right.value)
+                    aux.setRight(current.right);
                 return aux;
             }
-            else if(n.left!=null) {
-                Node aux = maximum(n.left);
-                aux.setRight(n.right);
-                if(aux.value != n.left.value)
-                    aux.setLeft(n.left);
+            else if(current.left!=null) {
+                Node aux = maximum(current.left);
+                aux.setRight(current.right);
+                if(aux.value != current.left.value)
+                    aux.setLeft(current.left);
                 return aux;
             }
             return null;
         }
-        else if(n.value < value && n.right !=null) {
-            n.setRight(remove(n.right, value));
-            return n;
+        else if(current.value < value && current.right !=null) {
+            current.setRight(remove(current.right, value));
+            return current;
         }
-        else if(n.value > value && n.left!= null){
-            n.setLeft(remove(n.left,value));
-            return n;
+        else if(current.value > value && current.left!= null){
+            current.setLeft(remove(current.left,value));
+            return current;
         }
         else
-            return n;
+            return current;
     }
 
-    private Node minimum(Node n){
-        if(n.left != null){
-            Node aux = n.left;
+    private Node minimum(Node root) {
+        if(root.left != null){
+            Node aux = root.left;
             if(aux.left!=null)
                 return minimum(aux);
             else {
-                n.setLeft(aux.right);
+                root.setLeft(aux.right);
                 return aux;
             }
         }
         else
-            return n;
+            return root;
     }
 
-    private Node maximum(Node n){
-
-        if(n.right!=null){
-            Node aux = n.right;
+    private Node maximum(Node root) {
+        if(root.right!=null){
+            Node aux = root.right;
             if(aux.right!=null)
                 return maximum(aux);
             else {
-                n.setRight(aux.left);
+                root.setRight(aux.left);
                 return aux;
             }
         }
         else
-            return n;
+            return root;
     }
-
-
-
-
-
-
 
     private Node add(Node current, int value) {
         if(current == null)
@@ -223,7 +153,7 @@ public class AVLTree {
         return rotateLeft(root);
     }
 
-    private Node balance(Node current){
+    private Node balance(Node current) {
         int bf = current.getBalanceFactor();
 
         /* Left-Left case */
@@ -295,35 +225,35 @@ public class AVLTree {
         //se puede agregar algo para cuando es null
     }
 
-    private void print(Node n, String prev, boolean last) {
-        if(n!=null) {
+    private void print(Node current, String prev, boolean last) {
+        if(current!=null) {
             if(last) {
                 prev=prev.concat("\\- ");
             }
             else {
                 prev=prev.concat("|- ");
             }
-            System.out.println(prev+n.value);
+            System.out.println(prev+current.value);
         }
     }
     
-    private void printTree(Node n, String prev){
-        boolean right=n.right==null;
-        boolean left=n.left==null;
+    private void printTree(Node current, String prev){
+        boolean right=current.right==null;
+        boolean left=current.left==null;
         if(!right){
             if(!left) {
-                print(n.right, prev, false);          //puede cambiar
-                printTree(n.right, prev+"|  ");
-                print(n.left, prev, true);
-                printTree(n.left,prev+"   ");
+                print(current.right, prev, false);          //puede cambiar
+                printTree(current.right, prev+"|  ");
+                print(current.left, prev, true);
+                printTree(current.left,prev+"   ");
             }else{
-                print(n.right, prev, true);
-                printTree(n.right,prev+"   ");
+                print(current.right, prev, true);
+                printTree(current.right,prev+"   ");
             }
         }else{
             if(!left){
-                print(n.left, prev, true);
-                printTree(n.left,prev+"   ");
+                print(current.left, prev, true);
+                printTree(current.left,prev+"   ");
             }
         }
     }
