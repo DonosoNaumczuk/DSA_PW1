@@ -11,8 +11,7 @@ public class AVLTree {
         }
         return false;
     }
-
-    public boolean remove(int value) {
+    /*public boolean remove(int value) {
         if(root.left == null && root.right==null) {
             if (root.value == value) {
                 root = null;
@@ -53,6 +52,89 @@ public class AVLTree {
         if(flag.booleanValue()){
             return rotate(n,0);
         }
+        return n;
+    }
+
+    private Node minimum(Node n){
+        if(n.left != null){
+            Node aux = n.left;
+            if(aux.left!=null)
+                return minimum(aux);
+            else {
+                n.setLeft(aux.right);
+                return aux;
+            }
+        }
+        else
+            return n;
+    }
+
+    private Node maximum(Node n){
+
+        if(n.right!=null){
+            Node aux = n.right;
+            if(aux.right!=null)
+                return maximum(aux);
+            else {
+                n.setRight(aux.left);
+                return aux;
+            }
+        }
+        else
+            return n;
+    }
+   */
+    public int countR(Node n){
+        if(n ==null)
+            return 0;
+        int leftn = 0;
+        int rightn = 0;
+        if(n.left!=null)
+            leftn = countR(n.left);
+        if(n.right!=null)
+            rightn = countR(n.right);
+        return 1 + leftn + rightn;
+    }
+    public boolean remove(int value) {
+        if(root.left == null && root.right==null) {
+            if (root.value == value) {
+                root = null;
+                return true;
+            }
+            return false;
+        }
+        int dim = countR(root);
+        root = remove(root,value);
+        return(dim == countR(root))?false:true;
+    }
+
+    private Node remove(Node n,int value){
+        if(n.value == value){
+            if(n.right!=null) {
+                Node aux = minimum(n.right);
+                aux.setLeft(n.left);
+                if(aux.value != n.right.value)
+                    aux.setRight(n.right);
+                return aux;
+            }
+            else if(n.left!=null) {
+                Node aux = maximum(n.left);
+                aux.setRight(n.right);
+                if(aux.value != n.left.value)
+                    aux.setLeft(n.left);
+                return aux;
+            }
+            return null;
+        }
+        else if(n.value < value && n.right !=null) {
+            n.setRight(remove(n.right, value));
+            return n;
+        }
+        else if(n.value > value && n.left!= null){
+            n.setLeft(remove(n.left,value));
+            return n;
+        }
+        else
             return n;
     }
 
@@ -86,48 +168,11 @@ public class AVLTree {
     }
 
 
-    /*public boolean remove(int value) { //Se podra mejorar?
-        Boolean flag = false;
-        root = remove(root,value,flag);
-        return flag;
-    }
 
-    private Node remove(Node current, int value, Boolean flag){
-        if(current == null){
-            return current;
-        }
-        if(current.value > value){
-            current.setLeft(remove(current.left,value,flag));
-        } else if(current.value < value){
-            current.setRight(remove(current.right,value,flag));
-        } else {
-            flag = true;
-            if (current.left == null){
-                return current.right;
-            } else if(current.right == null){
-                return current.left;
-            } else {
-                Node aux = minimun(current.right);
-                current.value = aux.value;
-            }
-        }
-        //intento de balaceo :)
-        if (flag){
-            current = rotate(current,0);
-        }
-        return current;
-    }
-    //retorna el minimo del arbol y lo saca del mismo
-    private Node minimun(Node root){
-        Node aux = root.left;
-        if(root.left.left == null){
-            root.setLeft(remove(root.left,root.left.value,true));
-        } else {
-            minimun(root.left);
-        }
-        return aux;
-    }
-*/
+
+
+
+
     private Node add(Node current, int value) {
         if(current == null)
             return new Node(value);
@@ -182,20 +227,20 @@ public class AVLTree {
         int bf = current.getBalanceFactor();
 
         /* Left-Left case */
-        if (bf > 1 && current.left != null && current.left.getBalanceFactor() >= 0)
+        if (bf > 1 && current.left != null && current.left.value > value)
             return rotateRight(current);
 
         /* Right-Right case */
-        if (bf < -1 && current.right != null && current.right.getBalanceFactor() < 0)
+        if (bf < -1 && current.right != null && current.right.value < value)
             return rotateLeft(current);
 
         /* Left-Right case */
-        if (bf > 1 && current.left != null && current.left.getBalanceFactor() <= 0) {
+        if (bf > 1 && current.left != null && current.left.value < value) {
             return rotateLeftRight(current);
         }
 
         /* Right-Left case */
-        if (bf < -1 && current.right != null && current.right.getBalanceFactor() > 0) {
+        if (bf < -1 && current.right != null && current.right.value > value) {
             return rotateRightLeft(current);
         }
 
