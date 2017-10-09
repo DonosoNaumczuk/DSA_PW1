@@ -32,14 +32,14 @@ public class AVLTree {
                 aux.setLeft(n.left);
                 if(aux.value != n.right.value)
                     aux.setRight(n.right);
-                return rotate(aux,0);
+                return balance(aux,0);
             }
             else if(n.left!=null) {
                 Node aux = maximum(n.left);
                 aux.setRight(n.right);
                 if(aux.value != n.left.value)
                     aux.setLeft(n.left);
-                return rotate(aux,0);
+                return balance(aux,0);
             }
             return null;
         }
@@ -50,7 +50,7 @@ public class AVLTree {
             n.setLeft(remove(n.left,value, flag));
         }
         if(flag.booleanValue()){
-            return rotate(n,0);
+            return balance(n,0);
         }
         return n;
     }
@@ -192,7 +192,7 @@ public class AVLTree {
                 return null;
             current.setLeft(aux);
         }
-        return rotate(current, value);
+        return balance(current);
     }
 
     /* Right-Right case */
@@ -223,24 +223,24 @@ public class AVLTree {
         return rotateLeft(root);
     }
 
-    private Node rotate(Node current, int value){
+    private Node balance(Node current){
         int bf = current.getBalanceFactor();
 
         /* Left-Left case */
-        if (bf > 1 && current.left != null && current.left.value > value)
+        if (bf > 1 && current.left != null && current.left.getBalanceFactor() >= 0)
             return rotateRight(current);
 
         /* Right-Right case */
-        if (bf < -1 && current.right != null && current.right.value < value)
+        if (bf < -1 && current.right != null && current.right.getBalanceFactor() < 0)
             return rotateLeft(current);
 
         /* Left-Right case */
-        if (bf > 1 && current.left != null && current.left.value < value) {
+        if (bf > 1 && current.left != null && current.left.getBalanceFactor() <= 0) {
             return rotateLeftRight(current);
         }
 
         /* Right-Left case */
-        if (bf < -1 && current.right != null && current.right.value > value) {
+        if (bf < -1 && current.right != null && current.right.getBalanceFactor() > 0) {
             return rotateRightLeft(current);
         }
 
