@@ -1,3 +1,7 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 public class BlockChain {
     private Block last;
     private int zeros;
@@ -87,6 +91,58 @@ public class BlockChain {
             curr = prev;
         }
         return true;
+    }
+    /*El readDataFromFile deberia estar en la funcion que llama a modify y pasarle
+    directamente la data y el indice pero por ahora la pongo aca
+     */
+    public void modify (int index, String filePath){
+        if(index > last.index || index < 1)
+            return;
+        //busco el bloque
+        String data = readDataFromFile(filePath);
+        //cambio la data del bloque por la que acabo de generar
+
+    }
+
+    private String readDataFromFile(String filePath){
+        BufferedReader br = null;
+        FileReader fr = null;
+        String data = "";
+
+        try {
+
+            //br = new BufferedReader(new FileReader(FILENAME));
+            fr = new FileReader(filePath);
+            br = new BufferedReader(fr);
+
+            String sCurrentLine;
+            while ((sCurrentLine = br.readLine()) != null) {
+                data += sCurrentLine;
+            }
+            System.out.println("La data leida fue:\n\t" + data);
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+
+        } finally {
+
+            try {
+
+                if (br != null)
+                    br.close();
+
+                if (fr != null)
+                    fr.close();
+
+            } catch (IOException ex) {
+
+                ex.printStackTrace();
+
+            }
+
+        }
+        return data;
     }
     /*public String toString()
     {
