@@ -9,8 +9,12 @@ public class AVLTree implements java.io.Serializable {
         nodeQty = 0;
     }
 
-    /* Returns true if value is not already in the tree.
-       Otherwise, return false. */
+    /**
+     * 
+     *  @param value Is the integer value wanted to add to the tree.
+     *  @return Returns true if value is not already in the tree.
+     *          Otherwise, return false.
+     */
     public boolean add(int value) {
         Node aux = add(root,value);
         if(aux != null){
@@ -20,12 +24,43 @@ public class AVLTree implements java.io.Serializable {
         }
         return false;
     }
-    
 
-    public int nodeQuantity() {
-        return nodeQty;
+    /**
+     * 
+     * @param root Root node of the tree where we want to add the value.
+     * @param value Integer value to add to the tree.
+     * @return Returns null if the value was already in the tree.
+     *         Otherwise, returns the root node of the tree with
+     *         the value added.
+     */
+    private Node add(Node root, int value) {
+        if(root == null)
+            return new Node(value);
+        if(value == root.value)
+            return null;
+
+        Node aux;
+        if(value > root.value) {
+            aux = add(root.right, value);
+            if(aux == null)
+                return null;
+            root.setRight(aux);
+        }
+        else {
+            aux = add(root.left, value);
+            if(aux == null)
+                return null;
+            root.setLeft(aux);
+        }
+        return balance(root);
     }
 
+    /**
+     *
+     * @param value Integer value to remove from the tree.
+     * @return Returns false if the value was not in the tree.
+     *         Otherwise, returns true.
+     */
     public boolean remove(int value) {
         if(root == null)
             return false;
@@ -43,39 +78,53 @@ public class AVLTree implements java.io.Serializable {
 
         int oldQty = nodeQty;
         root = remove(root,value);
-        return oldQty != nodeQuantity();
+        return oldQty != nodeQty;
     }
 
-    private Node remove(Node current,int value) {
-        if(current.value == value){
+    /**
+     *
+     * @param root Root node of the tree where we want to remove the value.
+     * @param value Integer value to remove from the tree.
+     * @return Returns null if the value was not in the tree.
+     *         Otherwise, returns the root node of the tree with
+     *         the value removed.
+     */
+    private Node remove(Node root,int value) {
+        if(root.value == value){
             nodeQty--;
-            if(current.right!=null) {
-                Node aux = minimum(current.right);
-                aux.setLeft(current.left);
-                if(aux.value != current.right.value)
-                    aux.setRight(current.right);
+            if(root.right!=null) {
+                Node aux = minimum(root.right);
+                aux.setLeft(root.left);
+                if(aux.value != root.right.value)
+                    aux.setRight(root.right);
                 return balance(aux);
             }
-            else if(current.left!=null) {
-                Node aux = maximum(current.left);
-                aux.setRight(current.right);
-                if(aux.value != current.left.value)
-                    aux.setLeft(current.left);
+            else if(root.left!=null) {
+                Node aux = maximum(root.left);
+                aux.setRight(root.right);
+                if(aux.value != root.left.value)
+                    aux.setLeft(root.left);
                 return balance(aux);
             }
             return null;
         }
-        else if(current.value < value && current.right !=null) {
-            current.setRight(remove(current.right, value));
+        else if(root.value < value && root.right !=null) {
+            root.setRight(remove(root.right, value));
         }
-        else if(current.value > value && current.left!= null){
-            current.setLeft(remove(current.left,value));
+        else if(root.value > value && root.left!= null) {
+            root.setLeft(remove(root.left,value));
         }
-        return balance(current);
+        return balance(root);
     }
 
+    /**
+     *
+     * @param root Root node of the tree where we want to
+     *             find the minimum node.
+     * @return Returns the minimum node from the given tree.
+     */
     private Node minimum(Node root) {
-        if(root.left != null){
+        if(root.left != null) {
             Node aux = root.left;
             if(aux.left!=null)
                 return minimum(aux);
@@ -88,6 +137,12 @@ public class AVLTree implements java.io.Serializable {
             return root;
     }
 
+    /**
+     *
+     * @param root Root node of the tree where we want to
+     *             find the maximum node.
+     * @return Returns the maximum node from the given tree.
+     */
     private Node maximum(Node root) {
         if(root.right!=null){
             Node aux = root.right;
@@ -102,34 +157,12 @@ public class AVLTree implements java.io.Serializable {
             return root;
     }
 
-    private Node add(Node current, int value) {
-        if(current == null)
-            return new Node(value);
-        if(value == current.value)
-            return null;
-
-        Node aux;
-        if(value > current.value) {
-            aux = add(current.right, value);
-            if(aux == null)
-                return null;
-            current.setRight(aux);
-        }
-        else {
-            aux = add(current.left, value);
-            if(aux == null)
-                return null;
-            current.setLeft(aux);
-        }
-        return balance(current);
-    }
-
-    /*
-    * Make the left rotation
-    *
-    * @param root the root of the tree to be rotate
-    * @return     the root of the rotated tree
-    */
+    /**
+     * Makes the left rotation.
+     *
+     * @param root The root of the tree to be rotate
+     * @return Returns the root of the rotated tree
+     */
     private Node rotateLeft(Node root) {
         Node newRoot = root.right;
         root.setRight(newRoot.left);
@@ -137,12 +170,12 @@ public class AVLTree implements java.io.Serializable {
         return newRoot;
     }
 
-    /*
-    * Make the right rotation
-    *
-    * @param root the root of the tree to be rotate
-    * @return     the root of the rotated tree
-    */
+    /**
+     * Makes the right rotation.
+     *
+     * @param root The root of the tree to be rotate
+     * @return Returns the root of the rotated tree
+     */
     private Node rotateRight(Node root) {
         Node newRoot = root.left;
         root.setLeft(newRoot.right);
@@ -150,53 +183,53 @@ public class AVLTree implements java.io.Serializable {
         return newRoot;
     }
 
-    /*
-    * Make the left-right rotation
-    *
-    * @param root the root of the tree to be rotate
-    * @return     the root of the rotated tree
-    */
+    /**
+     * Makes the left-right rotation.
+     *
+     * @param root The root of the tree to be rotate
+     * @return Returns the root of the rotated tree
+     */
     private Node rotateLeftRight(Node root) {
         root.setLeft(rotateLeft(root.left));
         return rotateRight(root);
     }
 
-    /*
-    * Make the right-left rotation
-    *
-    * @param root the root of the tree to be rotate
-    * @return     the root of the rotated tree
-    */
+    /**
+     * Makes the right-left rotation.
+     *
+     * @param root The root of the tree to be rotate
+     * @return Returns the root of the rotated tree
+     */
     private Node rotateRightLeft(Node root) {
         root.setRight(rotateRight(root.right));
         return rotateLeft(root);
     }
 
-    /*
-    * Balances a tree
-    *
-    * @param root the root of the tree to be balance
-    * @return     return the root of the balance tree
-    */
+    /**
+     * Balances the given tree.
+     *
+     * @param root The root of the tree to be balance
+     * @return Returns the root of the balance tree
+     */
     private Node balance(Node root) {
         int bf = root.getBalanceFactor();
         if (bf > 1) {
-            if (root.left.getBalanceFactor() >= 0) { // Left-Left case
+            /* Left-Left case */
+            if (root.left.getBalanceFactor() >= 0)
                 return rotateRight(root);
-            }
-            else {                                      // Left-Right case
+            /* Left-Right case */
+            else
                 return rotateLeftRight(root);
-            }
         }
         if (bf < -1) {
-            if (root.right.getBalanceFactor() <= 0) { // Right-Right case
+            /* Right-Right case */
+            if (root.right.getBalanceFactor() <= 0)
                 return rotateLeft(root);
-            }
-            else {                                       // Right-Left case
+            /* Right-Left case */
+            else
                 return rotateRightLeft(root);
-            }
         }
-        return root;                                  // Node was already balance
+        return root;
     }
 
     private static class Node implements TreePrinter.PrintableNode {
@@ -259,35 +292,35 @@ public class AVLTree implements java.io.Serializable {
         //se puede agregar algo para cuando es null
     }
 
-    private void print(Node current, String prev, boolean last) {
-        if(current!=null) {
+    private void print(Node root, String prev, boolean last) {
+        if(root!=null) {
             if(last) {
                 prev=prev.concat("\\- ");
             }
             else {
                 prev=prev.concat("|- ");
             }
-            System.out.println(prev+current.value);
+            System.out.println(prev+root.value);
         }
     }
     
-    private void printTree(Node current, String prev){
-        boolean right=current.right==null;
-        boolean left=current.left==null;
+    private void printTree(Node root, String prev){
+        boolean right=root.right==null;
+        boolean left=root.left==null;
         if(!right){
             if(!left) {
-                print(current.right, prev, false);          //puede cambiar
-                printTree(current.right, prev+"|  ");
-                print(current.left, prev, true);
-                printTree(current.left,prev+"   ");
+                print(root.right, prev, false);          //puede cambiar
+                printTree(root.right, prev+"|  ");
+                print(root.left, prev, true);
+                printTree(root.left,prev+"   ");
             }else{
-                print(current.right, prev, true);
-                printTree(current.right,prev+"   ");
+                print(root.right, prev, true);
+                printTree(root.right,prev+"   ");
             }
         }else{
             if(!left){
-                print(current.left, prev, true);
-                printTree(current.left,prev+"   ");
+                print(root.left, prev, true);
+                printTree(root.left,prev+"   ");
             }
         }
     }
