@@ -26,7 +26,7 @@ public class Master {
     public void run() throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int print_id;
-        String input = null;
+        String input;
         boolean flag = true;
         while (flag) {
             input = br.readLine();
@@ -38,25 +38,27 @@ public class Master {
         }
     }
 
-    private static final String filter[]={"add [0-9]+","remove [0-9]+",
-                                          "lookup [0-9]+", "validate",
+    private static final String filter[]={"add -?[0-9]+","remove -?[0-9]+",
+                                          "lookup -?[0-9]+", "validate",
                                           "modify ","exit"};
 
     /*
     *  Validates the string and if they are valid it execute the right command.
-    *  It return 0 if the command is exit, 2 if it is add, remove, lookup,
-    *  validate or modify and 1 if it is invalid.
+    *
+    *  @param s the string to validate
+    *  @return  0 if the command is exit, 2 if it is add, remove, lookup,
+    *           validate or modify and 1 if it is invalid.
     */
     private int command(String s) {
         int aux = NO_ERROR;
         if (s.matches(filter[0])) {
-            add(getNumber(s.toCharArray(),4, s.length()));
+            add(Integer.parseInt(s.substring(4,s.length())));
         }
         else if (s.matches(filter[1])) {
-            remove(getNumber(s.toCharArray(),7, s.length()));
+            remove(Integer.parseInt(s.substring(7,s.length())));
         }
         else if (s.matches(filter[2])) {
-            lookup(getNumber(s.toCharArray(),7, s.length()));
+            lookup(Integer.parseInt(s.substring(7,s.length())));
         }
         else if (s.matches(filter[3])) {
             validate();
@@ -71,7 +73,15 @@ public class Master {
             aux = COMMAND_ERROR;
         return aux;
     }
-    //nose donde moverla pero para mi hay que sacarla de aca
+
+    /*
+    * Calculates a number from a char array
+    *
+    * @param c     the array where the number is
+    * @param first the position from the array where the number start
+    * @param last  the position from the array where the number end
+    * @return      the number
+    */
     private static int getNumber(char c[], int first, int last){
         int aux=c[first]-'0';
         while (first<last){
@@ -81,6 +91,11 @@ public class Master {
         return aux;
     }
 
+    /*
+    * It execute the add of the tree and blockchain.
+    *
+    * @param number the number to be add
+    */
     private void add(int number)
     {
         if(avlTree.add(number))
@@ -89,6 +104,11 @@ public class Master {
             blockChain.add("Insertion failed");
     }
 
+    /*
+    * It execute the remove of the tree and blockchain.
+    *
+    * @param number the number to be remove
+    */
     private void remove(int number)
     {
         if(avlTree.remove(number))
@@ -97,31 +117,26 @@ public class Master {
             blockChain.add("Removal failed");
     }
 
+    /*
+    *
+    *
+    * @param number the number to look in the blockchain
+    * @return       the vector of the index of the block that modify the number
+    */
     private int[] lookup(int number)
     {
         //Not implemented
         return new int[0];
     }
 
+    /*
+    * Checks that the blockchain is valid
+    *
+    * @return true if the blockchain is valid and false otherwise
+    */
     private boolean validate()
     {
         return blockChain.validate();
-    }
-
-    public static void main(String[] args) {  //revisar
-        int zeros = 4;
-        Master m;
-        if(args.length<2 && args[0].matches("zero") && args[1].matches("[0-9]+"))
-            zeros = getNumber(args[1].toCharArray(),0, args[1].length());
-        else
-            System.out.println("Input invalido, se setea la cantidad de ceros a 4");
-
-        try {
-            m = new Master(zeros);
-            m.run();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
     
     public void serializeBlockchain()
