@@ -54,27 +54,24 @@ public class AVLTree implements java.io.Serializable {
                 aux.setLeft(current.left);
                 if(aux.value != current.right.value)
                     aux.setRight(current.right);
-                return aux;
+                return balance(aux);
             }
             else if(current.left!=null) {
                 Node aux = maximum(current.left);
                 aux.setRight(current.right);
                 if(aux.value != current.left.value)
                     aux.setLeft(current.left);
-                return aux;
+                return balance(aux);
             }
             return null;
         }
         else if(current.value < value && current.right !=null) {
             current.setRight(remove(current.right, value));
-            return current;
         }
         else if(current.value > value && current.left!= null){
             current.setLeft(remove(current.left,value));
-            return current;
         }
-        else
-            return current;
+        return balance(current);
     }
 
     private Node minimum(Node root) {
@@ -157,26 +154,23 @@ public class AVLTree implements java.io.Serializable {
 
     private Node balance(Node current) {
         int bf = current.getBalanceFactor();
-
-        /* Left-Left case */
-        if (bf > 1 && current.left != null && current.left.getBalanceFactor() >= 0)
-            return rotateRight(current);
-
-        /* Right-Right case */
-        if (bf < -1 && current.right != null && current.right.getBalanceFactor() < 0)
-            return rotateLeft(current);
-
-        /* Left-Right case */
-        if (bf > 1 && current.left != null && current.left.getBalanceFactor() <= 0) {
-            return rotateLeftRight(current);
+        if (bf > 1) {
+            if (current.left.getBalanceFactor() >= 0) { // Left-Left case
+                return rotateRight(current);
+            }
+            else {                                      // Left-Right case
+                return rotateLeftRight(current);
+            }
         }
-
-        /* Right-Left case */
-        if (bf < -1 && current.right != null && current.right.getBalanceFactor() > 0) {
-            return rotateRightLeft(current);
+        if (bf < -1) {
+            if (current.right.getBalanceFactor() <= 0) { // Right-Right case
+                return rotateLeft(current);
+            }
+            else {                                       // Right-Left case
+                return rotateRightLeft(current);
+            }
         }
-
-        return current;
+        return current;                                  // Node was already balance
     }
 
     private static class Node implements TreePrinter.PrintableNode {

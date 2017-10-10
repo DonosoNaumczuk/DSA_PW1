@@ -16,54 +16,59 @@ public class Master {
         avlTree = new AVLTree();
     }
 
-    private static final String prints[]={"Adios","Error, comando o parametro invalido"};
+    private static final String prints[]={"Adios","Error, comando o parametro invalido",
+                                          "Se realizo la accion"};
 
-    public void run() {
+    private static final int EXIT = 0;
+    private static final int COMMAND_ERROR = 1;
+    private static final int NO_ERROR = 2;
+
+    public void run() throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int print_id;
         String input = null;
         boolean flag = true;
         while (flag) {
-            try {
-                input = br.readLine();  //sacar el try/catch?
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            input = br.readLine();
             print_id = command(input);
-            if (print_id != -1) {
-                System.out.println(prints[print_id]);
-            }
-            if (print_id == 0){
+            System.out.println(prints[print_id]);
+            if (print_id == EXIT){
                 flag = false;
             }
         }
     }
 
-    private static final String fliter[]={"add [0-9]+","remove [0-9]+",
+    private static final String filter[]={"add [0-9]+","remove [0-9]+",
                                           "lookup [0-9]+", "validate",
                                           "modify ","exit"};
 
-    //valida y ejecuta
-    private int command(String s){   //se podra hacer mejor?
-        int aux = 1;
-        if (s.matches(fliter[0])){
+    /*
+    *  Validates the string and if they are valid it execute the right command.
+    *  It return 0 if the command is exit, 2 if it is add, remove, lookup,
+    *  validate or modify and 1 if it is invalid.
+    */
+    private int command(String s) {
+        int aux = NO_ERROR;
+        if (s.matches(filter[0])) {
             add(getNumber(s.toCharArray(),4, s.length()));
         }
-        if (s.matches(fliter[1])){
+        else if (s.matches(filter[1])) {
             remove(getNumber(s.toCharArray(),7, s.length()));
         }
-        if (s.matches(fliter[2])){
+        else if (s.matches(filter[2])) {
             lookup(getNumber(s.toCharArray(),7, s.length()));
         }
-        if (s.matches(fliter[3])){
+        else if (s.matches(filter[3])) {
             validate();
         }
-        if (s.matches(fliter[4])){
+        else if (s.matches(filter[4])) {
             //validar el path del archivo
         }
-        if (s.matches(fliter[5])){
-            aux = 0;
+        else if (s.matches(filter[5])) {
+            aux = EXIT;
         }
+        else
+            aux = COMMAND_ERROR;
         return aux;
     }
     //nose donde moverla pero para mi hay que sacarla de aca
@@ -86,10 +91,10 @@ public class Master {
 
     private void remove(int number)
     {
-        //if(avlTree.remove(number))
-        blockChain.add("Remove " + number);
-        //else
-        //blockChain.add("Removal failed");
+        if(avlTree.remove(number))
+            blockChain.add("Remove " + number);
+        else
+            blockChain.add("Removal failed");
     }
 
     private int[] lookup(int number)
@@ -100,21 +105,23 @@ public class Master {
 
     private boolean validate()
     {
-        //Not implemented
-        return true;
+        return blockChain.validate();
     }
 
-    public static void main(String[] args) {
-       /* int zeros;
+    public static void main(String[] args) {  //revisar
+        int zeros = 4;
         Master m;
-        if(args.length<2 && args[0].matches("zero") && args[1].matches("[0-9]+")){
+        if(args.length<2 && args[0].matches("zero") && args[1].matches("[0-9]+"))
             zeros = getNumber(args[1].toCharArray(),0, args[1].length());
-        } else {
-            System.out.println("Comando invalido, se setea la cantidad de ceros a 4");
-            zeros = 4;
+        else
+            System.out.println("Input invalido, se setea la cantidad de ceros a 4");
+
+        try {
+            m = new Master(zeros);
+            m.run();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        m = new Master(zeros);
-        m.run();*/
     }
     
     public void serializeBlockchain()
@@ -126,7 +133,7 @@ public class Master {
             out.writeObject(blockChain);
             out.close();
             fileOut.close();
-            System.out.printf("Serialized data is saved in blockchain.ser");
+            System.out.println("Serialized data is saved in blockchain.ser");
         }catch(IOException i) {
             i.printStackTrace();
         }
@@ -159,7 +166,7 @@ public class Master {
             out.writeObject(avlTree);
             out.close();
             fileOut.close();
-            System.out.printf("Serialized data is saved in AVL.ser");
+            System.out.println("Serialized data is saved in AVL.ser");
         }catch(IOException i) {
             i.printStackTrace();
         }

@@ -70,10 +70,11 @@ public class BlockChain implements java.io.Serializable {
         return String.valueOf(((Long)blockId).hashCode() + ((Long)nonce).hashCode() + data.hashCode() + previous.hashCode());
     }*/
 
-    public int count()
+    public int count() //Esto no hace nada? y rompetodo?
     {
         return count(last);
     }
+
     private int count(Block current)
     {
         if(current == null)
