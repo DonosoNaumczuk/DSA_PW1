@@ -2,7 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class BlockChain {
+public class BlockChain implements java.io.Serializable {
     private Block last;
     private int zeros;
     private HashFunction hashingMethod;
