@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.*;
 
 public class Master {
     private BlockChain blockChain;
@@ -114,5 +115,71 @@ public class Master {
         }
         m = new Master(zeros);
         m.run();*/
+    }
+    
+    public void serializeBlockchain()
+    {
+        try {
+            FileOutputStream fileOut =
+                    new FileOutputStream("blockchain.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(blockChain);
+            out.close();
+            fileOut.close();
+            System.out.printf("Serialized data is saved in blockchain.ser");
+        }catch(IOException i) {
+            i.printStackTrace();
+        }
+    }
+
+    public void deserializeBlockchain()
+    {
+        try {
+            FileInputStream fileIn = new FileInputStream("blockchain.ser");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            blockChain = (BlockChain) in.readObject();
+            in.close();
+            fileIn.close();
+        }catch(IOException i) {
+            i.printStackTrace();
+            return;
+        }catch(ClassNotFoundException c) {
+            System.out.println("BlockChain class not found");
+            c.printStackTrace();
+            return;
+        }
+    }
+
+    public void serializeAVL()
+    {
+        try {
+            FileOutputStream fileOut =
+                    new FileOutputStream("AVL.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(avlTree);
+            out.close();
+            fileOut.close();
+            System.out.printf("Serialized data is saved in AVL.ser");
+        }catch(IOException i) {
+            i.printStackTrace();
+        }
+    }
+
+    public void deserializeAVL()
+    {
+        try {
+            FileInputStream fileIn = new FileInputStream("AVL.ser");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            avlTree = (AVLTree) in.readObject();
+            in.close();
+            fileIn.close();
+        }catch(IOException i) {
+            i.printStackTrace();
+            return;
+        }catch(ClassNotFoundException c) {
+            System.out.println("AVLTree class not found");
+            c.printStackTrace();
+            return;
+        }
     }
 }
