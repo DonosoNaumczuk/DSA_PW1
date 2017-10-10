@@ -1,4 +1,4 @@
-public class AVLTree {
+public class AVLTree implements java.io.Serializable {
     private Node root;
     private int nodeQty;
 
