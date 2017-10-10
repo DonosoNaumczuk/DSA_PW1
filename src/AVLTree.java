@@ -1,3 +1,5 @@
+import Test.TreePrinter;
+
 public class AVLTree implements java.io.Serializable {
     private Node root;
     private int nodeQty;
@@ -177,7 +179,7 @@ public class AVLTree implements java.io.Serializable {
         return current;
     }
 
-    private static class Node {
+    private static class Node implements TreePrinter.PrintableNode {
         int value;
         int height;
         Node left;
@@ -186,6 +188,18 @@ public class AVLTree implements java.io.Serializable {
         private Node(int value) {
             this.value = value;
             height = 1;
+        }
+
+        public Node getLeft(){
+            return left;
+        }
+
+        public Node getRight(){
+            return right;
+        }
+
+        public String getText(){
+            return String.valueOf(value);
         }
 
         private void setLeft(Node left){
