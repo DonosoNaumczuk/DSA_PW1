@@ -49,13 +49,13 @@ public class Master {
                                           "lookup -?[0-9]+", "validate",
                                           "modify ","exit"};
 
-    /*
-    *  Validates the string and if they are valid it execute the right command.
-    *
-    *  @param s the string to validate
-    *  @return  0 if the command is exit, 2 if it is add, remove, lookup,
-    *           validate or modify and 1 if it is invalid.
-    */
+    /**
+     *  Validates the string and if they are valid it execute the right command.
+     *
+     *  @param s the string to validate
+     *  @return  0 if the command is exit, 2 if it is add, remove, lookup,
+     *           validate or modify and 1 if it is invalid.
+     */
     private int command(String s) {
         int aux = NO_ERROR;
         if (s.matches(filter[0])) {
@@ -81,14 +81,14 @@ public class Master {
         return aux;
     }
 
-    /*
-    * Calculates a number from a char array
-    *
-    * @param c     the array where the number is
-    * @param first the position from the array where the number start
-    * @param last  the position from the array where the number end
-    * @return      the number
-    */
+    /**
+     * Calculates a number from a char array
+     *
+     * @param c     the array where the number is
+     * @param first the position from the array where the number start
+     * @param last  the position from the array where the number end
+     * @return      the number
+     */
     private static int getNumber(char c[], int first, int last){
         int aux=c[first]-'0';
         while (first<last){
@@ -98,11 +98,11 @@ public class Master {
         return aux;
     }
 
-    /*
-    * It execute the add of the tree and blockchain.
-    *
-    * @param number the number to be add
-    */
+    /**
+     * It execute the add of the tree and blockchain.
+     *
+     * @param number the number to be add
+     */
     private void add(int number)
     {
         if(avlTree.add(number))
@@ -111,11 +111,11 @@ public class Master {
             blockChain.add("Insertion failed");
     }
 
-    /*
-    * It execute the remove of the tree and blockchain.
-    *
-    * @param number the number to be remove
-    */
+    /**
+     * It execute the remove of the tree and blockchain.
+     *
+     * @param number the number to be remove
+     */
     private void remove(int number)
     {
         if(avlTree.remove(number))
@@ -124,23 +124,23 @@ public class Master {
             blockChain.add("Removal failed");
     }
 
-    /*
-    *
-    *
-    * @param number the number to look in the blockchain
-    * @return       the vector of the index of the block that modify the number
-    */
+    /**
+     *
+     *
+     * @param number the number to look in the blockchain
+     * @return       the vector of the index of the block that modify the number
+     */
     private int[] lookup(int number)
     {
         //Not implemented
         return new int[0];
     }
 
-    /*
-    * Checks that the blockchain is valid
-    *
-    * @return true if the blockchain is valid and false otherwise
-    */
+    /**
+     * Checks that the blockchain is valid
+     *
+     * @return true if the blockchain is valid and false otherwise
+     */
     private boolean validate()
     {
         return blockChain.validate();
