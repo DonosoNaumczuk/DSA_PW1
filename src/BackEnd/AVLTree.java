@@ -11,6 +11,44 @@ public class AVLTree implements java.io.Serializable {
         root = null;
         nodeQty = 0;
     }
+    /**
+     *
+     * @param obj Object to wich we want to compare the tree
+     * @return Returns false if the tree are different
+     *         Otherwise, returns true
+     */
+    public boolean equals(Object obj){
+        if(obj == null || !(obj.getClass().equals(getClass())))
+            return false;
+        AVLTree t = (AVLTree)obj;
+        return compareTree(root,t.root);
+    }
+
+    /**
+     *
+     * @param n1 Node corresponding to the tree of the class.
+     * @param n2 Node corresponding to the tree to wich we are
+     *           comparing the tree of the class.
+     * @return Returns false if subtrees of the given nodes are diferent
+     *         Otherwise, returns true
+     */
+    private boolean compareTree(Node n1,Node n2){
+        if((n1 == null && n2!= null) || (n2 == null && n1!= null) || n1.value != n2.value)
+            return false;
+        if(n1.getLeft()==null && n2.getLeft()==null && n1.getRight()==null && n2.getRight()==null)
+            return n1.value == n2.value;
+        if(n1.getLeft()==null && n2.getLeft()!=null || (n1.getLeft()!=null && n2.getLeft()==null))
+            return false;
+        if(n1.getRight()==null && n2.getRight()!=null || (n1.getRight()!=null && n2.getRight()==null))
+            return false;
+        boolean leftvalue =true;
+        boolean rightvalue = true;
+        if(n1.getLeft()!=null && n2.getLeft()!=null)
+                leftvalue = compareTree(n1.getLeft(),n2.getLeft());
+        if(n1.getRight()!=null && n2.getRight()!=null)
+            rightvalue = compareTree(n1.getRight(),n2.getRight());
+        return (leftvalue && rightvalue);
+    }
 
     /**
      * 
@@ -27,6 +65,12 @@ public class AVLTree implements java.io.Serializable {
         }
         return false;
     }
+    /**
+     * @return Returns the quantity of nodes in the tree.
+     */
+        public int getNodeQty(){
+            return nodeQty;
+        }
 
     /**
      * 
@@ -233,6 +277,8 @@ public class AVLTree implements java.io.Serializable {
                 return rotateRightLeft(root);
         }
         return root;
+
+
     }
 
     private static class Node implements TreePrinter.PrintableNode {
@@ -257,6 +303,7 @@ public class AVLTree implements java.io.Serializable {
         public String getText(){
             return String.valueOf(value);
         }
+
 
         private void setLeft(Node left){
             this.left = left;
@@ -327,4 +374,6 @@ public class AVLTree implements java.io.Serializable {
             }
         }
     }
+
+
 }

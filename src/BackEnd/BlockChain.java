@@ -49,12 +49,12 @@ public class BlockChain implements java.io.Serializable {
         String hash = null;
         //String hash = "0000AAAAAA"; //hay que generarlo
         last = new Block(index, nonce, data, previous, hash, last);
-        last.hash = hashData(zeros);
+        last.hash = mineHash(zeros);
         //System.out.println("El hash es: " + hash);
 
     }
 
-    public String hashData( int zeros){
+    public String mineHash( int zeros){
         String hash;
         do {
             last.nonce++;
