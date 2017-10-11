@@ -1,3 +1,6 @@
+import BackEnd.BlockChain;
+import BackEnd.HashFunction;
+import BackEnd.SHA256;
 
 public class BlockChainPrueba {
     public static void main(String args[]){

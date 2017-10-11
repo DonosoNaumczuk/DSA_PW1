@@ -1,6 +1,6 @@
-/**
- * Created by agustin on 07/10/17.
- */
+package BackEnd;
+
+
 public interface HashFunction {
     public String hashData(String data);
 

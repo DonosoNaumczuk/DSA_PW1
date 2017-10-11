@@ -1,9 +1,10 @@
+package BackEnd;
+
+import BackEnd.HashFunction;
+
 import javax.xml.bind.DatatypeConverter;
 import java.security.MessageDigest;
 
-/**
- * Created by agustin on 07/10/17.
- */
 public class SHA256 implements HashFunction {
 
 
@@ -22,4 +23,6 @@ public class SHA256 implements HashFunction {
     private String bytesToHex(byte[] hash) {
         return DatatypeConverter.printHexBinary(hash);
     }
+
+
 }
