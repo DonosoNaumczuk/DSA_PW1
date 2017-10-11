@@ -1,6 +1,7 @@
 package Test;
 
 import BackEnd.BlockChain;
+import BackEnd.Data;
 import BackEnd.HashFunction;
 import BackEnd.SHA256;
 import org.junit.Before;
@@ -14,13 +15,16 @@ public class HashTest{
     public void Before() {
         HashFunction f = new SHA256();
         b = new BlockChain(4,f);
-        b.add("Test");
+        Data data = new Data("Test",null);
+        //b.add("Test",null);
+        //b.add("hola",null);
     }
 
     @Test
     public void hashingWithFourZeros(){
-         String hash = b.mineHash(4);
+         String hash = b.mineHash(b.getLast(),4);
         String result = "";
+        System.out.println(hash);
         for(int i = 0; i < 4; i++)
             result += hash.charAt(i);
         assertEquals("Deberia tener cuatro ceros al comienzo.","0000",result);

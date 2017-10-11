@@ -112,12 +112,17 @@ public class Master {
      * @param number the number to be add
      */
     private boolean add(int number) {
-        Boolean aux;
+        String operation;
+        Data data;
         if(avlTree.add(number))
-            aux = blockChain.add("Insert " + number);
+            operation ="Insert " + number;
         else
-            aux =blockChain.add("Insertion failed");
-        return aux;
+            operation = "Insertion failed.";
+
+       //no se que treestate ponerle
+        data = new Data(operation,null);
+        return blockChain.add(data);
+
     }
 
     /**
@@ -127,11 +132,15 @@ public class Master {
      */
     private boolean remove(int number) {
         Boolean aux;
+        String operation;
+        Data data;
         if(avlTree.remove(number))
-            aux = blockChain.add("Remove " + number);
+            operation = "Remove " + number;
         else
-            aux =blockChain.add("Removal failed");
-        return aux;
+            operation ="Removal failed";
+        //no se que poner en treeState
+        data = new Data(operation,null);
+        return blockChain.add(data);
     }
 
     /**

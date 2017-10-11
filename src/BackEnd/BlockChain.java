@@ -3,6 +3,7 @@ package BackEnd;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import BackEnd.Data;
 
 public class BlockChain implements java.io.Serializable {
     private Block last;
@@ -31,20 +32,20 @@ public class BlockChain implements java.io.Serializable {
         }
     }
 
-    private static class Data {
-        private String operation;
-        private AVLTree treeState; //May be Serializable?
-
-        public Data () {
-            this.operation = null;
-            this.treeState = null;
-        }
-
-        public Data (String operation, AVLTree treeState) {
-            this.operation = operation;
-            this.treeState = treeState;
-        }
-    }
+//    private static class Data {
+//        private String operation;
+//        private AVLTree treeState; //May be Serializable?
+//
+//        public Data () {
+//            this.operation = null;
+//            this.treeState = null;
+//        }
+//
+//        public Data (String operation, AVLTree treeState) {
+//            this.operation = operation;
+//            this.treeState = treeState;
+//        }
+//    }
 
   public boolean add(Data data) {
         if(validate()) {
@@ -63,7 +64,7 @@ public class BlockChain implements java.io.Serializable {
         String hash;
         do {
             block.nonce++;
-            String message = block.data.operation + block.data.treeState.getNodeQty() + block.index + block.previous + block.nonce;
+            String message = block.data.getOperation() + block.data.getTreeState().getNodeQty() + block.index + block.previous + block.nonce;
             hash = hashingMethod.hashData(message);
         } while(!isValid(hash, zeros));
         return hash;
