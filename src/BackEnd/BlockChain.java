@@ -41,17 +41,18 @@ public class BlockChain implements java.io.Serializable {
         }*/
     }
 
-  public void add(String data)
-    {
-        long index = (last == null) ? 1 : last.index + 1;
-        String previous = (last == null) ? "0000000000000" : last.hash;
-        long nonce=0;
-        String hash = null;
-        //String hash = "0000AAAAAA"; //hay que generarlo
-        last = new Block(index, nonce, data, previous, hash, last);
-        last.hash = mineHash(zeros);
-        //System.out.println("El hash es: " + hash);
-
+  public boolean add(String data) {
+        if(validate()) {
+            long index = (last == null) ? 1 : last.index + 1;
+            String previous = (last == null) ? "0000000000000" : last.hash;
+            long nonce = 0;
+            String hash = null;
+            last = new Block(index, nonce, data, previous, hash, last);
+            last.hash = hashData(zeros);
+            return true;
+        }
+        else
+            return false;
     }
 
     public String mineHash( int zeros){
