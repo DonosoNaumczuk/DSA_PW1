@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f23327ae-1612-4942-939f-8e6d8848202d" name="Default" comment="update workspace">
+    <list default="true" id="f23327ae-1612-4942-939f-8e6d8848202d" name="Default" comment="update">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Test/AVLTreeTest.java" afterPath="$PROJECT_DIR$/src/Test/AVLTreeTest.java" />
     </list>
@@ -31,8 +31,8 @@
       <file leaf-file-name="AVLTreeTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Test/AVLTreeTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1833">
-              <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+            <state relative-caret-position="220">
+              <caret line="10" column="31" lean-forward="true" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -53,10 +53,15 @@
     <findStrings>
       <find>n</find>
       <find>current</find>
+      <find>,</find>
+      <find>t2</find>
     </findStrings>
     <replaceStrings>
       <replace>current</replace>
       <replace>root</replace>
+      <replace>,</replace>
+      <replace>tree</replace>
+      <replace>tree2</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -606,7 +611,14 @@
       <option name="project" value="LOCAL" />
       <updated>1507671731905</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="update">
+      <created>1507736245641</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1507736245641</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -721,7 +733,8 @@
     <MESSAGE value="AVL nodeQty added, vcs.xml updated" />
     <MESSAGE value="added some java docsssss" />
     <MESSAGE value="update workspace" />
-    <option name="LAST_COMMIT_MESSAGE" value="update workspace" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -734,8 +747,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/BlockChain.java" />
-    <entry file="file://$PROJECT_DIR$/src/AVLTree.java" />
     <entry file="file://$PROJECT_DIR$/src/Master.java" />
     <entry file="file://$PROJECT_DIR$/src/Prueba.java" />
     <entry file="file://$PROJECT_DIR$/src/BlockChain.java" />
@@ -808,10 +819,28 @@
     <entry file="file://$PROJECT_DIR$/src/AVLTree.java" />
     <entry file="file://$PROJECT_DIR$/src/TreePrinter.java" />
     <entry file="file://$PROJECT_DIR$/src/Prueba.java" />
+    <entry file="file://$PROJECT_DIR$/src/BlockChainPrueba.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Test/AVLTreeTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1833">
-          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        <state relative-caret-position="220">
+          <caret line="10" column="31" lean-forward="true" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
