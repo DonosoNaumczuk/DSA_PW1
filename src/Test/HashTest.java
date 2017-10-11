@@ -36,7 +36,7 @@ public class HashTest{
     }
 
     @Test
-    public void hashingWithTenZeros(){
+    public void hashingWithSixZeros(){
         String hash = b.mineHash(6);
         String result = "";
         for(int i = 0; i < 6; i++)

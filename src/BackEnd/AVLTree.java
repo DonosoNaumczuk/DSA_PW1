@@ -41,13 +41,15 @@ public class AVLTree implements java.io.Serializable {
             return false;
         if(n1.getRight()==null && n2.getRight()!=null || (n1.getRight()!=null && n2.getRight()==null))
             return false;
-        boolean leftvalue =true;
-        boolean rightvalue = true;
-        if(n1.getLeft()!=null && n2.getLeft()!=null)
-                leftvalue = compareTree(n1.getLeft(),n2.getLeft());
-        if(n1.getRight()!=null && n2.getRight()!=null)
+
+        boolean leftvalue = true;
+        if(n1.getLeft()!=null)
+            leftvalue = compareTree(n1.getLeft(),n2.getLeft());
+        boolean  rightvalue = true;
+        if(n1.getRight()!=null)
             rightvalue = compareTree(n1.getRight(),n2.getRight());
-        return (leftvalue && rightvalue);
+
+        return (leftvalue && rightvalue && n1.value == n2.value);
     }
 
     /**
@@ -65,6 +67,14 @@ public class AVLTree implements java.io.Serializable {
         }
         return false;
     }
+    /**
+     * @return Returns the root of the tree.
+     */
+    public Node getRoot(){
+        return root;
+    }
+
+    /**
     /**
      * @return Returns the quantity of nodes in the tree.
      */
@@ -277,8 +287,37 @@ public class AVLTree implements java.io.Serializable {
                 return rotateRightLeft(root);
         }
         return root;
+    }
 
+    /**
+     * Tells if a tree is balanced.
+     *
+     * @return Returns true if the tree is balanced and false if not.
+     */
+    public boolean isBalanced(){
 
+        return isBalancedR(root);
+    }
+
+    /**
+     *
+     * @param n The node whose tree we want to know if is balanced
+     * @return Returns true if the tree of the given node is balanced
+     *          and false if not.
+     */
+    boolean isBalancedR(Node n){
+        if(n == null)
+            return true;
+        int factor = n.getBalanceFactor();
+        if(factor < -1 || factor >1)
+            return false;
+        boolean lbalance = true;
+        boolean rbalance = true;
+        if(n.getLeft()!=null)
+            lbalance = isBalancedR(n.getLeft());
+        if(n.getRight()!=null)
+            rbalance = isBalancedR(n.getRight());
+        return lbalance && rbalance;
     }
 
     private static class Node implements TreePrinter.PrintableNode {
@@ -304,6 +343,7 @@ public class AVLTree implements java.io.Serializable {
             return String.valueOf(value);
         }
 
+        public int getValue(){return value;}
 
         private void setLeft(Node left){
             this.left = left;

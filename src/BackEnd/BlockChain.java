@@ -42,6 +42,7 @@ public class BlockChain implements java.io.Serializable {
     }
 
   public boolean add(String data) {
+
         if(validate()) {
             long index = (last == null) ? 1 : last.index + 1;
             String previous = (last == null) ? "0000000000000" : last.hash;
@@ -93,7 +94,7 @@ public class BlockChain implements java.io.Serializable {
     public boolean validate(){
         Block curr = last;
         Block prev = null;
-        while(curr.index > 1){
+        while(last!=null && curr.index > 1){
             prev = curr.previousBlock;
             if(!curr.previous.equals(prev.hash))
                 return false;
