@@ -1,7 +1,5 @@
 package BackEnd;
 
-import BackEnd.HashFunction;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -20,81 +18,79 @@ public class BlockChain implements java.io.Serializable {
     private static class Block {
         private long index;
         private long nonce;
-        private String data;
+        private Data data;
         private String previous;
-        private Block previousBlock;
         private String hash;
+        private Block previousBlock;
 
-        public Block(long index, long nonce, String data, String previous, String hash, Block previousBlock)
-        {
+        public Block(long index, Data data, String previous, Block previousBlock) {
             this.index = index;
-            this.nonce = nonce;
             this.data = data;
             this.previous = previous;
-            this.hash = hash;
             this.previousBlock = previousBlock;
         }
-
-        /*public String toString()
-        {
-            return blockId + " : " + data;
-        }*/
     }
 
-  public boolean add(String data) {
+    private static class Data {
+        private String operation;
+        private AVLTree treeState; //May be Serializable?
 
+        public Data () {
+            this.operation = null;
+            this.treeState = null;
+        }
+
+        public Data (String operation, AVLTree treeState) {
+            this.operation = operation;
+            this.treeState = treeState;
+        }
+    }
+
+  public boolean add(Data data) {
         if(validate()) {
-            long index = (last == null) ? 1 : last.index + 1;
-            String previous = (last == null) ? "0000000000000" : last.hash;
-            long nonce = 0;
-            String hash = null;
-            last = new Block(index, nonce, data, previous, hash, last);
-            last.hash = mineHash(zeros);
+            long index = (last == null) ? 0 : last.index + 1;
+            String previous = (last == null) ? "00000000000000000000000000000000" : last.hash;
+            Block newBlock = new Block(index, data, previous, last);
+            newBlock.hash = mineHash(newBlock, zeros);
+            last = newBlock;
             return true;
         }
         else
             return false;
     }
 
-    public String mineHash( int zeros){
+    public String mineHash(Block block, int zeros) {
         String hash;
         do {
-            last.nonce++;
-            String message = last.data + "" + last.index + "" + last.previous + "" + last.nonce;
+            block.nonce++;
+            String message = block.data.operation + block.data.treeState.getNodeQty() + block.index + block.previous + block.nonce;
             hash = hashingMethod.hashData(message);
-        }while(!isValid(hash,zeros));
+        } while(!isValid(hash, zeros));
         return hash;
     }
 
     private boolean isValid(String hash, int zeros) {
-        for(int i = 0; i < zeros; i++)
-        {
+        for(int i = 0; i < zeros; i++) {
             if(hash.charAt(i) != '0')
                 return false;
         }
         return true;
     }
 
-    /*private String getHash(long blockId, long nonce, String data, String previous) {
-        return String.valueOf(((Long)blockId).hashCode() + ((Long)nonce).hashCode() + data.hashCode() + previous.hashCode());
-    }*/
-
-    public int count() //Esto no hace nada? y rompetodo?
-    {
+    public int count() {
         return count(last);
     }
 
-    private int count(Block current)
-    {
-        if(current == null)
+    private int count(Block block) {
+        if(block == null)
             return 0;
-        return 1 + count(current.previousBlock);
+        return 1 + count(block.previousBlock);
     }
 
-    public boolean validate(){
+    public boolean validate() {
         Block curr = last;
-        Block prev = null;
-        while(last!=null && curr.index > 1){
+        Block prev;
+        while(last != null && curr.index > 1) {
             prev = curr.previousBlock;
             if(!curr.previous.equals(prev.hash))
                 return false;
@@ -102,6 +98,7 @@ public class BlockChain implements java.io.Serializable {
         }
         return true;
     }
+
     /*El readDataFromFile deberia estar en la funcion que llama a modify y pasarle
     directamente la data y el indice pero por ahora la pongo aca
      */
@@ -109,7 +106,7 @@ public class BlockChain implements java.io.Serializable {
         if(index > last.index || index < 1)
             return;
         //busco el bloque
-        String data = readDataFromFile(filePath);
+        String data = readDataFromFile(filePath); //DATA YA NO ES STRING
         //cambio la data del bloque por la que acabo de generar
 
     }
@@ -117,7 +114,7 @@ public class BlockChain implements java.io.Serializable {
     private String readDataFromFile(String filePath){
         BufferedReader br = null;
         FileReader fr = null;
-        String data = "";
+        String data = ""; //LA DATA YA NO ES STRING
 
         try {
 
@@ -131,11 +128,13 @@ public class BlockChain implements java.io.Serializable {
             }
             System.out.println("La data leida fue:\n\t" + data);
 
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
 
             e.printStackTrace();
 
-        } finally {
+        }
+        finally {
 
             try {
 
@@ -145,7 +144,8 @@ public class BlockChain implements java.io.Serializable {
                 if (fr != null)
                     fr.close();
 
-            } catch (IOException ex) {
+            }
+            catch (IOException ex) {
 
                 ex.printStackTrace();
 
@@ -154,16 +154,4 @@ public class BlockChain implements java.io.Serializable {
         }
         return data;
     }
-    /*public String toString()
-    {
-        String blocks = "";
-        Block current = last;
-
-        while(current != null)
-        {
-            blocks += current.toString() + "\n";
-            current = current.previousBlock;
-        }
-        return blocks;
-    }*/
 }
