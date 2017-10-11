@@ -73,10 +73,6 @@ public class BlockChain implements java.io.Serializable {
         return true;
     }
 
-    /*private String getHash(long blockId, long nonce, String data, String previous) {
-        return String.valueOf(((Long)blockId).hashCode() + ((Long)nonce).hashCode() + data.hashCode() + previous.hashCode());
-    }*/
-
     public int count() {
         return count(last);
     }
