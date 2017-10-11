@@ -41,17 +41,18 @@ public class BlockChain implements java.io.Serializable {
         }*/
     }
 
-  public void add(String data)
-    {
-        long index = (last == null) ? 1 : last.index + 1;
-        String previous = (last == null) ? "0000000000000" : last.hash;
-        long nonce=0;
-        String hash = null;
-        //String hash = "0000AAAAAA"; //hay que generarlo
-        last = new Block(index, nonce, data, previous, hash, last);
-        last.hash = hashData(zeros);
-        //System.out.println("El hash es: " + hash);
-
+  public boolean add(String data) {
+        if(validate()) {
+            long index = (last == null) ? 1 : last.index + 1;
+            String previous = (last == null) ? "0000000000000" : last.hash;
+            long nonce = 0;
+            String hash = null;
+            last = new Block(index, nonce, data, previous, hash, last);
+            last.hash = hashData(zeros);
+            return true;
+        }
+        else
+            return false;
     }
 
     public String hashData( int zeros){
@@ -65,8 +66,7 @@ public class BlockChain implements java.io.Serializable {
     }
 
     private boolean isValid(String hash, int zeros) {
-        for(int i = 0; i < zeros; i++)
-        {
+        for(int i = 0; i < zeros; i++) {
             if(hash.charAt(i) != '0')
                 return false;
         }
@@ -77,33 +77,33 @@ public class BlockChain implements java.io.Serializable {
         return String.valueOf(((Long)blockId).hashCode() + ((Long)nonce).hashCode() + data.hashCode() + previous.hashCode());
     }*/
 
-    public int count() //Esto no hace nada? y rompetodo?
-    {
+    public int count() {
         return count(last);
     }
 
-    private int count(Block current)
-    {
+    private int count(Block current) {
         if(current == null)
             return 0;
         return 1 + count(current.previousBlock);
     }
 
-    public boolean validate(){
-        Block curr = last;
-        Block prev = null;
-        while(curr.index > 1){
-            prev = curr.previousBlock;
-            if(!curr.previous.equals(prev.hash))
-                return false;
-            curr = prev;
+    public boolean validate() {
+        if(last != null) {
+            Block curr = last;
+            Block prev = null;
+            while (curr.index > 1) {
+                prev = curr.previousBlock;
+                if (!curr.previous.equals(prev.hash))
+                    return false;
+                curr = prev;
+            }
         }
         return true;
     }
     /*El readDataFromFile deberia estar en la funcion que llama a modify y pasarle
     directamente la data y el indice pero por ahora la pongo aca
      */
-    public void modify (int index, String filePath){
+    public void modify (int index, String filePath) {
         if(index > last.index || index < 1)
             return;
         //busco el bloque
@@ -112,7 +112,7 @@ public class BlockChain implements java.io.Serializable {
 
     }
 
-    private String readDataFromFile(String filePath){
+    private String readDataFromFile(String filePath) {
         BufferedReader br = null;
         FileReader fr = null;
         String data = "";

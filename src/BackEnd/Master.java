@@ -24,11 +24,14 @@ public class Master {
     }
 
     private static final String prints[]={"Adios","Error, comando o parametro invalido",
-                                          "Se realizo la accion"};
+                                          "Se realizo la accion", "Error, la blockchain es invalidad",
+                                          "La blockchain es validad"};
 
     private static final int EXIT = 0;
     private static final int COMMAND_ERROR = 1;
     private static final int NO_ERROR = 2;
+    private static final int INVALID_BLOCKCHAIN = 3;
+    private static final int VALID_BLOCKCHAIN = 4;
 
     public void run() throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -59,16 +62,21 @@ public class Master {
     private int command(String s) {
         int aux = NO_ERROR;
         if (s.matches(filter[0])) {
-            add(Integer.parseInt(s.substring(4,s.length())));
+            if(!add(Integer.parseInt(s.substring(4,s.length()))))
+                aux = INVALID_BLOCKCHAIN;
         }
         else if (s.matches(filter[1])) {
-            remove(Integer.parseInt(s.substring(7,s.length())));
+            if(!remove(Integer.parseInt(s.substring(7,s.length()))))
+                aux = INVALID_BLOCKCHAIN;
         }
         else if (s.matches(filter[2])) {
             lookup(Integer.parseInt(s.substring(7,s.length())));
         }
         else if (s.matches(filter[3])) {
-            validate();
+            if(!validate())
+                aux = INVALID_BLOCKCHAIN;
+            else
+                aux = VALID_BLOCKCHAIN;
         }
         else if (s.matches(filter[4])) {
             //validar el path del archivo
@@ -89,7 +97,7 @@ public class Master {
      * @param last  the position from the array where the number end
      * @return      the number
      */
-    private static int getNumber(char c[], int first, int last){
+    private static int getNumber(char c[], int first, int last) {
         int aux=c[first]-'0';
         while (first<last){
             first++;
@@ -103,12 +111,13 @@ public class Master {
      *
      * @param number the number to be add
      */
-    private void add(int number)
-    {
+    private boolean add(int number) {
+        Boolean aux;
         if(avlTree.add(number))
-            blockChain.add("Insert " + number);
+            aux = blockChain.add("Insert " + number);
         else
-            blockChain.add("Insertion failed");
+            aux =blockChain.add("Insertion failed");
+        return aux;
     }
 
     /**
@@ -116,12 +125,13 @@ public class Master {
      *
      * @param number the number to be remove
      */
-    private void remove(int number)
-    {
+    private boolean remove(int number) {
+        Boolean aux;
         if(avlTree.remove(number))
-            blockChain.add("Remove " + number);
+            aux = blockChain.add("Remove " + number);
         else
-            blockChain.add("Removal failed");
+            aux =blockChain.add("Removal failed");
+        return aux;
     }
 
     /**
