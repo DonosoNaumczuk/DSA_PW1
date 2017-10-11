@@ -48,7 +48,7 @@ public class BlockChain implements java.io.Serializable {
             long nonce = 0;
             String hash = null;
             last = new Block(index, nonce, data, previous, hash, last);
-            last.hash = hashData(zeros);
+            last.hash = mineHash(zeros);
             return true;
         }
         else
