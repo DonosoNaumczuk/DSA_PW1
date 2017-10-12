@@ -1,26 +1,23 @@
-package BackEnd;
+package FrontEnd;
 
-import BackEnd.AVLTree;
-import BackEnd.BlockChain;
-import BackEnd.HashFunction;
-import BackEnd.SHA256;
+import BackEnd.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.*;
 
-public class Master {
+public class CommunicationInterface {
     private BlockChain blockChain;
     private AVLTree avlTree;
     private HashFunction hash;
 
-    public Master(int zeros) throws Exception {
+    public CommunicationInterface(int zeros) throws Exception {
         if(zeros <= 0)
             throw new Exception("Error, la cantidad de ceros debe ser positiva");
         hash = new SHA256();
         blockChain = new BlockChain(zeros, hash);
-        avlTree = new AVLTree();
+       // avlTree = new AVLTree();
     }
 
     private static final String prints[]={"Adios","Error, comando o parametro invalido",
