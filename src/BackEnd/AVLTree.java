@@ -1,5 +1,6 @@
 package BackEnd;
 
+import FrontEnd.InvalidValueException;
 import FrontEnd.TreePrinter;
 
 import java.util.ArrayList;
@@ -153,7 +154,7 @@ public class AVLTree implements java.io.Serializable {
      * @return Returns false if the value was not in the tree.
      *         Otherwise, returns true.
      */
-    public boolean remove(int value) {
+    public boolean remove(int value, int blockIndex) {
         if(root == null)
             return false;
 
@@ -169,7 +170,7 @@ public class AVLTree implements java.io.Serializable {
         }
 
         int oldQty = nodeQty;
-        root = remove(root,value);
+        root = remove(root, value, blockIndex);
         return oldQty != nodeQty;
     }
 
@@ -181,32 +182,32 @@ public class AVLTree implements java.io.Serializable {
      *         Otherwise, returns the root node of the tree with
      *         the value removed.
      */
-    private Node remove(Node root,int value) {
-        if(root.value == value){
+    private Node remove(Node root, int value, int blockIndex) {
+        if(root.value == value) {
             nodeQty--;
             if(root.right!=null) {
                 Node aux = minimum(root.right);
                 aux.setLeft(root.left);
                 if(aux.value != root.right.value)
                     aux.setRight(root.right);
-                return balance(aux);
+                return balance(aux, blockIndex);
             }
             else if(root.left!=null) {
                 Node aux = maximum(root.left);
                 aux.setRight(root.right);
                 if(aux.value != root.left.value)
                     aux.setLeft(root.left);
-                return balance(aux);
+                return balance(aux, blockIndex);
             }
             return null;
         }
         else if(root.value < value && root.right !=null) {
-            root.setRight(remove(root.right, value));
+            root.setRight(remove(root.right, value, blockIndex));
         }
         else if(root.value > value && root.left!= null) {
-            root.setLeft(remove(root.left,value));
+            root.setLeft(remove(root.left,value,blockIndex));
         }
-        return balance(root);
+        return balance(root, blockIndex);
     }
 
     /**
