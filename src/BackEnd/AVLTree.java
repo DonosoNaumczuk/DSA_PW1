@@ -3,7 +3,9 @@ package BackEnd;
 import FrontEnd.TreePrinter;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 public class AVLTree implements java.io.Serializable {
@@ -26,7 +28,35 @@ public class AVLTree implements java.io.Serializable {
         AVLTree tree = (AVLTree)obj;
         return compareTree(root, tree.root);
     }
+    /**
+     *
+     * @param value is the value wich set of modifierBlocks we want
+     * @return Returns the set of the modifier Blocks if the value isin the tree
+     *         Otherwise, returns null
+     */
+    public Set<Integer> lookUp(int value){
+        Node n = search(root,value);
+        return (n!=null)? n.getModifiersBlocks(): null;
+    }
 
+    /**
+     * @param n is the root of the tree in wich we search for a value
+     * @param value is the value that we want to find in the tree
+     * @return Returns the node corresponding to the given value if
+     *         we find it in the tree.
+     *         Otherwise, returns null
+     */
+    private Node search(Node n,int value){
+        if(n==null)
+            return null;
+        if(n.getValue() == value)
+            return n;
+        if(n.getValue()>value)
+            return search(n.getLeft(),value);
+        else
+            return search(n.getRight(),value);
+
+    }
     /**
      *
      * @param n1 Node corresponding to the tree of the class.
@@ -328,15 +358,15 @@ public class AVLTree implements java.io.Serializable {
         int height;
         Node left;
         Node right;
-        List<Integer> modifiersBlocks;
+        Set<Integer> modifiersBlocks;
 
         private Node(int value) {
             this.value = value;
             height = 1;
-            modifiersBlocks = new ArrayList<>();
+            modifiersBlocks = new HashSet<>();
         }
 
-        public List<Integer> getModifiersBlocks() {
+        public Set<Integer> getModifiersBlocks() {
             return modifiersBlocks;
         }
 
