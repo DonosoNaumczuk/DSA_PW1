@@ -17,11 +17,11 @@ public class AVLTree implements java.io.Serializable {
      * @return Returns false if the tree are different
      *         Otherwise, returns true
      */
-    public boolean equals(Object obj){
+    public boolean equals(Object obj) {
         if(obj == null || !(obj.getClass().equals(getClass())))
             return false;
-        AVLTree t = (AVLTree)obj;
-        return compareTree(root,t.root);
+        AVLTree tree = (AVLTree)obj;
+        return compareTree(root, tree.root);
     }
 
     /**
@@ -32,7 +32,7 @@ public class AVLTree implements java.io.Serializable {
      * @return Returns false if subtrees of the given nodes are diferent
      *         Otherwise, returns true
      */
-    private boolean compareTree(Node n1,Node n2){
+    private boolean compareTree(Node n1,Node n2) {
         if((n1 == null && n2!= null) || (n2 == null && n1!= null) || n1.value != n2.value)
             return false;
         if(n1.getLeft()==null && n2.getLeft()==null && n1.getRight()==null && n2.getRight()==null)
@@ -67,14 +67,14 @@ public class AVLTree implements java.io.Serializable {
         }
         return false;
     }
+
     /**
      * @return Returns the root of the tree.
      */
-    public Node getRoot(){
+    public Node getRoot() {
         return root;
     }
 
-    /**
     /**
      * @return Returns the quantity of nodes in the tree.
      */
@@ -343,14 +343,14 @@ public class AVLTree implements java.io.Serializable {
             return String.valueOf(value);
         }
 
-        public int getValue(){return value;}
+        public int getValue() {return value;}
 
-        private void setLeft(Node left){
+        private void setLeft(Node left) {
             this.left = left;
             computeHeight();
         }
 
-        private void setRight(Node right){
+        private void setRight(Node right) {
             this.right = right;
             computeHeight();
         }
@@ -368,10 +368,6 @@ public class AVLTree implements java.io.Serializable {
             return heightl-heightr;
         }
     }
-
-    /*----------------------------------------------------------------
-    ---------------------------- PRINT -------------------------------
-    ----------------------------------------------------------------*/
 
     //nada de abajo esta testeado
      public void print() {
@@ -394,26 +390,26 @@ public class AVLTree implements java.io.Serializable {
         }
     }
     
-    private void printTree(Node root, String prev){
+    private void printTree(Node root, String prev) {
         boolean right=root.right==null;
         boolean left=root.left==null;
-        if(!right){
+        if(!right) {
             if(!left) {
                 print(root.right, prev, false);          //puede cambiar
                 printTree(root.right, prev+"|  ");
                 print(root.left, prev, true);
                 printTree(root.left,prev+"   ");
-            }else{
+            }
+            else {
                 print(root.right, prev, true);
                 printTree(root.right,prev+"   ");
             }
-        }else{
-            if(!left){
+        }
+        else {
+            if(!left) {
                 print(root.left, prev, true);
                 printTree(root.left,prev+"   ");
             }
         }
     }
-
-
 }
