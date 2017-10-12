@@ -54,8 +54,8 @@ public class AVLTreeTest {
         AVLTree tree2 = new AVLTree();
         tree2.add(9);
         tree2.add(14);
-        tree2.add(-10);
         tree2.add(5);
+        tree2.add(-10);
         tree2.add(10);
         tree2.add(100);
         assertEquals("Equals method must return true.", true, tree1.equals(tree2));

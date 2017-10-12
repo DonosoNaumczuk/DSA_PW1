@@ -20,31 +20,31 @@ public class HashTest{
         //b.add("hola",null);
     }
 
-    @Test
-    public void hashingWithFourZeros(){
-         String hash = b.mineHash(b.getLast(),4);
-        String result = "";
-        System.out.println(hash);
-        for(int i = 0; i < 4; i++)
-            result += hash.charAt(i);
-        assertEquals("Deberia tener cuatro ceros al comienzo.","0000",result);
-    }
-
-    @Test
-    public void hashingWithFiveZeros(){
-        String hash = b.mineHash(5);
-        String result = "";
-        for(int i = 0; i < 5; i++)
-            result += hash.charAt(i);
-        assertEquals("Deberia tener cinco ceros al comienzo.","00000",result);
-    }
-
-    @Test
-    public void hashingWithSixZeros(){
-        String hash = b.mineHash(6);
-        String result = "";
-        for(int i = 0; i < 6; i++)
-            result += hash.charAt(i);
-        assertEquals("Deberia tener cinco ceros al comienzo.","000000",result);
-    }
+//    @Test
+//    public void hashingWithFourZeros(){
+//         String hash = b.mineHash(b.getLast(),4);
+//        String result = "";
+//        System.out.println(hash);
+//        for(int i = 0; i < 4; i++)
+//            result += hash.charAt(i);
+//        assertEquals("Deberia tener cuatro ceros al comienzo.","0000",result);
+//    }
+//
+//    @Test
+//    public void hashingWithFiveZeros(){
+//        String hash = b.mineHash(5);
+//        String result = "";
+//        for(int i = 0; i < 5; i++)
+//            result += hash.charAt(i);
+//        assertEquals("Deberia tener cinco ceros al comienzo.","00000",result);
+//    }
+//
+//    @Test
+//    public void hashingWithSixZeros(){
+//        String hash = b.mineHash(6);
+//        String result = "";
+//        for(int i = 0; i < 6; i++)
+//            result += hash.charAt(i);
+//        assertEquals("Deberia tener cinco ceros al comienzo.","000000",result);
+//    }
 }
