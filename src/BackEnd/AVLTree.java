@@ -2,6 +2,9 @@ package BackEnd;
 
 import FrontEnd.TreePrinter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class AVLTree implements java.io.Serializable {
     private Node root;
@@ -325,10 +328,16 @@ public class AVLTree implements java.io.Serializable {
         int height;
         Node left;
         Node right;
+        List<Integer> modifiersBlocks;
 
         private Node(int value) {
             this.value = value;
             height = 1;
+            modifiersBlocks = new ArrayList<>();
+        }
+
+        public List<Integer> getModifiersBlocks() {
+            return modifiersBlocks;
         }
 
         public Node getLeft(){
