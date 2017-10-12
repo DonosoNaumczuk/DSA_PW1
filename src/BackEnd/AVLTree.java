@@ -16,6 +16,7 @@ public class AVLTree implements java.io.Serializable {
         root = null;
         nodeQty = 0;
     }
+
     /**
      *
      * @param obj Object to wich we want to compare the tree
@@ -91,21 +92,19 @@ public class AVLTree implements java.io.Serializable {
      *  @return Returns true if value is not already in the tree.
      *          Otherwise, return false.
      */
-    public boolean add(int value) {
-        Node aux = add(root,value);
+    public boolean add(int value, int blockIndex) {
+        if(root == null) {
+            root = new Node(value);
+            root.addModifierBlock(blockIndex);
+            return  true;
+        }
+        Node aux = add(root, value, blockIndex);
         if(aux != null){
             root = aux;
             nodeQty++;
             return true;
         }
         return false;
-    }
-
-    /**
-     * @return Returns the root of the tree.
-     */
-    public Node getRoot() {
-        return root;
     }
 
     /**
@@ -123,26 +122,29 @@ public class AVLTree implements java.io.Serializable {
      *         Otherwise, returns the root node of the tree with
      *         the value added.
      */
-    private Node add(Node root, int value) {
-        if(root == null)
-            return new Node(value);
+    private Node add(Node root, int value, int blockIndex) {
         if(value == root.value)
             return null;
 
-        Node aux;
         if(value > root.value) {
-            aux = add(root.right, value);
-            if(aux == null)
-                return null;
-            root.setRight(aux);
+            if(root.getRight() != null) {
+                root.setRight(add(root.getRight(), value, blockIndex));
+            }
+            Node newRight = new Node(value);
+            newRight.addModifierBlock(blockIndex);
+            root.setRight(newRight);
+            root.addModifierBlock(blockIndex);
         }
         else {
-            aux = add(root.left, value);
-            if(aux == null)
-                return null;
-            root.setLeft(aux);
+            if(root.getLeft() != null) {
+                root.setLeft(add(root.getLeft(), value, blockIndex));
+            }
+            Node newLeft = new Node(value);
+            newLeft.addModifierBlock(blockIndex);
+            root.setLeft(newLeft);
+            root.addModifierBlock(blockIndex);
         }
-        return balance(root);
+        return balance(root, blockIndex);
     }
 
     /**
@@ -253,10 +255,14 @@ public class AVLTree implements java.io.Serializable {
      * @param root The root of the tree to be rotate
      * @return Returns the root of the rotated tree
      */
-    private Node rotateLeft(Node root) {
+    private Node rotateLeft(Node root, int blockIndex) {
         Node newRoot = root.right;
         root.setRight(newRoot.left);
         newRoot.setLeft(root);
+        newRoot.addModifierBlock(blockIndex);
+        root.addModifierBlock(blockIndex);
+        if(root.getRight() != null)
+            root.getRight().addModifierBlock(blockIndex);
         return newRoot;
     }
 
@@ -266,10 +272,14 @@ public class AVLTree implements java.io.Serializable {
      * @param root The root of the tree to be rotate
      * @return Returns the root of the rotated tree
      */
-    private Node rotateRight(Node root) {
+    private Node rotateRight(Node root, int blockIndex) {
         Node newRoot = root.left;
         root.setLeft(newRoot.right);
         newRoot.setRight(root);
+        newRoot.addModifierBlock(blockIndex);
+        root.addModifierBlock(blockIndex);
+        if(root.getLeft() != null)
+            root.getLeft().addModifierBlock(blockIndex);
         return newRoot;
     }
 
@@ -279,9 +289,9 @@ public class AVLTree implements java.io.Serializable {
      * @param root The root of the tree to be rotate
      * @return Returns the root of the rotated tree
      */
-    private Node rotateLeftRight(Node root) {
-        root.setLeft(rotateLeft(root.left));
-        return rotateRight(root);
+    private Node rotateLeftRight(Node root, int blockIndex) {
+        root.setLeft(rotateLeft(root.left, blockIndex));
+        return rotateRight(root, blockIndex);
     }
 
     /**
@@ -290,9 +300,9 @@ public class AVLTree implements java.io.Serializable {
      * @param root The root of the tree to be rotate
      * @return Returns the root of the rotated tree
      */
-    private Node rotateRightLeft(Node root) {
-        root.setRight(rotateRight(root.right));
-        return rotateLeft(root);
+    private Node rotateRightLeft(Node root, int blockIndex) {
+        root.setRight(rotateRight(root.right, blockIndex));
+        return rotateLeft(root, blockIndex);
     }
 
     /**
@@ -301,23 +311,23 @@ public class AVLTree implements java.io.Serializable {
      * @param root The root of the tree to be balance
      * @return Returns the root of the balance tree
      */
-    private Node balance(Node root) {
+    private Node balance(Node root, int blockIndex) {
         int bf = root.getBalanceFactor();
         if (bf > 1) {
             /* Left-Left case */
             if (root.left.getBalanceFactor() >= 0)
-                return rotateRight(root);
+                return rotateRight(root, blockIndex);
             /* Left-Right case */
             else
-                return rotateLeftRight(root);
+                return rotateLeftRight(root, blockIndex);
         }
         if (bf < -1) {
             /* Right-Right case */
             if (root.right.getBalanceFactor() <= 0)
-                return rotateLeft(root);
+                return rotateLeft(root, blockIndex);
             /* Right-Left case */
             else
-                return rotateRightLeft(root);
+                return rotateRightLeft(root, blockIndex);
         }
         return root;
     }
@@ -368,6 +378,10 @@ public class AVLTree implements java.io.Serializable {
 
         public Set<Integer> getModifiersBlocks() {
             return modifiersBlocks;
+        }
+
+        private void addModifierBlock(int blockIndex) {
+            modifiersBlocks.add(blockIndex);
         }
 
         public Node getLeft(){

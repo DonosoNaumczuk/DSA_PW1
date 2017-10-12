@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f23327ae-1612-4942-939f-8e6d8848202d" name="Default" comment="">
+    <list default="true" id="f23327ae-1612-4942-939f-8e6d8848202d" name="Default" comment="AVLTree and Node updated">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BackEnd/AVLTree.java" afterPath="$PROJECT_DIR$/src/BackEnd/AVLTree.java" />
     </list>
@@ -31,7 +31,7 @@
       <file leaf-file-name="BlockChain.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/BackEnd/BlockChain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
+            <state relative-caret-position="0">
               <caret line="23" column="36" lean-forward="false" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -44,7 +44,7 @@
       <file leaf-file-name="Master.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/BackEnd/Master.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3014">
+            <state relative-caret-position="0">
               <caret line="145" column="7" lean-forward="false" selection-start-line="145" selection-start-column="7" selection-end-line="145" selection-end-column="7" />
               <folding />
             </state>
@@ -54,7 +54,7 @@
       <file leaf-file-name="Data.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/BackEnd/Data.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="681">
+            <state relative-caret-position="-10">
               <caret line="31" column="34" lean-forward="false" selection-start-line="31" selection-start-column="34" selection-end-line="31" selection-end-column="34" />
               <folding>
                 <element signature="e#455#456#0" expanded="true" />
@@ -73,7 +73,7 @@
       <file leaf-file-name="AVLTreeTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Test/AVLTreeTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
+            <state relative-caret-position="-10">
               <caret line="10" column="31" lean-forward="false" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -85,9 +85,11 @@
       <file leaf-file-name="HashTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Test/HashTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
+            <state relative-caret-position="-10">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+              <folding>
+                <marker date="1507844795050" expanded="true" signature="1338:1343" ph="//..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -95,12 +97,22 @@
       <file leaf-file-name="AVLTree.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/BackEnd/AVLTree.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="851">
-              <caret line="241" column="31" lean-forward="true" selection-start-line="241" selection-start-column="31" selection-end-line="241" selection-end-column="31" />
+            <state relative-caret-position="179">
+              <caret line="208" column="28" lean-forward="false" selection-start-line="208" selection-start-column="28" selection-end-line="208" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#9636#9637#0" expanded="true" />
-                <element signature="e#9682#9683#0" expanded="true" />
+                <element signature="e#11516#11517#0" expanded="true" />
+                <element signature="e#11562#11563#0" expanded="true" />
+                <element signature="e#11619#11620#0" expanded="true" />
+                <element signature="e#11674#11675#0" expanded="true" />
+                <marker date="1507846966367" expanded="false" signature="3560:3574" ph=" { " />
+                <marker date="1507846966367" expanded="false" signature="3589:3599" ph=" }" />
+                <marker date="1507846966367" expanded="false" signature="11706:11720" ph=" { " />
+                <marker date="1507846966367" expanded="false" signature="11732:11742" ph=" }" />
+                <marker date="1507846966367" expanded="false" signature="11774:11788" ph=" { " />
+                <marker date="1507846966367" expanded="false" signature="11801:11811" ph=" }" />
+                <marker date="1507846966367" expanded="false" signature="11844:11858" ph=" { " />
+                <marker date="1507846966367" expanded="false" signature="11887:11897" ph=" }" />
               </folding>
             </state>
           </provider>
@@ -130,6 +142,7 @@
       <replace>,</replace>
       <replace>tree</replace>
       <replace>tree2</replace>
+      <replace>left</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -256,7 +269,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Font" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -277,7 +290,7 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/Test/AVLTreeTest.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/BackEnd/AVLTree.java</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/src/Test/HashTest.java</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
@@ -852,7 +865,14 @@
       <option name="project" value="LOCAL" />
       <updated>1507823846530</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Node class updated">
+      <created>1507842351253</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1507842351253</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -971,7 +991,8 @@
     <MESSAGE value="Update AVLTree JUnit Test" />
     <MESSAGE value="BlockChain edited, please check modifications!" />
     <MESSAGE value="Data and style modified" />
-    <option name="LAST_COMMIT_MESSAGE" value="Data and style modified" />
+    <MESSAGE value="Node class updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="Node class updated" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1073,7 +1094,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/BackEnd/Master.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3014">
+        <state relative-caret-position="0">
           <caret line="145" column="7" lean-forward="false" selection-start-line="145" selection-start-column="7" selection-end-line="145" selection-end-column="7" />
           <folding />
         </state>
@@ -1081,7 +1102,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/BackEnd/BlockChain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
+        <state relative-caret-position="0">
           <caret line="23" column="36" lean-forward="false" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1092,7 +1113,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/BackEnd/Data.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="681">
+        <state relative-caret-position="-10">
           <caret line="31" column="34" lean-forward="false" selection-start-line="31" selection-start-column="34" selection-end-line="31" selection-end-column="34" />
           <folding>
             <element signature="e#455#456#0" expanded="true" />
@@ -1109,15 +1130,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Test/HashTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="-10">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1507844795050" expanded="true" signature="1338:1343" ph="//..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Test/AVLTreeTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
+        <state relative-caret-position="-10">
           <caret line="10" column="31" lean-forward="false" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1127,12 +1150,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/BackEnd/AVLTree.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="851">
-          <caret line="241" column="31" lean-forward="true" selection-start-line="241" selection-start-column="31" selection-end-line="241" selection-end-column="31" />
+        <state relative-caret-position="179">
+          <caret line="208" column="28" lean-forward="false" selection-start-line="208" selection-start-column="28" selection-end-line="208" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#9636#9637#0" expanded="true" />
-            <element signature="e#9682#9683#0" expanded="true" />
+            <element signature="e#11516#11517#0" expanded="true" />
+            <element signature="e#11562#11563#0" expanded="true" />
+            <element signature="e#11619#11620#0" expanded="true" />
+            <element signature="e#11674#11675#0" expanded="true" />
+            <marker date="1507846966367" expanded="false" signature="3560:3574" ph=" { " />
+            <marker date="1507846966367" expanded="false" signature="3589:3599" ph=" }" />
+            <marker date="1507846966367" expanded="false" signature="11706:11720" ph=" { " />
+            <marker date="1507846966367" expanded="false" signature="11732:11742" ph=" }" />
+            <marker date="1507846966367" expanded="false" signature="11774:11788" ph=" { " />
+            <marker date="1507846966367" expanded="false" signature="11801:11811" ph=" }" />
+            <marker date="1507846966367" expanded="false" signature="11844:11858" ph=" { " />
+            <marker date="1507846966367" expanded="false" signature="11887:11897" ph=" }" />
           </folding>
         </state>
       </provider>
