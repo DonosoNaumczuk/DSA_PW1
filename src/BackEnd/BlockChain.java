@@ -3,16 +3,19 @@ package BackEnd;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Set;
 
 public class BlockChain implements java.io.Serializable {
     private Block last;
     private int zeros;
     private HashFunction hashingMethod;
+    private AVLTree tree;
 
     public BlockChain(int zeros, HashFunction hashingMethod)
     {
         this.zeros = zeros;
         this.hashingMethod = hashingMethod;
+        this.tree = new AVLTree();
     }
 
     private static class Block {
@@ -29,15 +32,23 @@ public class BlockChain implements java.io.Serializable {
             this.previous = previous;
             this.previousBlock = previousBlock;
         }
+
+        public void setIndex(long index) {
+            this.index = index;
+        }
+        public void setData(Data data) {
+            this.data = data;
+        }
+
     }
 
-  public boolean add(Data data) {
+  public boolean add(int value) {
         if(validate()) {
+            Block newBlock = new Block(index, data, previous, last);
             long index = (last == null) ? 0 : last.index + 1;
             String previous = (last == null) ? "0000000000000000000000000000000000000000000000000000000000000000" : last.hash;
-            Block newBlock = new Block(index, data, previous, last);
-            newBlock.hash = mineHash(newBlock, zeros);
             last = newBlock;
+            newBlock.hash = mineHash(newBlock, zeros);
             return true;
         }
         else
@@ -54,6 +65,13 @@ public class BlockChain implements java.io.Serializable {
         return hash;
     }
 
+    /**
+     * @param hash is the hash of the last block.
+     * @param zeros is the quantity of zeros at the begining that the hash
+     *              should have
+     * @return Returns true if the  is valid
+     *         Otherwise, returns false
+     */
     private boolean isValid(String hash, int zeros) {
         for(int i = 0; i < zeros; i++) {
             if(hash.charAt(i) != '0')
@@ -62,6 +80,10 @@ public class BlockChain implements java.io.Serializable {
         return true;
     }
 
+    /**
+     * @return Returns true if the blockchain is valid
+     *         Otherwise, returns false
+     */
     public boolean validate() {
         Block curr = last;
         Block prev;
@@ -74,7 +96,7 @@ public class BlockChain implements java.io.Serializable {
         return true;
     }
 
-    /*El readDataFromFile deberia estar en la funcion que llama a modify y pasarle
+    /**El readDataFromFile deberia estar en la funcion que llama a modify y pasarle
     directamente la data y el indice pero por ahora la pongo aca
      */
     public void modify (int index, String filePath){
@@ -85,7 +107,23 @@ public class BlockChain implements java.io.Serializable {
         //cambio la data del bloque por la que acabo de generar
 
     }
+    /**
+     * @param value is the value that we want to get the index of the blocks
+     *              that modified the node corresponding to the value..
+     * @return Returns a Set with the indexes of the blocks that modified the node
+     *         Otherwise, returns null
+     */
+    public Set<Integer> lookUp(int value) {
+        if(validate()) {
+            return tree.getModifiersBlocks(value);
+        }
+        return null;
+    }
 
+    /**
+     * @param filePath is the absolute path of a file that we want to read
+     * @return Returns on a String the content of the file.
+     */
     private String readDataFromFile(String filePath){
         BufferedReader br = null;
         FileReader fr = null;

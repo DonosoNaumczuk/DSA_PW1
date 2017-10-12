@@ -9,14 +9,11 @@ import java.io.*;
 
 public class CommunicationInterface {
     private BlockChain blockChain;
-    private AVLTree avlTree;
-    private HashFunction hash;
 
     public CommunicationInterface(int zeros) throws Exception {
         if(zeros <= 0)
             throw new Exception("Error, la cantidad de ceros debe ser positiva");
-        hash = new SHA256();
-        blockChain = new BlockChain(zeros, hash);
+        blockChain = new BlockChain(zeros, new SHA256());
        // avlTree = new AVLTree();
     }
 

@@ -31,8 +31,8 @@ public class AVLTree implements java.io.Serializable {
      * @return Returns the set of the modifier Blocks if the value isin the tree
      *         Otherwise, returns null
      */
-    public Set<Integer> lookUp(int value){
-        Node n = search(root,value);
+    public Set<Integer> getModifiersBlocks(int value){
+        Node n = search(root, value);
         return (n!=null)? n.getModifiersBlocks(): null;
     }
 
@@ -43,7 +43,7 @@ public class AVLTree implements java.io.Serializable {
      *         we find it in the tree.
      *         Otherwise, returns null
      */
-    private Node search(Node n,int value){
+    private Node search(Node n, int value){
         if(n==null)
             return null;
         if(n.getValue() == value)
