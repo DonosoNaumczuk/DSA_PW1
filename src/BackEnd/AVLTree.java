@@ -1,13 +1,8 @@
 package BackEnd;
 
-import FrontEnd.InvalidValueException;
 import FrontEnd.TreePrinter;
-
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
-
 
 public class AVLTree implements java.io.Serializable {
     private Node root;
@@ -423,47 +418,4 @@ public class AVLTree implements java.io.Serializable {
         }
     }
 
-    //nada de abajo esta testeado
-     public void print() {
-        if(root!=null) {
-            System.out.println("\\- " + root.value);
-            printTree(root,"   ");
-        }
-        //se puede agregar algo para cuando es null
-    }
-
-    private void print(Node root, String prev, boolean last) {
-        if(root!=null) {
-            if(last) {
-                prev=prev.concat("\\- ");
-            }
-            else {
-                prev=prev.concat("|- ");
-            }
-            System.out.println(prev+root.value);
-        }
-    }
-    
-    private void printTree(Node root, String prev) {
-        boolean right=root.right==null;
-        boolean left=root.left==null;
-        if(!right) {
-            if(!left) {
-                print(root.right, prev, false);          //puede cambiar
-                printTree(root.right, prev+"|  ");
-                print(root.left, prev, true);
-                printTree(root.left,prev+"   ");
-            }
-            else {
-                print(root.right, prev, true);
-                printTree(root.right,prev+"   ");
-            }
-        }
-        else {
-            if(!left) {
-                print(root.left, prev, true);
-                printTree(root.left,prev+"   ");
-            }
-        }
-    }
 }

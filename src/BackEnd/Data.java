@@ -3,8 +3,6 @@ package BackEnd;
 public class Data {
     private String operation;
     private AVLTree treeState; //May be Serializable?
-    private boolean treeModified;
-    private AVLTree valuesModifiedTree;
 
     public Data () {
         this.operation = null;
@@ -22,14 +20,6 @@ public class Data {
 
     public String getOperation(){
         return operation;
-    }
-
-    public boolean wasModified() {
-        return treeModified;
-    }
-
-    public AVLTree getValuesModifiedTree() {
-        return valuesModifiedTree;
     }
 }
 
