@@ -1,9 +1,9 @@
 package BackEnd;
-import BackEnd.AVLTree;
 
 public class Data {
     private String operation;
     private AVLTree treeState; //May be Serializable?
+    private boolean treeModified;
 
     public Data () {
         this.operation = null;
@@ -22,4 +22,9 @@ public class Data {
     public String getOperation(){
         return operation;
     }
+
+    public boolean getTreeModified() {
+        return treeModified;
+    }
 }
+
