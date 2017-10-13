@@ -10,9 +10,9 @@ public class Data implements java.io.Serializable{
 
     public Data (String operation, AVLTree treeState, boolean treeModified) {
         this.operation = operation;
+        this.path = "src/AVLTree_data/Data"+counter+".ser";
         saveAVL(treeState);
         this.treeModified = treeModified;
-        this.path = "src/AVLTree_data/Data"+counter+".ser";
         counter++;
     }
 
