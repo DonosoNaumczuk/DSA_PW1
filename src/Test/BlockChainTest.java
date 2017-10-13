@@ -3,6 +3,7 @@ import BackEnd.SHA256;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -61,5 +62,36 @@ public class BlockChainTest {
         indexesExpected.add(new Long(3));
         assertEquals("Both Set should be equals.",indexesExpected,indexes);
 
+    }
+
+    @Test
+    public void modifyOneBlockChainTest() throws IOException {
+        blockChain.add(14);
+        blockChain.modify(1,"./src/modifyTest.txt");
+        assertEquals("Should be false",false,blockChain.validate());
+    }
+
+
+    @Test
+    public void modifyTwoBlockChainTest() throws IOException {
+        blockChain.add(14);
+        blockChain.add(10);
+        blockChain.lookUp(14);
+        blockChain.modify(1,"./src/modifyTest.txt");
+        assertEquals("Should be false",false,blockChain.validate());
+
+        BlockChain blockChain2 = new BlockChain(4,new SHA256());
+        blockChain.add(14);
+        blockChain.add(10);
+        blockChain.lookUp(14);
+        blockChain.modify(2,"./src/modifyTest.txt");
+        assertEquals("Should be false",false,blockChain.validate());
+
+        BlockChain blockChain3 = new BlockChain(4,new SHA256());
+        blockChain.add(14);
+        blockChain.add(10);
+        blockChain.lookUp(14);
+        blockChain.modify(3,"./src/modifyTest.txt");
+        assertEquals("Should be false",false,blockChain.validate());
     }
 }

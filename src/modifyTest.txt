@@ -1,0 +1,3 @@
+Insert 10
+./src/AVLTree_data/Data2.ser
+14

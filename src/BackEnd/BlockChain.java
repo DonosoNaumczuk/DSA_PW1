@@ -208,6 +208,7 @@ public class BlockChain implements java.io.Serializable {
      */
     public boolean validate() {
         Block curr = last;
+
         Block prev;
         while(last != null && curr.index > 1) {
             prev = curr.previousBlock;
@@ -215,6 +216,9 @@ public class BlockChain implements java.io.Serializable {
                 return false;
             curr = prev;
         }
+        if(curr != null)
+            if(!isValid(curr.getHash(),zeros))
+                return false;
         return true;
     }
 
