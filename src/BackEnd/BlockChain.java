@@ -18,49 +18,6 @@ public class BlockChain implements java.io.Serializable {
         this.tree = new AVLTree();
     }
 
-    private static class Block implements java.io.Serializable {
-        private long index;
-        private long nonce;
-        private Data data;
-        private String previous;
-        private String hash;
-        private Block previousBlock;
-
-        public Block(long index, Data data, String previous, Block previousBlock) {
-            this.index = index;
-            this.data = data;
-            this.previous = previous;
-            this.previousBlock = previousBlock;
-        }
-
-        /**
-         * Sets index
-         *
-         * @param index index to be set
-         */
-        private void setIndex(long index) {
-            this.index = index;
-        }
-
-        /**
-         * Sets data
-         *
-         * @param data data to be set
-         */
-        private void setData(Data data) {
-            this.data = data;
-        }
-
-        /**
-         * Gets hash
-         *
-         * @return hash
-         */
-        private String getHash(){
-            return hash;
-        }
-    }
-
     /**
      * Gets the AVLTree
      *
@@ -96,10 +53,10 @@ public class BlockChain implements java.io.Serializable {
         return last.index;
     }
 
-
     public long getNonce(){
         return last.nonce;
     }
+
 
     public Data getLastBlockData(){
         return last.data;
@@ -112,6 +69,7 @@ public class BlockChain implements java.io.Serializable {
     public String getLastPrevious(){
         return last.previous;
     }
+
     /**
      * Checks if a index is valid
      *
@@ -123,7 +81,6 @@ public class BlockChain implements java.io.Serializable {
             throw new NoBlockException();
         return blockIndex <= last.index && blockIndex > 0;
     }
-
     /**
      * Add the add operation to the block
      *
@@ -164,7 +121,6 @@ public class BlockChain implements java.io.Serializable {
         return hash;
     }
 
-
     /**
      * Adds the remove operation to the blockchain
      *
@@ -185,6 +141,7 @@ public class BlockChain implements java.io.Serializable {
         else
             return false;
     }
+
 
     /**
      * @param hash is the hash of the last block.
@@ -243,7 +200,6 @@ public class BlockChain implements java.io.Serializable {
         return null;
     }
 
-
     /**El readDataFromFile deberia estar en la funcion que llama a modify y pasarle
     directamente la data y el indice pero por ahora la pongo aca
      */
@@ -260,6 +216,7 @@ public class BlockChain implements java.io.Serializable {
         block.hash = hashingMethod.hashData(message);
     }
 
+
     /**
      * @param filePath is the absolute path of a file that we want to read
      * @return Returns on a String the content of the file.
@@ -275,5 +232,48 @@ public class BlockChain implements java.io.Serializable {
         }
 
         return new Data(operation, path, modified);
+    }
+
+    private static class Block implements java.io.Serializable {
+        private long index;
+        private long nonce;
+        private Data data;
+        private String previous;
+        private String hash;
+        private Block previousBlock;
+
+        public Block(long index, Data data, String previous, Block previousBlock) {
+            this.index = index;
+            this.data = data;
+            this.previous = previous;
+            this.previousBlock = previousBlock;
+        }
+
+        /**
+         * Sets index
+         *
+         * @param index index to be set
+         */
+        private void setIndex(long index) {
+            this.index = index;
+        }
+
+        /**
+         * Sets data
+         *
+         * @param data data to be set
+         */
+        private void setData(Data data) {
+            this.data = data;
+        }
+
+        /**
+         * Gets hash
+         *
+         * @return hash
+         */
+        private String getHash(){
+            return hash;
+        }
     }
 }
