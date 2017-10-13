@@ -3,7 +3,7 @@ package BackEnd;
 import javax.xml.bind.DatatypeConverter;
 import java.security.MessageDigest;
 
-public class SHA256 implements HashFunction {
+public class SHA256 implements HashFunction, java.io.Serializable{
 
     public String hashData(String data) {
         String result = null;

@@ -33,6 +33,7 @@ public class CommunicationInterface {
         String input;
         boolean flag = true;
         while (flag) {
+            System.out.println("Esperando comandos:");
             input = br.readLine();
             print_id = command(input);
             System.out.println(prints[print_id]);

@@ -11,7 +11,7 @@ public class HashTest{
 
     @Before
     public void Before() {
-        HashFunction hashFunction = new SHA256();
+        SHA256 hashFunction = new SHA256();
         blockChain = new BlockChain(4, hashFunction);
         blockChain.add(6);
         blockChain.add(9);
