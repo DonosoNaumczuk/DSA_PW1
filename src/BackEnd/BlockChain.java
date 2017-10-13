@@ -171,6 +171,7 @@ public class BlockChain implements java.io.Serializable {
         curr.setData(data);
         String message = curr.data.getOperation() + curr.data.getTreeState().getNodeQty() + curr.index + curr.previous + curr.nonce;
         curr.hash = hashingMethod.hashData(message);
+
         //cambio la data del bloque por la que acabo de generar
 
     }
