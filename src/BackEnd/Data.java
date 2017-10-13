@@ -2,16 +2,13 @@ package BackEnd;
 
 public class Data {
     private String operation;
-    private AVLTree treeState; //May be Serializable?
+    private AVLTree treeState; //HAVE TO be Serializable!
+    private boolean treeModified;
 
-    public Data () {
-        this.operation = null;
-        this.treeState = null;
-    }
-
-    public Data (String operation, AVLTree treeState) {
+    public Data (String operation, AVLTree treeState, boolean treeModified) {
         this.operation = operation;
         this.treeState = treeState;
+        this.treeModified = treeModified;
     }
 
     public AVLTree getTreeState(){
@@ -20,6 +17,10 @@ public class Data {
 
     public String getOperation(){
         return operation;
+    }
+
+    public boolean wasModified() {
+        return treeModified;
     }
 }
 

@@ -14,7 +14,6 @@ public class CommunicationInterface {
         if(zeros <= 0)
             throw new Exception("Error, la cantidad de ceros debe ser positiva");
         blockChain = new BlockChain(zeros, new SHA256());
-       // avlTree = new AVLTree();
     }
 
     private static final String prints[]={"Adios","Error, comando o parametro invalido",
@@ -159,8 +158,7 @@ public class CommunicationInterface {
         return blockChain.validate();
     }
     
-    public void serializeBlockchain()
-    {
+    public void serializeBlockchain() {
         try {
             FileOutputStream fileOut =
                     new FileOutputStream("blockchain.ser");
@@ -169,31 +167,32 @@ public class CommunicationInterface {
             out.close();
             fileOut.close();
             System.out.println("Serialized data is saved in blockchain.ser");
-        }catch(IOException i) {
+        }
+        catch(IOException i) {
             i.printStackTrace();
         }
     }
 
-    public void deserializeBlockchain()
-    {
+    public void deserializeBlockchain() {
         try {
             FileInputStream fileIn = new FileInputStream("blockchain.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
             blockChain = (BlockChain) in.readObject();
             in.close();
             fileIn.close();
-        }catch(IOException i) {
+        }
+        catch(IOException i) {
             i.printStackTrace();
             return;
-        }catch(ClassNotFoundException c) {
+        }
+        catch(ClassNotFoundException c) {
             System.out.println("BackEnd.BlockChain class not found");
             c.printStackTrace();
             return;
         }
     }
 
-    public void serializeAVL()
-    {
+    public void serializeAVL() {
         try {
             FileOutputStream fileOut =
                     new FileOutputStream("AVL.ser");
@@ -202,23 +201,25 @@ public class CommunicationInterface {
             out.close();
             fileOut.close();
             System.out.println("Serialized data is saved in AVL.ser");
-        }catch(IOException i) {
+        }
+        catch(IOException i) {
             i.printStackTrace();
         }
     }
 
-    public void deserializeAVL()
-    {
+    public void deserializeAVL() {
         try {
             FileInputStream fileIn = new FileInputStream("AVL.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
             avlTree = (AVLTree) in.readObject();
             in.close();
             fileIn.close();
-        }catch(IOException i) {
+        }
+        catch(IOException i) {
             i.printStackTrace();
             return;
-        }catch(ClassNotFoundException c) {
+        }
+        catch(ClassNotFoundException c) {
             System.out.println("BackEnd.AVLTree class not found");
             c.printStackTrace();
             return;

@@ -40,22 +40,22 @@ public class BlockChain implements java.io.Serializable {
             this.data = data;
         }
 
-    }
-
-  public boolean add(int value) {
+    public boolean add(int value) {
         if(validate()) {
-            Block newBlock = new Block(index, data, previous, last);
             long index = (last == null) ? 0 : last.index + 1;
             String previous = (last == null) ? "0000000000000000000000000000000000000000000000000000000000000000" : last.hash;
+            boolean wasModified = tree.add(value, index);
+            Data data = new Data("ADD", tree, wasModified);
+            Block newBlock = new Block(index, data, previous, last);
+            newBlock.hash = mine(newBlock, zeros);
             last = newBlock;
-            newBlock.hash = mineHash(newBlock, zeros);
             return true;
         }
         else
             return false;
     }
 
-    public String mineHash(Block block, int zeros) {
+    public String mine(Block block, int zeros) {
         String hash;
         do {
             block.nonce++;
