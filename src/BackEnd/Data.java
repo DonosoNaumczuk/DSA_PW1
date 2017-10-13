@@ -13,7 +13,7 @@ public class Data implements java.io.Serializable{
         this.operation = operation;
         this.treeState = treeState;
         this.treeModified = treeModified;
-        this.path = "src/AVLTree/Data"+counter+"ser";                   //chequear el path
+        this.path = "src/AVLTree_data/Data"+counter+"ser";                   //chequear el path
         counter++;
     }
 
@@ -55,7 +55,7 @@ public class Data implements java.io.Serializable{
             i.printStackTrace();
         }
         catch(ClassNotFoundException c) {
-            System.out.println("BackEnd.AVLTree class not found");
+            System.out.println("BackEnd.AVLTree_data class not found");
             c.printStackTrace();
         }
         return avlTree;
