@@ -4,21 +4,20 @@ import java.io.*;
 
 public class Data implements java.io.Serializable{
     private String operation;
-    private AVLTree treeState; //HAVE TO be Serializable!
     private boolean treeModified;
     private String path;
     private static int counter = 0;
 
     public Data (String operation, AVLTree treeState, boolean treeModified) {
         this.operation = operation;
-        this.treeState = treeState;
+        saveAVL(treeState);
         this.treeModified = treeModified;
         this.path = "src/AVLTree_data/Data"+counter+".ser";
         counter++;
     }
 
     public AVLTree getTreeState() {
-        return treeState;
+        return loadAVL();
     }
 
     public String getOperation() {
@@ -29,11 +28,12 @@ public class Data implements java.io.Serializable{
         return treeModified;
     }
 
-    public void saveAVL() {
+    /** Saves a AVLTree in the path of data*/
+    private void saveAVL(AVLTree t) {
         try {
             FileOutputStream fileOut = new FileOutputStream(path);
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(treeState);
+            out.writeObject(t);
             out.close();
             fileOut.close();
         }
@@ -42,7 +42,12 @@ public class Data implements java.io.Serializable{
         }
     }
 
-    public AVLTree loadAVL() {
+    /**
+     * Loads a AVLTree from the path of data
+     *
+     * @return the AVLTree that was loaded
+     */
+    private AVLTree loadAVL() {
         AVLTree avlTree = null;
         try {
             FileInputStream fileIn = new FileInputStream(path);
