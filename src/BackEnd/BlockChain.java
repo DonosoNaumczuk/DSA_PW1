@@ -18,49 +18,6 @@ public class BlockChain implements java.io.Serializable {
         this.tree = new AVLTree();
     }
 
-    private static class Block implements java.io.Serializable {
-        private long index;
-        private long nonce;
-        private Data data;
-        private String previous;
-        private String hash;
-        private Block previousBlock;
-
-        public Block(long index, Data data, String previous, Block previousBlock) {
-            this.index = index;
-            this.data = data;
-            this.previous = previous;
-            this.previousBlock = previousBlock;
-        }
-
-        /**
-         * Sets index
-         *
-         * @param index index to be set
-         */
-        private void setIndex(long index) {
-            this.index = index;
-        }
-
-        /**
-         * Sets data
-         *
-         * @param data data to be set
-         */
-        private void setData(Data data) {
-            this.data = data;
-        }
-
-        /**
-         * Gets hash
-         *
-         * @return hash
-         */
-        private String getHash(){
-            return hash;
-        }
-    }
-
     /**
      * Gets the AVLTree
      *
@@ -302,5 +259,48 @@ public class BlockChain implements java.io.Serializable {
         }
 
         return new Data(operation, path, modified);
+    }
+
+    private static class Block implements java.io.Serializable {
+        private long index;
+        private long nonce;
+        private Data data;
+        private String previous;
+        private String hash;
+        private Block previousBlock;
+
+        public Block(long index, Data data, String previous, Block previousBlock) {
+            this.index = index;
+            this.data = data;
+            this.previous = previous;
+            this.previousBlock = previousBlock;
+        }
+
+        /**
+         * Sets index
+         *
+         * @param index index to be set
+         */
+        private void setIndex(long index) {
+            this.index = index;
+        }
+
+        /**
+         * Sets data
+         *
+         * @param data data to be set
+         */
+        private void setData(Data data) {
+            this.data = data;
+        }
+
+        /**
+         * Gets hash
+         *
+         * @return hash
+         */
+        private String getHash(){
+            return hash;
+        }
     }
 }
