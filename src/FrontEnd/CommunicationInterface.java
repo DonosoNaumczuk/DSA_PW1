@@ -76,6 +76,8 @@ public class CommunicationInterface {
             }
 
         }
+
+
         else if (s.matches(filter[1])) {
             if(!blockChain.remove(Integer.parseInt(s.substring(7,s.length()))))
                 aux = INVALID_BLOCKCHAIN;
