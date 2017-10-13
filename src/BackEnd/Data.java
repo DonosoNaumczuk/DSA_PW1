@@ -13,7 +13,7 @@ public class Data implements java.io.Serializable{
         this.operation = operation;
         this.treeState = treeState;
         this.treeModified = treeModified;
-        this.path = "src/AVLTree_data/Data"+counter+"ser";
+        this.path = "src/AVLTree_data/Data"+counter+".ser";
         counter++;
     }
 
