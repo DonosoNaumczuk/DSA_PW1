@@ -13,13 +13,13 @@ public class CommunicationInterface {
 
     public CommunicationInterface(int zeros) throws Exception {
         if(zeros <= 0)
-            throw new Exception("Error, la cantidad de ceros debe ser positiva");
+            throw new Exception("Error, the zero quantity must be positive");
         blockChain = new BlockChain(zeros, new SHA256());
     }
 
-    private static final String prints[]={"Adios","Error, comando o parametro invalido",
-                                          "Se realizo la accion", "Error, la blockchain es invalida",
-                                          "La blockchain es valida"};
+    private static final String prints[]={"Goodbye!","Error, invalid parameter or command",
+                                          "Operation", "Error, invalid blockchain",
+                                          "The blockchain is valid"};
 
     private static final int EXIT = 0;
     private static final int COMMAND_ERROR = 1;
@@ -27,14 +27,20 @@ public class CommunicationInterface {
     private static final int INVALID_BLOCKCHAIN = 3;
     private static final int VALID_BLOCKCHAIN = 4;
 
-    /** Controls the comunication with the user and the backend */
+    public BlockChain getBlockChain() {
+        return blockChain;
+    }
+
+    /**
+     * Controls the communication with the user and the backend
+     */
     public void run() throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int print_id;
         String input;
         boolean flag = true;
         while (flag) {
-            System.out.println("Esperando comandos:");
+            System.out.println("Waiting for commands:");
             input = br.readLine();
             print_id = command(input);
             if(print_id!=2)
@@ -61,13 +67,15 @@ public class CommunicationInterface {
     private int command(String s) throws IOException{
         int aux = NO_ERROR;
         if (s.matches(filter[0])) {
-            if(!blockChain.add(Integer.parseInt(s.substring(4,s.length()))))
+            int value = Integer.parseInt(s.substring(4,s.length()));
+            if(!blockChain.add(value))
                 aux = INVALID_BLOCKCHAIN;
             else {
                 if(blockChain.getLastBlockData().wasModified())
-                    System.out.println("Agrega el elemento " + Integer.parseInt(s.substring(4,s.length())) + " al arbol y crea el siguiente bloque: ");
+                    System.out.println("Adds the element " + value + " to the tree");
                 else
-                    System.out.println("El elemento ya estaba en el arbol y se genera el siguiente bloque:");
+                    System.out.println("The value " + value + " was already in the tree");
+                System.out.println("Adds the following block to the blockchain:");
                 printBlock(0);
             }
 
@@ -75,27 +83,26 @@ public class CommunicationInterface {
 
 
         else if (s.matches(filter[1])) {
-            if(!blockChain.remove(Integer.parseInt(s.substring(7,s.length()))))
+            int value = Integer.parseInt(s.substring(7,s.length()));
+            if(!blockChain.remove(value))
                 aux = INVALID_BLOCKCHAIN;
             else {
                 if(blockChain.getLastBlockData().wasModified())
-                    System.out.println("Elimina el elemento " + Integer.parseInt(s.substring(7,s.length())) + " al arbol y crea el siguiente bloque: ");
+                    System.out.println("Removes the Node " + value + " from the tree");
                 else
-                    System.out.println("El elemento no estaba en el arbol y se genera el siguiente bloque:");
+                    System.out.println("The value " + value + " was not in the tree");
+                System.out.println("Adds the following block to the blockchain:");
                 printBlock(1);
             }
         }
         else if (s.matches(filter[2])) {
             Set<Long> indexes = blockChain.lookUp(Integer.parseInt(s.substring(7,s.length())));
+            System.out.print("Returns: ");
             if(indexes == null)
-                System.out.println("Retorna vacio y crea el siguiente bloque: ");
-            else {
-                System.out.println("Retorna: ");
+                System.out.println("Empty index list");
+            else
                 System.out.println(indexes);
-
-
-                System.out.println("y crea el siguiente bloque: ");
-            }
+            System.out.println("Adds the following block to the blockchain:");
             printBlock(2);
         }
         else if (s.matches(filter[3])) {
@@ -111,7 +118,7 @@ public class CommunicationInterface {
                     blockChain.modify(Integer.parseInt(str[1]), str[2]);
                 }
                 catch(Exception e) {
-                    System.out.println("El comando es invalido.");
+                    System.out.println("Invalid command.");
                 }
             }
             else
@@ -125,7 +132,9 @@ public class CommunicationInterface {
         return aux;
     }
 
-    /** Saves the blockchain in the blockchain.ser file */
+    /**
+     *  Saves the Blockchain in the blockchain.ser file
+     */
     public void saveBlockchain() {
         try {
             FileOutputStream fileOut =
@@ -143,7 +152,7 @@ public class CommunicationInterface {
 
 
     /**
-     * Loads the blockchain from the blockchain.ser file
+     * Loads the Blockchain from the blockchain.ser file
      *
      * @return true if there is a previous blockchain and false otherwise
      */
@@ -169,20 +178,24 @@ public class CommunicationInterface {
         return false;
     }
 
+    /**
+     * Prints the last Block added to the Blockchain.
+     *
+     * @param op
+     */
     public void printBlock(int op){
         String value = "";
-        System.out.println("Indice: " + blockChain.blockQty());
+        System.out.println("Index: " + blockChain.blockQty());
         System.out.println("Nonce: " + blockChain.getNonce());
         if(op == 2)
-            value = " - true";
-        System.out.println("Dato " + blockChain.getLastBlockData().getOperation() + value);
+            value = " - " + blockChain.getLastBlockData().wasModified();
+        System.out.println("Data " + blockChain.getLastBlockData().getOperation() + value);
         System.out.println("Hash: " + blockChain.getLastHash());
         System.out.println("Ref: " + blockChain.getLastPrevious());
         if(op ==  0 || op == 1) {
-            System.out.println("Y se mantiene el siguiente arbol: ");
+            System.out.println("That's the state of the tree after the operation: ");
             TreePrinter.print(blockChain.getTree().getRoot());
             System.out.println("");
         }
     }
 }
-

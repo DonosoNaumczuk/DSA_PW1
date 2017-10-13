@@ -183,7 +183,7 @@ public class AVLTree implements java.io.Serializable {
 
         int oldQty = nodeQty;
         root = remove(root, value, blockIndex);
-        return oldQty != nodeQty;
+            return oldQty != nodeQty;
     }
 
     /**
