@@ -39,15 +39,13 @@ public class CommunicationInterface {
             System.out.println("Esperando comandos:");
             input = br.readLine();
             print_id = command(input);
-            if(print_id!=1)
+            if(print_id!=2)
                 System.out.println(prints[print_id]);
             if (print_id == EXIT){
                 saveBlockchain();
                 flag = false;
             }
-            else if(print_id==2){
-                TreePrinter.print(blockChain.getTree().getRoot());
-            }
+
         }
     }
 
@@ -178,8 +176,8 @@ public class CommunicationInterface {
         if(op == 2)
             value = " - true";
         System.out.println("Dato " + blockChain.getLastBlockData().getOperation() + value);
-        System.out.println("Hash: " + blockChain.getHash());
-        System.out.println("Ref: " + blockChain.getPrevious());
+        System.out.println("Hash: " + blockChain.getLastHash());
+        System.out.println("Ref: " + blockChain.getLastPrevious());
         if(op ==  0 || op == 1) {
             System.out.println("Y se mantiene el siguiente arbol: ");
             TreePrinter.print(blockChain.getTree().getRoot());

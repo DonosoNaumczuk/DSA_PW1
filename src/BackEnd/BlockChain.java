@@ -105,11 +105,11 @@ public class BlockChain implements java.io.Serializable {
         return last.data;
     }
 
-    public String getHash(){
+    public String getLastHash(){
         return last.hash;
     }
 
-    public String getPrevious(){
+    public String getLastPrevious(){
         return last.previous;
     }
     /**
@@ -135,7 +135,7 @@ public class BlockChain implements java.io.Serializable {
             long index = (last == null) ? 1 : last.index + 1;
             String previous = (last == null) ? "0000000000000000000000000000000000000000000000000000000000000000" : last.hash;
             boolean wasModified = tree.add(value, index);
-            Data data = new Data("ADD", tree, wasModified);
+            Data data = new Data("Insert " + value, tree, wasModified);
             Block newBlock = new Block(index, data, previous, last);
             newBlock.hash = mine(newBlock, zeros);
             last = newBlock;
@@ -177,7 +177,7 @@ public class BlockChain implements java.io.Serializable {
             long index = (last == null) ? 1 : last.index + 1;
             String previous = (last == null) ? "0000000000000000000000000000000000000000000000000000000000000000" : last.hash;
             boolean wasModified = tree.remove(value, index);
-            Data data = new Data("REMOVE", tree, wasModified);
+            Data data = new Data("Remove "+ value, tree, wasModified);
             Block newBlock = new Block(index, data, previous, last);
             newBlock.hash = mine(newBlock, zeros);
             last = newBlock;
@@ -226,7 +226,16 @@ public class BlockChain implements java.io.Serializable {
      */
     public Set<Long> lookUp(int value) {
         if(validate()) {
-            return tree.getModifiersBlocks(value);
+            long index = (last == null) ? 1 : last.index + 1;
+            String previous = (last == null) ? "0000000000000000000000000000000000000000000000000000000000000000" : last.hash;
+            Set<Long> indexes = tree.getModifiersBlocks(value);
+            boolean wasModified = (indexes != null)? true:false;
+            Data data = new Data("Check "+ value, tree, wasModified);
+            Block newBlock = new Block(index, data, previous, last);
+            newBlock.hash = mine(newBlock, zeros);
+            last = newBlock;
+            return indexes;
+
         }
         return null;
     }
