@@ -26,6 +26,9 @@ public class CommunicationInterface {
     private static final int INVALID_BLOCKCHAIN = 3;
     private static final int VALID_BLOCKCHAIN = 4;
 
+    /**
+     * Controls the comunication with the user and the backend
+     */
     public void run() throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int print_id;
@@ -86,8 +89,9 @@ public class CommunicationInterface {
         return aux;
     }
 
-
-    
+    /**
+     * Saves the blockchain in the blockchain.ser file
+     */
     public void saveBlockchain() {
         try {
             FileOutputStream fileOut =
@@ -103,6 +107,11 @@ public class CommunicationInterface {
         }
     }
 
+    /**
+     * Loads the blockchain from the blockchain.ser file
+     *
+     * @return true if there is a previous blockchain and false otherwise
+     */
     public boolean loadBlockchain() {
         File f = new File("blockchain.ser");
         if(f.exists() && !f.isDirectory()){
