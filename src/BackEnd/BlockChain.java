@@ -1,11 +1,10 @@
 package BackEnd;
 
-import FrontEnd.InvalidValueException;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Set;
+import FrontEnd.NoBlockException;
 
 public class BlockChain implements java.io.Serializable {
     private Block last;
@@ -44,9 +43,30 @@ public class BlockChain implements java.io.Serializable {
         }
     }
 
+    public Block getBlock(long blockIndex) {
+        if(isValidIndex(blockIndex)) {
+            Block block = last;
+            while(block.index > blockIndex) {
+                block = block.previousBlock;
+            }
+            return block;
+        }
+        throw new IndexOutOfBoundsException("The given index:" + blockIndex + "doesn't correspond to the blockchain.");
+    }
+
+    public long blockQty() {
+        return last.index;
+    }
+
+    private boolean isValidIndex(long blockIndex) {
+        if(last == null)
+            throw new NoBlockException();
+        return blockIndex <= last.index || blockIndex > 0;
+    }
+
     public boolean add(int value) {
         if(validate()) {
-            long index = (last == null) ? 0 : last.index + 1;
+            long index = (last == null) ? 1 : last.index + 1;
             String previous = (last == null) ? "0000000000000000000000000000000000000000000000000000000000000000" : last.hash;
             boolean wasModified = tree.add(value, index);
             Data data = new Data("ADD", tree, wasModified);
@@ -72,7 +92,7 @@ public class BlockChain implements java.io.Serializable {
 
     public boolean remove(int value) {
         if(validate()) {
-            long index = (last == null) ? 0 : last.index + 1;
+            long index = (last == null) ? 1 : last.index + 1;
             String previous = (last == null) ? "0000000000000000000000000000000000000000000000000000000000000000" : last.hash;
             boolean wasModified = tree.remove(value, index);
             Data data = new Data("REMOVE", tree, wasModified);
