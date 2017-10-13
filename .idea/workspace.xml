@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7859a34e-270c-42a2-b0d3-02a05592346a" name="Default" comment="get tree">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/DSA_PW1/BackEnd/BlockChain$Block.class" afterPath="$PROJECT_DIR$/out/production/DSA_PW1/BackEnd/BlockChain$Block.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/DSA_PW1/BackEnd/BlockChain.class" afterPath="$PROJECT_DIR$/out/production/DSA_PW1/BackEnd/BlockChain.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Test/AVLTreeTest.java" afterPath="$PROJECT_DIR$/src/Test/AVLTreeTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Test/BlockChainTest.java" afterPath="$PROJECT_DIR$/src/Test/BlockChainTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Test/HashTest.java" afterPath="$PROJECT_DIR$/src/Test/HashTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BackEnd/BlockChain.java" afterPath="$PROJECT_DIR$/src/BackEnd/BlockChain.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,7 +30,7 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Data.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Data.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/BackEnd/Data.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-739">
@@ -62,11 +62,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BlockChain.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="BlockChain.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/BackEnd/BlockChain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="548">
-              <caret line="95" column="51" lean-forward="true" selection-start-line="95" selection-start-column="51" selection-end-line="95" selection-end-column="51" />
+            <state relative-caret-position="574">
+              <caret line="96" column="64" lean-forward="false" selection-start-line="96" selection-start-column="64" selection-end-line="96" selection-end-column="64" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1279#1280#0" expanded="true" />
@@ -126,13 +126,13 @@
         <option value="$PROJECT_DIR$/src/Main/Main.java" />
         <option value="$PROJECT_DIR$/src/BackEnd/HashFunction.java" />
         <option value="$PROJECT_DIR$/src/FrontEnd/NoBlockException.java" />
-        <option value="$PROJECT_DIR$/src/BackEnd/BlockChain.java" />
         <option value="$PROJECT_DIR$/src/BackEnd/AVLTree.java" />
         <option value="$PROJECT_DIR$/src/FrontEnd/CommunicationInterface.java" />
         <option value="$PROJECT_DIR$/src/BackEnd/Data.java" />
         <option value="$PROJECT_DIR$/src/Test/BlockChainTest.java" />
         <option value="$PROJECT_DIR$/src/Test/HashTest.java" />
         <option value="$PROJECT_DIR$/src/Test/AVLTreeTest.java" />
+        <option value="$PROJECT_DIR$/src/BackEnd/BlockChain.java" />
       </list>
     </option>
   </component>
@@ -1654,9 +1654,6 @@
     <history-entry file="AVLTreeTest_(1) - 2017.10.13 at 01h 33m 48s.xml">
       <configuration name="AVLTreeTest (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_DSA_PW1 - 2017.10.13 at 01h 29m 12s.xml">
-      <configuration name="All in DSA_PW1" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="All_in_DSA_PW1 - 2017.10.13 at 01h 32m 24s.xml">
       <configuration name="All in DSA_PW1" configurationId="JUnit" />
     </history-entry>
@@ -1664,6 +1661,12 @@
       <configuration name="All in DSA_PW1" configurationId="JUnit" />
     </history-entry>
     <history-entry file="All_in_DSA_PW1 - 2017.10.13 at 01h 42m 16s.xml">
+      <configuration name="All in DSA_PW1" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_DSA_PW1 - 2017.10.13 at 01h 54m 52s.xml">
+      <configuration name="All in DSA_PW1" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_DSA_PW1 - 2017.10.13 at 02h 00m 24s.xml">
       <configuration name="All in DSA_PW1" configurationId="JUnit" />
     </history-entry>
     <history-entry file="HashTest - 2017.10.13 at 01h 29m 52s.xml">
@@ -1693,6 +1696,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1920" height="1053" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="PlantUML" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
@@ -1713,10 +1717,10 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.669967" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.669967" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32673267" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22998933" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22998933" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="UML design tool window" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -1993,28 +1997,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Test/HashTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="34" column="27" lean-forward="true" selection-start-line="34" selection-start-column="27" selection-end-line="34" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/BackEnd/BlockChain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="548">
-          <caret line="95" column="51" lean-forward="true" selection-start-line="95" selection-start-column="51" selection-end-line="95" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1279#1280#0" expanded="true" />
-            <element signature="e#1306#1307#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Test/BlockChainTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="52">
@@ -2028,6 +2010,28 @@
         <state relative-caret-position="-739">
           <caret line="12" column="37" lean-forward="false" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="37" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Test/HashTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="34" column="27" lean-forward="true" selection-start-line="34" selection-start-column="27" selection-end-line="34" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BackEnd/BlockChain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="574">
+          <caret line="96" column="64" lean-forward="false" selection-start-line="96" selection-start-column="64" selection-end-line="96" selection-end-column="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1279#1280#0" expanded="true" />
+            <element signature="e#1306#1307#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
