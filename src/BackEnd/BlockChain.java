@@ -47,6 +47,10 @@ public class BlockChain implements java.io.Serializable {
         }
     }
 
+    public AVLTree getTree(){
+        return tree;
+    }
+
     public Block getBlock(long blockIndex) {
         if(isValidIndex(blockIndex)) {
             Block block = last;

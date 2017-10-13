@@ -13,6 +13,10 @@ public class AVLTree implements java.io.Serializable {
         nodeQty = 0;
     }
 
+    public Node getRoot(){
+        return root;
+    }
+
     /**
      *
      * @param obj Object to wich we want to compare the tree

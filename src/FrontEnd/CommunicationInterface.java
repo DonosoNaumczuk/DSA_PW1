@@ -41,7 +41,7 @@ public class CommunicationInterface {
                 flag = false;
             }
             else if(print_id==2){
-                //imprimir arbol
+                TreePrinter.print(blockChain.getTree().getRoot());
             }
         }
     }
