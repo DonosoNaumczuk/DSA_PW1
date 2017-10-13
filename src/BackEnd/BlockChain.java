@@ -143,7 +143,6 @@ public class BlockChain implements java.io.Serializable {
         }
         else
             return false;
-
     }
 
     /**

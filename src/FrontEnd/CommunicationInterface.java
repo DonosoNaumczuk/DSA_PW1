@@ -51,7 +51,7 @@ public class CommunicationInterface {
 
     private static final String filter[]={"add -?[0-9]+","remove -?[0-9]+",
                                           "lookup -?[0-9]+", "validate",
-                                          "modify [0-9]+","exit"};
+                                          "modify [0-9]+ .*","exit"};
 
     /**
      *  Validates the string and if they are valid it execute the right command.
@@ -107,12 +107,9 @@ public class CommunicationInterface {
                 aux = VALID_BLOCKCHAIN;
         }
         else if (s.matches(filter[4])) {
-            Pattern pattern = Pattern.compile("[0-9]+");
-            Matcher matcher = pattern.matcher(s);
-            if (matcher.find()) {
-                String number = matcher.group(1);
-                String path = s.substring(7+number.length());
-                blockChain.modify(Integer.parseInt(number), path);
+            String[] str = s.split(" ");
+            if (str.length == 3 && str[1].matches("[0-9]+")) {
+                blockChain.modify(Integer.parseInt(str[1]), str[2]);
             }
             else
                 aux = COMMAND_ERROR;
