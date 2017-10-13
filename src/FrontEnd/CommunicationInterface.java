@@ -62,13 +62,22 @@ public class CommunicationInterface {
         if (s.matches(filter[0])) {
             if(!blockChain.add(Integer.parseInt(s.substring(4,s.length()))))
                 aux = INVALID_BLOCKCHAIN;
+            else {
+                printBlock(0);
+            }
+
         }
         else if (s.matches(filter[1])) {
             if(!blockChain.remove(Integer.parseInt(s.substring(7,s.length()))))
                 aux = INVALID_BLOCKCHAIN;
+            else {
+                printBlock(1);
+            }
         }
         else if (s.matches(filter[2])) {
             blockChain.lookUp(Integer.parseInt(s.substring(7,s.length())));
+                printBlock(2);
+
         }
         else if (s.matches(filter[3])) {
             if(!blockChain.validate())
@@ -128,5 +137,15 @@ public class CommunicationInterface {
             }
         }
         return false;
+    }
+
+    public void printBlock(int op){
+        System.out.println("Indice: " + blockChain.blockQty());
+        System.out.println("Nonce: " + blockChain.getNonce());
+        System.out.print("Dato " + blockChain.getData().getOperation());
+        if(op == 2)
+            System.out.println(" -" + blockChain.getData().wasModified());
+        System.out.println("Hash: " + blockChain.getHash());
+        System.out.println("Ref: " + blockChain.getPrevious());
     }
 }

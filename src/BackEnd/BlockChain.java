@@ -97,6 +97,22 @@ public class BlockChain implements java.io.Serializable {
         return last.index;
     }
 
+
+    public long getNonce(){
+        return last.nonce;
+    }
+
+    public Data getData(){
+        return last.data;
+    }
+
+    public String getHash(){
+        return last.hash;
+    }
+
+    public String getPrevious(){
+        return last.previous;
+    }
     /**
      * Checks if a index is valid
      *
