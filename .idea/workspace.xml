@@ -31,8 +31,8 @@
       <file leaf-file-name="Data.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/BackEnd/Data.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="23" column="21" lean-forward="true" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="21" />
+            <state relative-caret-position="280">
+              <caret line="14" column="59" lean-forward="false" selection-start-line="14" selection-start-column="59" selection-end-line="14" selection-end-column="59" />
               <folding>
                 <element signature="e#518#519#0" expanded="true" />
                 <element signature="e#550#551#0" expanded="true" />
@@ -68,8 +68,9 @@
                 <element signature="e#1089#1090#0" expanded="true" />
                 <element signature="e#1132#1133#0" expanded="true" />
                 <element signature="e#1172#1173#0" expanded="true" />
-                <element signature="e#1592#1593#0" expanded="true" />
-                <element signature="e#1625#1626#0" expanded="true" />
+                <marker date="1507867010952" expanded="true" signature="5611:5682" ph="{...}" />
+                <marker date="1507867010952" expanded="true" signature="5688:5834" ph="/**...*/" />
+                <marker date="1507867010952" expanded="true" signature="5885:7039" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -265,12 +266,8 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/BackEnd/AVLTree.java</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/src/BackEnd/BlockChain.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/FrontEnd/CommunicationInterface.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/FrontEnd/NoBlockException.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/Test/HashTest.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/BackEnd/Data.java</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -278,6 +275,7 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="CREATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/Test/BlockChainTest.java</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Deleted" />
@@ -1113,11 +1111,18 @@
       <option name="project" value="LOCAL" />
       <updated>1507866678515</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary=".">
+      <created>1507866994019</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1507866994019</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54241000" />
+    <option name="totallyTimeSpent" value="54295000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1395,8 +1400,9 @@
             <element signature="e#1089#1090#0" expanded="true" />
             <element signature="e#1132#1133#0" expanded="true" />
             <element signature="e#1172#1173#0" expanded="true" />
-            <element signature="e#1592#1593#0" expanded="true" />
-            <element signature="e#1625#1626#0" expanded="true" />
+            <marker date="1507867010952" expanded="true" signature="5611:5682" ph="{...}" />
+            <marker date="1507867010952" expanded="true" signature="5688:5834" ph="/**...*/" />
+            <marker date="1507867010952" expanded="true" signature="5885:7039" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1449,8 +1455,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/BackEnd/Data.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="23" column="21" lean-forward="true" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="21" />
+        <state relative-caret-position="280">
+          <caret line="14" column="59" lean-forward="false" selection-start-line="14" selection-start-column="59" selection-end-line="14" selection-end-column="59" />
           <folding>
             <element signature="e#518#519#0" expanded="true" />
             <element signature="e#550#551#0" expanded="true" />
