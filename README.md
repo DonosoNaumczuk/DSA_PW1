@@ -1,2 +1,2 @@
 # Data Structures and Algorithms
-**First practical work**
+Informe: https://docs.google.com/document/d/183u3pk6GX7ApAXHcviF1hn5duA_Stlv9kaYeEbljTvA/edit
