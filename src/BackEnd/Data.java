@@ -17,11 +17,11 @@ public class Data implements java.io.Serializable{
         counter++;
     }
 
-    public AVLTree getTreeState(){
+    public AVLTree getTreeState() {
         return treeState;
     }
 
-    public String getOperation(){
+    public String getOperation() {
         return operation;
     }
 
