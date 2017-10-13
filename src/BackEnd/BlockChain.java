@@ -20,7 +20,7 @@ public class BlockChain implements java.io.Serializable {
         this.tree = new AVLTree();
     }
 
-    private static class Block {
+    private static class Block implements java.io.Serializable {
         private long index;
         private long nonce;
         private Data data;

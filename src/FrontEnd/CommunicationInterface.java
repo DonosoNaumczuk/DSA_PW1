@@ -47,7 +47,7 @@ public class CommunicationInterface {
 
     private static final String filter[]={"add -?[0-9]+","remove -?[0-9]+",
                                           "lookup -?[0-9]+", "validate",
-                                          "modify ","exit"};
+                                          "modify [0-9]+","exit"};
 
     /**
      *  Validates the string and if they are valid it execute the right command.
@@ -181,38 +181,4 @@ public class CommunicationInterface {
         }
         return false;
     }
-/*
-    public void saveAVL() {
-        try {
-            FileOutputStream fileOut =
-                    new FileOutputStream("AVL.ser");
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(avlTree);
-            out.close();
-            fileOut.close();
-            System.out.println("Serialized data is saved in AVL.ser");
-        }
-        catch(IOException i) {
-            i.printStackTrace();
-        }
-    }
-
-    public void loadAVL() {
-        try {
-            FileInputStream fileIn = new FileInputStream("AVL.ser");
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-            avlTree = (AVLTree) in.readObject();
-            in.close();
-            fileIn.close();
-        }
-        catch(IOException i) {
-            i.printStackTrace();
-            return;
-        }
-        catch(ClassNotFoundException c) {
-            System.out.println("BackEnd.AVLTree class not found");
-            c.printStackTrace();
-            return;
-        }
-    }*/
 }
