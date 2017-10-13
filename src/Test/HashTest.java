@@ -1,5 +1,3 @@
-package Test;
-
 import BackEnd.BlockChain;
 import BackEnd.HashFunction;
 import BackEnd.SHA256;

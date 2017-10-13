@@ -1,5 +1,3 @@
-package Test;
-
 import BackEnd.AVLTree;
 import org.junit.Before;
 import org.junit.Test;
