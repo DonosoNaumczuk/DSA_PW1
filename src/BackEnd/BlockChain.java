@@ -34,23 +34,49 @@ public class BlockChain implements java.io.Serializable {
             this.previousBlock = previousBlock;
         }
 
+        /**
+         * Sets index
+         *
+         * @param index index to be set
+         */
         private void setIndex(long index) {
             this.index = index;
         }
 
+        /**
+         * Sets data
+         *
+         * @param data data to be set
+         */
         private void setData(Data data) {
             this.data = data;
         }
 
+        /**
+         * Gets hash
+         *
+         * @return hash
+         */
         private String getHash(){
             return hash;
         }
     }
 
+    /**
+     * Gets the AVLTree
+     *
+     * @return AVLTree
+     */
     public AVLTree getTree(){
         return tree;
     }
 
+    /**
+     * Gets the block with th blockindex as the index
+     *
+     * @param blockIndex index of the block to be return
+     * @return block with the blockindex as index
+     */
     public Block getBlock(long blockIndex) {
         if(isValidIndex(blockIndex)) {
             Block block = last;
@@ -62,16 +88,33 @@ public class BlockChain implements java.io.Serializable {
         throw new IndexOutOfBoundsException("The given index:" + blockIndex + "doesn't correspond to the blockchain.");
     }
 
+    /**
+     * Gets the quantity of blocks
+     *
+     * @return the quantity of blocks
+     */
     public long blockQty() {
         return last.index;
     }
 
+    /**
+     * Checks if a index is valid
+     *
+     * @param blockIndex the index to be check
+     * @return true if is valid and false otherwise
+     */
     private boolean isValidIndex(long blockIndex) {
         if(last == null)
             throw new NoBlockException();
-        return blockIndex <= last.index || blockIndex > 0;
+        return blockIndex <= last.index && blockIndex > 0;
     }
 
+    /**
+     * Add the add operation to the block
+     *
+     * @param value the value to be add
+     * @return true if the operation was added and false otherwise
+     */
     public boolean add(int value) {
         if(validate()) {
             long index = (last == null) ? 1 : last.index + 1;
@@ -88,18 +131,30 @@ public class BlockChain implements java.io.Serializable {
 
     }
 
+    /**
+     * Mines a block, in order to get n zeros in his hash
+     *
+     * @param block the block to be mine
+     * @param zeros the quantity of zeros
+     * @return hash of the block
+     */
     public String mine(Block block, int zeros) {
         String hash;
-        AVLTree tree = block.data.getTreeState();
-        int nodeQty = tree.getNodeQty();
         do {
             block.nonce++;
-            String message = block.data.getOperation() + nodeQty + block.index + block.previous + block.nonce;
+            String message = block.data.getOperation() + block.data.getTreeState().getNodeQty() + block.index + block.previous + block.nonce;
             hash = hashingMethod.hashData(message);
         } while(!isValid(hash, zeros));
         return hash;
     }
 
+
+    /**
+     * Adds the remove operation to the blockchain
+     *
+     * @param value to be remove from the tree
+     * @return true if the operation was added and false otherwise
+     */
     public boolean remove(int value) {
         if(validate()) {
             long index = (last == null) ? 1 : last.index + 1;
@@ -205,7 +260,7 @@ public class BlockChain implements java.io.Serializable {
                 int value;
                 value = br.read();
                 if(value!= -1)
-                    treeModified =(value==0)?false:true;
+                    treeModified = value!=0;
             }
             //System.out.println("La data leida fue:\n\t" + data);
 
