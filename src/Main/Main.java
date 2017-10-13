@@ -9,10 +9,10 @@ public class Main {
         CommunicationInterface commInterface = null;
         boolean loaded = false;
 
-        if (args.length == 2 && args[0].matches("zero")) {
+        if (args.length == 2 && args[0].matches("zeros")) {
             if (args[1].matches("[0-9]+")) {
                 int zeros = Integer.parseInt(args[1]);
-                System.out.println("Setting up a new blockchain with zero quantity set to" + zeros);
+                System.out.println("Setting up a new blockchain with zero quantity set to " + zeros);
                 loaded = true;
                 try {
                     commInterface = new CommunicationInterface(zeros);

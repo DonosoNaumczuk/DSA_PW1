@@ -2,15 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7859a34e-270c-42a2-b0d3-02a05592346a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/DSA_PW1/FrontEnd/CommunicationInterface.class" afterPath="$PROJECT_DIR$/out/production/DSA_PW1/FrontEnd/CommunicationInterface.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/DSA_PW1/Main/Main.class" afterPath="$PROJECT_DIR$/out/production/DSA_PW1/Main/Main.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AVLTree_data/Data0.ser" afterPath="$PROJECT_DIR$/src/AVLTree_data/Data0.ser" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AVLTree_data/Data1.ser" afterPath="$PROJECT_DIR$/src/AVLTree_data/Data1.ser" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AVLTree_data/Data2.ser" afterPath="$PROJECT_DIR$/src/AVLTree_data/Data2.ser" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AVLTree_data/Data3.ser" afterPath="$PROJECT_DIR$/src/AVLTree_data/Data3.ser" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BackEnd/AVLTree.java" afterPath="$PROJECT_DIR$/src/BackEnd/AVLTree.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FrontEnd/CommunicationInterface.java" afterPath="$PROJECT_DIR$/src/FrontEnd/CommunicationInterface.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BackEnd/BlockChain.java" afterPath="$PROJECT_DIR$/src/BackEnd/BlockChain.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main/Main.java" afterPath="$PROJECT_DIR$/src/Main/Main.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -36,50 +33,25 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
-              <caret line="52" column="66" lean-forward="true" selection-start-line="52" selection-start-column="66" selection-end-line="52" selection-end-column="66" />
+            <state relative-caret-position="-338">
+              <caret line="14" column="90" lean-forward="false" selection-start-line="14" selection-start-column="90" selection-end-line="14" selection-end-column="90" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CommunicationInterface.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CommunicationInterface.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/FrontEnd/CommunicationInterface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2461">
-              <caret line="107" column="40" lean-forward="true" selection-start-line="107" selection-start-column="40" selection-end-line="107" selection-end-column="40" />
+            <state relative-caret-position="38">
+              <caret line="159" column="27" lean-forward="false" selection-start-line="159" selection-start-column="27" selection-end-line="159" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#996#997#0" expanded="true" />
                 <element signature="e#1029#1030#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BlockChain.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/BackEnd/BlockChain.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-624">
-              <caret line="89" column="29" lean-forward="false" selection-start-line="89" selection-start-column="29" selection-end-line="89" selection-end-column="29" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <marker date="1507919189636" expanded="true" signature="7908:7917" ph="/**...*/" />
-                <marker date="1507919189636" expanded="true" signature="7988:8431" ph="{...}" />
-                <marker date="1507919189636" expanded="true" signature="8496:9439" ph="{...}" />
-                <marker date="1507919189636" expanded="true" signature="8763:8922" ph="{...}" />
-                <marker date="1507919189636" expanded="true" signature="8932:9020" ph="/**...*/" />
-                <marker date="1507919189636" expanded="false" signature="9062:9077" ph=" { " />
-                <marker date="1507919189636" expanded="false" signature="9096:9106" ph=" }" />
-                <marker date="1507919189636" expanded="true" signature="9116:9201" ph="/**...*/" />
-                <marker date="1507919189636" expanded="false" signature="9241:9256" ph=" { " />
-                <marker date="1507919189636" expanded="false" signature="9273:9283" ph=" }" />
-                <marker date="1507919189636" expanded="true" signature="9293:9364" ph="/**...*/" />
-                <marker date="1507919189636" expanded="false" signature="9397:9411" ph=" { " />
-                <marker date="1507919189636" expanded="false" signature="9423:9433" ph=" }" />
               </folding>
             </state>
           </provider>
@@ -499,26 +471,6 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="Main.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="Main.Main" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="DSA_PW1" />
-      <envs />
-      <method />
-    </configuration>
     <configuration default="false" name="All in DSA_PW1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="DSA_PW1" />
@@ -538,6 +490,26 @@
       </option>
       <envs />
       <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="Main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="Main.Main" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="load" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="DSA_PW1" />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -748,8 +720,8 @@
       <item index="0" class="java.lang.String" itemvalue="JUnit.BlockChainTest.lookUpTest" />
       <item index="1" class="java.lang.String" itemvalue="JUnit.BlockChainTest.lookUpTestWithAdd" />
       <item index="2" class="java.lang.String" itemvalue="JUnit.BlockChainTest.lookUpwithRotationTest" />
-      <item index="3" class="java.lang.String" itemvalue="Application.Main" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.All in DSA_PW1" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.All in DSA_PW1" />
+      <item index="4" class="java.lang.String" itemvalue="Application.Main" />
     </list>
     <recent_temporary>
       <list size="5">
@@ -1103,7 +1075,14 @@
       <option name="project" value="LOCAL" />
       <updated>1507887311757</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="Fix initial start">
+      <created>1507919218165</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1507919218165</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1152,7 +1131,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1920" height="1053" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="PlantUML" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
@@ -1165,15 +1143,15 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39910313" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39823982" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Code Iris" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="simpleUML" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32729626" sideWeight="0.4892508" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32673267" sideWeight="0.4892508" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.75137514" sideWeight="0.8899023" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37623763" sideWeight="0.8899023" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32673267" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22998933" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1241,7 +1219,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="AVL try to balance" />
     <MESSAGE value="AVL remove without Flag" />
     <MESSAGE value="AVL nodeQty added, vcs.xml updated" />
     <MESSAGE value="added some java docsssss" />
@@ -1266,11 +1243,12 @@
     <MESSAGE value="Fix versions" />
     <MESSAGE value="Remove command fix" />
     <MESSAGE value="Last commit? 🤔" />
-    <option name="LAST_COMMIT_MESSAGE" value="Last commit? 🤔" />
+    <MESSAGE value="Fix initial start" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix initial start" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="49" />
+      <option name="time" value="51" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1411,37 +1389,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="52" column="66" lean-forward="true" selection-start-line="52" selection-start-column="66" selection-end-line="52" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/BackEnd/BlockChain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-624">
-          <caret line="89" column="29" lean-forward="false" selection-start-line="89" selection-start-column="29" selection-end-line="89" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1507919189636" expanded="true" signature="7908:7917" ph="/**...*/" />
-            <marker date="1507919189636" expanded="true" signature="7988:8431" ph="{...}" />
-            <marker date="1507919189636" expanded="true" signature="8496:9439" ph="{...}" />
-            <marker date="1507919189636" expanded="true" signature="8763:8922" ph="{...}" />
-            <marker date="1507919189636" expanded="true" signature="8932:9020" ph="/**...*/" />
-            <marker date="1507919189636" expanded="false" signature="9062:9077" ph=" { " />
-            <marker date="1507919189636" expanded="false" signature="9096:9106" ph=" }" />
-            <marker date="1507919189636" expanded="true" signature="9116:9201" ph="/**...*/" />
-            <marker date="1507919189636" expanded="false" signature="9241:9256" ph=" { " />
-            <marker date="1507919189636" expanded="false" signature="9273:9283" ph=" }" />
-            <marker date="1507919189636" expanded="true" signature="9293:9364" ph="/**...*/" />
-            <marker date="1507919189636" expanded="false" signature="9397:9411" ph=" { " />
-            <marker date="1507919189636" expanded="false" signature="9423:9433" ph=" }" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar!/java/io/PrintStream.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-486">
@@ -1450,15 +1397,49 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/BackEnd/BlockChain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="21" column="8" lean-forward="false" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#503#504#0" expanded="true" />
+            <element signature="e#531#532#0" expanded="true" />
+            <element signature="e#1538#1539#0" expanded="true" />
+            <element signature="e#1571#1572#0" expanded="true" />
+            <element signature="e#1729#1730#0" expanded="true" />
+            <element signature="e#1761#1762#0" expanded="true" />
+            <element signature="e#1916#1917#0" expanded="true" />
+            <element signature="e#1948#1949#0" expanded="true" />
+            <element signature="e#2163#2164#0" expanded="true" />
+            <element signature="e#2199#2200#0" expanded="true" />
+            <marker date="1507919284720" expanded="false" signature="9119:9134" ph=" { " />
+            <marker date="1507919284720" expanded="false" signature="9153:9163" ph=" }" />
+            <marker date="1507919284720" expanded="false" signature="9298:9313" ph=" { " />
+            <marker date="1507919284720" expanded="false" signature="9330:9340" ph=" }" />
+            <marker date="1507919284720" expanded="false" signature="9454:9468" ph=" { " />
+            <marker date="1507919284720" expanded="false" signature="9480:9490" ph=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/FrontEnd/CommunicationInterface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2461">
-          <caret line="107" column="40" lean-forward="true" selection-start-line="107" selection-start-column="40" selection-end-line="107" selection-end-column="40" />
+        <state relative-caret-position="38">
+          <caret line="159" column="27" lean-forward="false" selection-start-line="159" selection-start-column="27" selection-end-line="159" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#996#997#0" expanded="true" />
             <element signature="e#1029#1030#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-338">
+          <caret line="14" column="90" lean-forward="false" selection-start-line="14" selection-start-column="90" selection-end-line="14" selection-end-column="90" />
+          <folding />
         </state>
       </provider>
     </entry>

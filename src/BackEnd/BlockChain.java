@@ -18,6 +18,10 @@ public class BlockChain implements java.io.Serializable {
         this.tree = new AVLTree();
     }
 
+    public int getZeros() {
+        return zeros;
+    }
+
     /**
      * Gets the AVLTree
      *
