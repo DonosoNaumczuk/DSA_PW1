@@ -36,6 +36,7 @@ public class CommunicationInterface {
             print_id = command(input);
             System.out.println(prints[print_id]);
             if (print_id == EXIT){
+                saveBlockchain();
                 flag = false;
             }
         }
@@ -79,23 +80,6 @@ public class CommunicationInterface {
         }
         else
             aux = COMMAND_ERROR;
-        return aux;
-    }
-
-    /**
-     * Calculates a number from a char array
-     *
-     * @param c     the array where the number is
-     * @param first the position from the array where the number start
-     * @param last  the position from the array where the number end
-     * @return      the number
-     */
-    private static int getNumber(char c[], int first, int last) {
-        int aux=c[first]-'0';
-        while (first<last){
-            first++;
-            aux=aux*10+c[first]-'0';
-        }
         return aux;
     }
 
@@ -158,7 +142,7 @@ public class CommunicationInterface {
         return blockChain.validate();
     }
     
-    public void serializeBlockchain() {
+    public void saveBlockchain() {
         try {
             FileOutputStream fileOut =
                     new FileOutputStream("blockchain.ser");
@@ -173,26 +157,29 @@ public class CommunicationInterface {
         }
     }
 
-    public void deserializeBlockchain() {
-        try {
-            FileInputStream fileIn = new FileInputStream("blockchain.ser");
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-            blockChain = (BlockChain) in.readObject();
-            in.close();
-            fileIn.close();
+    public boolean loadBlockchain() {
+        File f = new File("blockchain.ser");
+        if(f.exists() && !f.isDirectory()){
+            try {
+                FileInputStream fileIn = new FileInputStream("blockchain.ser");
+                ObjectInputStream in = new ObjectInputStream(fileIn);
+                blockChain = (BlockChain) in.readObject();
+                in.close();
+                fileIn.close();
+                return true;
+            }
+            catch(IOException i) {
+                i.printStackTrace();
+            }
+            catch(ClassNotFoundException c) {
+                System.out.println("BackEnd.BlockChain class not found");
+                c.printStackTrace();
+            }
         }
-        catch(IOException i) {
-            i.printStackTrace();
-            return;
-        }
-        catch(ClassNotFoundException c) {
-            System.out.println("BackEnd.BlockChain class not found");
-            c.printStackTrace();
-            return;
-        }
+        return false;
     }
-
-    public void serializeAVL() {
+/*
+    public void saveAVL() {
         try {
             FileOutputStream fileOut =
                     new FileOutputStream("AVL.ser");
@@ -207,7 +194,7 @@ public class CommunicationInterface {
         }
     }
 
-    public void deserializeAVL() {
+    public void loadAVL() {
         try {
             FileInputStream fileIn = new FileInputStream("AVL.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
@@ -224,5 +211,5 @@ public class CommunicationInterface {
             c.printStackTrace();
             return;
         }
-    }
+    }*/
 }

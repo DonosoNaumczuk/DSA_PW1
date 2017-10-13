@@ -3,7 +3,7 @@ package Main;
 import FrontEnd.CommunicationInterface;
 
 public class Main {
-    public static void main(String[] args) {  //revisar
+    public static void main(String[] args) {
         int zeros = 4;
         CommunicationInterface m;
         if(args.length==2 && args[0].matches("zero") && args[1].matches("[0-9]+"))
@@ -13,6 +13,11 @@ public class Main {
 
         try {
             m = new CommunicationInterface(zeros);
+            System.out.println("Se intenta cargar la blockchain");
+            if(m.loadBlockchain())
+                System.out.println("Se cargo la blockchain");
+            else
+                System.out.println("No habia blockchain para cargar, se crea una nueva con la cantidad de ceros especificada anteriormente");
             m.run();
         } catch (Exception e) {
             e.printStackTrace();
