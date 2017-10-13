@@ -28,12 +28,16 @@ public class Data implements java.io.Serializable{
         return treeModified;
     }
 
-    /** Saves a AVLTree in the path of data*/
-    private void saveAVL(AVLTree t) {
+    /**
+     * Saves a AVLTree in the path of Data
+     *
+     * @param tree Serializable tree object to store
+     */
+    private void saveAVL(AVLTree tree) {
         try {
             FileOutputStream fileOut = new FileOutputStream(path);
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(t);
+            out.writeObject(tree);
             out.close();
             fileOut.close();
         }
