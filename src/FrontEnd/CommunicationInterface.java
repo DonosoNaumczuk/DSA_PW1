@@ -45,6 +45,9 @@ public class CommunicationInterface {
                 saveBlockchain();
                 flag = false;
             }
+            else if(print_id==2){
+                TreePrinter.print(blockChain.getTree().getRoot());
+            }
         }
     }
 
@@ -59,7 +62,7 @@ public class CommunicationInterface {
      *  @return  0 if the command is exit, 2 if it is add, remove, lookup,
      *           validate or modify and 1 if it is invalid.
      */
-    private int command(String s) {
+    private int command(String s) throws IOException{
         int aux = NO_ERROR;
         if (s.matches(filter[0])) {
             if(!blockChain.add(Integer.parseInt(s.substring(4,s.length()))))
@@ -166,18 +169,12 @@ public class CommunicationInterface {
     }
 
     public void printBlock(int op){
-        String value = "";
         System.out.println("Indice: " + blockChain.blockQty());
         System.out.println("Nonce: " + blockChain.getNonce());
+        System.out.print("Dato " + blockChain.getData().getOperation());
         if(op == 2)
-            value = " - true";
-        System.out.println("Dato " + blockChain.getData().getOperation() + value);
+            System.out.println(" -" + blockChain.getData().wasModified());
         System.out.println("Hash: " + blockChain.getHash());
         System.out.println("Ref: " + blockChain.getPrevious());
-        if(op ==  0 || op == 1) {
-            System.out.println("Y se mantiene el siguiente arbol: ");
-            TreePrinter.print(blockChain.getTree().getRoot());
-            System.out.println("");
-        }
     }
 }
