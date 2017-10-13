@@ -155,9 +155,11 @@ public class BlockChain implements java.io.Serializable {
      */
     public String mine(Block block, int zeros) {
         String hash;
+        AVLTree tree = block.data.getTreeState();
+        int nodeQty = tree.getNodeQty();
         do {
             block.nonce++;
-            String message = block.data.getOperation() + block.data.getTreeState().getNodeQty() + block.index + block.previous + block.nonce;
+            String message = block.data.getOperation() + nodeQty + block.index + block.previous + block.nonce;
             hash = hashingMethod.hashData(message);
         } while(!isValid(hash, zeros));
         return hash;
