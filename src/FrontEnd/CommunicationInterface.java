@@ -39,6 +39,9 @@ public class CommunicationInterface {
                 saveBlockchain();
                 flag = false;
             }
+            else if(print_id==2){
+                //imprimir arbol
+            }
         }
     }
 
