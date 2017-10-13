@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 import java.io.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.Set;
 
 public class CommunicationInterface {
     private BlockChain blockChain;
@@ -19,8 +20,8 @@ public class CommunicationInterface {
     }
 
     private static final String prints[]={"Adios","Error, comando o parametro invalido",
-                                          "Se realizo la accion", "Error, la blockchain es invalidad",
-                                          "La blockchain es validad"};
+                                          "Se realizo la accion", "Error, la blockchain es invalida",
+                                          "La blockchain es valida"};
 
     private static final int EXIT = 0;
     private static final int COMMAND_ERROR = 1;
@@ -38,20 +39,18 @@ public class CommunicationInterface {
             System.out.println("Esperando comandos:");
             input = br.readLine();
             print_id = command(input);
-            System.out.println(prints[print_id]);
+            if(print_id!=1)
+                System.out.println(prints[print_id]);
             if (print_id == EXIT){
                 saveBlockchain();
                 flag = false;
-            }
-            else if(print_id==2){
-                TreePrinter.print(blockChain.getTree().getRoot());
             }
         }
     }
 
     private static final String filter[]={"add -?[0-9]+","remove -?[0-9]+",
                                           "lookup -?[0-9]+", "validate",
-                                          "modify [0-9]+ .+","exit"};
+                                          "modify [0-9]+","exit"};
 
     /**
      *  Validates the string and if they are valid it execute the right command.
@@ -60,12 +59,16 @@ public class CommunicationInterface {
      *  @return  0 if the command is exit, 2 if it is add, remove, lookup,
      *           validate or modify and 1 if it is invalid.
      */
-    private int command(String s) throws IOException{
+    private int command(String s) {
         int aux = NO_ERROR;
         if (s.matches(filter[0])) {
             if(!blockChain.add(Integer.parseInt(s.substring(4,s.length()))))
                 aux = INVALID_BLOCKCHAIN;
             else {
+                if(blockChain.getData().wasModified())
+                    System.out.println("Agrega el elemento " + Integer.parseInt(s.substring(4,s.length())) + " al arbol y crea el siguiente bloque: ");
+                else
+                    System.out.println("El elemento ya estaba en el arbol y se genera el siguiente bloque:");
                 printBlock(0);
             }
 
@@ -74,13 +77,25 @@ public class CommunicationInterface {
             if(!blockChain.remove(Integer.parseInt(s.substring(7,s.length()))))
                 aux = INVALID_BLOCKCHAIN;
             else {
+                if(blockChain.getData().wasModified())
+                    System.out.println("Elimina el elemento " + Integer.parseInt(s.substring(4,s.length())) + " al arbol y crea el siguiente bloque: ");
+                else
+                    System.out.println("El elemento no estaba en el arbol y se genera el siguiente bloque:");
                 printBlock(1);
             }
         }
         else if (s.matches(filter[2])) {
-            blockChain.lookUp(Integer.parseInt(s.substring(7,s.length())));
-                printBlock(2);
+            Set<Long> indexes = blockChain.lookUp(Integer.parseInt(s.substring(7,s.length())));
+            if(indexes == null)
+                System.out.println("Retorna vacio y crea el siguiente bloque: ");
+            else {
+                System.out.println("Retorna: ");
+                System.out.println(indexes);
 
+
+                System.out.println("y crea el siguiente bloque: ");
+            }
+            printBlock(2);
         }
         else if (s.matches(filter[3])) {
             if(!blockChain.validate())
@@ -151,12 +166,18 @@ public class CommunicationInterface {
     }
 
     public void printBlock(int op){
+        String value = "";
         System.out.println("Indice: " + blockChain.blockQty());
         System.out.println("Nonce: " + blockChain.getNonce());
-        System.out.print("Dato " + blockChain.getData().getOperation());
         if(op == 2)
-            System.out.println(" -" + blockChain.getData().wasModified());
+            value = " - true";
+        System.out.println("Dato " + blockChain.getData().getOperation() + value);
         System.out.println("Hash: " + blockChain.getHash());
         System.out.println("Ref: " + blockChain.getPrevious());
+        if(op ==  0 || op == 1) {
+            System.out.println("Y se mantiene el siguiente arbol: ");
+            TreePrinter.print(blockChain.getTree().getRoot());
+            System.out.println("");
+        }
     }
 }
