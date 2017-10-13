@@ -380,45 +380,90 @@ public class AVLTree implements java.io.Serializable {
             modifiersBlocks = new HashSet<>();
         }
 
+        /**
+         * Returns modifiersBlock
+         *
+         * @return modifiersBlock
+         */
         public Set<Long> getModifiersBlocks() {
             return modifiersBlocks;
         }
 
+        /**
+         * Adds modifiers to the block
+         *
+         * @param blockIndex the index of the block to add
+         */
         private void addModifierBlock(long blockIndex) {
             modifiersBlocks.add(blockIndex);
         }
 
+        /**
+         * Returns left child
+         *
+         * @return left child
+         */
         public Node getLeft(){
             return left;
         }
 
+        /**
+         * Returns right child
+         *
+         * @return right child
+         */
         public Node getRight(){
             return right;
         }
 
+        /**
+         * Returns a string that represents the value of the node
+         *
+         * @return the string of value
+         */
         public String getText(){
             return String.valueOf(value);
         }
 
+        /**
+         * Returns the value of the node
+         *
+         * @return the value of the node
+         */
         public int getValue() {return value;}
 
+        /**
+         * Sets left child
+         *
+         * @param left the node to be set
+         */
         private void setLeft(Node left) {
             this.left = left;
             computeHeight();
         }
 
+        /**
+         * Sets right child
+         *
+         * @param right the node to be set
+         */
         private void setRight(Node right) {
             this.right = right;
             computeHeight();
         }
 
-        /* Computes height and update it */
+        /** Computes height and update it */
         private void computeHeight() {
             int heightl = (left==null)?0:left.height;
             int heightr = (right==null)?0:right.height;
             height = ((heightl>heightr)?heightl:heightr) + 1;
         }
 
+        /**
+         * Computes the balance factor
+         *
+         * @return the balance factor
+         */
         private int getBalanceFactor(){
             int heightl = (left==null)?0:left.height;
             int heightr = (right==null)?0:right.height;

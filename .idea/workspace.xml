@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7859a34e-270c-42a2-b0d3-02a05592346a" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BackEnd/AVLTree.java" afterPath="$PROJECT_DIR$/src/BackEnd/AVLTree.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,7 +28,7 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Data.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Data.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/BackEnd/Data.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="280">
@@ -40,6 +41,16 @@
                 <element signature="e#654#655#0" expanded="true" />
                 <element signature="e#689#690#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommunicationInterface.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/FrontEnd/CommunicationInterface.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1175">
+              <caret line="89" column="8" lean-forward="false" selection-start-line="89" selection-start-column="8" selection-end-line="89" selection-end-column="8" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -67,33 +78,34 @@
                 <element signature="e#1089#1090#0" expanded="true" />
                 <element signature="e#1132#1133#0" expanded="true" />
                 <element signature="e#1172#1173#0" expanded="true" />
-                <marker date="1507867010952" expanded="true" signature="5611:5682" ph="{...}" />
-                <marker date="1507867010952" expanded="true" signature="5688:5834" ph="/**...*/" />
-                <marker date="1507867010952" expanded="true" signature="5885:7039" ph="{...}" />
+                <element signature="e#1207#1208#0" expanded="true" />
+                <element signature="e#1242#1243#0" expanded="true" />
+                <element signature="e#1662#1663#0" expanded="true" />
+                <element signature="e#1695#1696#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AVLTree.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AVLTree.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/BackEnd/AVLTree.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="40">
-              <caret line="369" column="88" lean-forward="false" selection-start-line="369" selection-start-column="88" selection-end-line="369" selection-end-column="88" />
+            <state relative-caret-position="7880">
+              <caret line="394" column="58" lean-forward="false" selection-start-line="394" selection-start-column="58" selection-end-line="394" selection-end-column="58" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3559#3560#0" expanded="true" />
                 <element signature="e#3597#3598#0" expanded="true" />
-                <element signature="e#11998#11999#0" expanded="true" />
-                <element signature="e#12044#12045#0" expanded="true" />
-                <marker date="1507865006753" expanded="false" signature="12101:12116" ph=" { " />
-                <marker date="1507865006753" expanded="false" signature="12148:12158" ph=" }" />
-                <marker date="1507865006753" expanded="false" signature="12189:12203" ph=" { " />
-                <marker date="1507865006753" expanded="false" signature="12215:12225" ph=" }" />
-                <marker date="1507865006753" expanded="false" signature="12257:12271" ph=" { " />
-                <marker date="1507865006753" expanded="false" signature="12284:12294" ph=" }" />
-                <marker date="1507865006753" expanded="false" signature="12327:12341" ph=" { " />
-                <marker date="1507865006753" expanded="false" signature="12370:12380" ph=" }" />
+                <element signature="e#12101#12102#0" expanded="true" />
+                <element signature="e#12147#12148#0" expanded="true" />
+                <marker date="1507867637583" expanded="false" signature="12337:12352" ph=" { " />
+                <marker date="1507867637583" expanded="false" signature="12384:12394" ph=" }" />
+                <marker date="1507867637583" expanded="false" signature="12520:12534" ph=" { " />
+                <marker date="1507867637583" expanded="false" signature="12546:12556" ph=" }" />
+                <marker date="1507867637583" expanded="false" signature="12685:12699" ph=" { " />
+                <marker date="1507867637583" expanded="false" signature="12712:12722" ph=" }" />
+                <marker date="1507867637583" expanded="false" signature="12895:12909" ph=" { " />
+                <marker date="1507867637583" expanded="false" signature="12938:12948" ph=" }" />
               </folding>
             </state>
           </provider>
@@ -150,11 +162,11 @@
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/Main/Main.java" />
         <option value="$PROJECT_DIR$/src/BackEnd/HashFunction.java" />
-        <option value="$PROJECT_DIR$/src/BackEnd/AVLTree.java" />
         <option value="$PROJECT_DIR$/src/BackEnd/BlockChain.java" />
         <option value="$PROJECT_DIR$/src/FrontEnd/NoBlockException.java" />
         <option value="$PROJECT_DIR$/src/FrontEnd/CommunicationInterface.java" />
         <option value="$PROJECT_DIR$/src/BackEnd/Data.java" />
+        <option value="$PROJECT_DIR$/src/BackEnd/AVLTree.java" />
       </list>
     </option>
   </component>
@@ -210,6 +222,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DSA_PW1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DSA_PW1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FrontEnd" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1124,11 +1154,18 @@
       <option name="project" value="LOCAL" />
       <updated>1507867045250</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary=".">
+      <created>1507867052835</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1507867052835</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54304000" />
+    <option name="totallyTimeSpent" value="54892000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1396,50 +1433,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/BackEnd/BlockChain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="21" column="62" lean-forward="false" selection-start-line="21" selection-start-column="62" selection-end-line="21" selection-end-column="62" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1047#1048#0" expanded="true" />
-            <element signature="e#1089#1090#0" expanded="true" />
-            <element signature="e#1132#1133#0" expanded="true" />
-            <element signature="e#1172#1173#0" expanded="true" />
-            <marker date="1507867010952" expanded="true" signature="5611:5682" ph="{...}" />
-            <marker date="1507867010952" expanded="true" signature="5688:5834" ph="/**...*/" />
-            <marker date="1507867010952" expanded="true" signature="5885:7039" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/FrontEnd/TreePrinter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="44">
           <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/BackEnd/AVLTree.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="369" column="88" lean-forward="false" selection-start-line="369" selection-start-column="88" selection-end-line="369" selection-end-column="88" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3559#3560#0" expanded="true" />
-            <element signature="e#3597#3598#0" expanded="true" />
-            <element signature="e#11998#11999#0" expanded="true" />
-            <element signature="e#12044#12045#0" expanded="true" />
-            <marker date="1507865006753" expanded="false" signature="12101:12116" ph=" { " />
-            <marker date="1507865006753" expanded="false" signature="12148:12158" ph=" }" />
-            <marker date="1507865006753" expanded="false" signature="12189:12203" ph=" { " />
-            <marker date="1507865006753" expanded="false" signature="12215:12225" ph=" }" />
-            <marker date="1507865006753" expanded="false" signature="12257:12271" ph=" { " />
-            <marker date="1507865006753" expanded="false" signature="12284:12294" ph=" }" />
-            <marker date="1507865006753" expanded="false" signature="12327:12341" ph=" { " />
-            <marker date="1507865006753" expanded="false" signature="12370:12380" ph=" }" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1451,11 +1449,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/FrontEnd/CommunicationInterface.java">
+    <entry file="file://$PROJECT_DIR$/src/BackEnd/BlockChain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1680">
-          <caret line="89" column="8" lean-forward="false" selection-start-line="89" selection-start-column="8" selection-end-line="89" selection-end-column="8" />
-          <folding />
+        <state relative-caret-position="420">
+          <caret line="21" column="62" lean-forward="false" selection-start-line="21" selection-start-column="62" selection-end-line="21" selection-end-column="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1047#1048#0" expanded="true" />
+            <element signature="e#1089#1090#0" expanded="true" />
+            <element signature="e#1132#1133#0" expanded="true" />
+            <element signature="e#1172#1173#0" expanded="true" />
+            <element signature="e#1207#1208#0" expanded="true" />
+            <element signature="e#1242#1243#0" expanded="true" />
+            <element signature="e#1662#1663#0" expanded="true" />
+            <element signature="e#1695#1696#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1470,6 +1478,36 @@
             <element signature="e#618#619#0" expanded="true" />
             <element signature="e#654#655#0" expanded="true" />
             <element signature="e#689#690#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FrontEnd/CommunicationInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1175">
+          <caret line="89" column="8" lean-forward="false" selection-start-line="89" selection-start-column="8" selection-end-line="89" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BackEnd/AVLTree.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7880">
+          <caret line="394" column="58" lean-forward="false" selection-start-line="394" selection-start-column="58" selection-end-line="394" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3559#3560#0" expanded="true" />
+            <element signature="e#3597#3598#0" expanded="true" />
+            <element signature="e#12101#12102#0" expanded="true" />
+            <element signature="e#12147#12148#0" expanded="true" />
+            <marker date="1507867637583" expanded="false" signature="12337:12352" ph=" { " />
+            <marker date="1507867637583" expanded="false" signature="12384:12394" ph=" }" />
+            <marker date="1507867637583" expanded="false" signature="12520:12534" ph=" { " />
+            <marker date="1507867637583" expanded="false" signature="12546:12556" ph=" }" />
+            <marker date="1507867637583" expanded="false" signature="12685:12699" ph=" { " />
+            <marker date="1507867637583" expanded="false" signature="12712:12722" ph=" }" />
+            <marker date="1507867637583" expanded="false" signature="12895:12909" ph=" { " />
+            <marker date="1507867637583" expanded="false" signature="12938:12948" ph=" }" />
           </folding>
         </state>
       </provider>
