@@ -96,22 +96,43 @@ public class BlockChain implements java.io.Serializable {
         return last.index;
     }
 
-
+    /**
+     * Gets the Nonce of the last block of theblockChain
+     *
+     * @return the Nonce of the last block
+     */
     public long getNonce(){
         return last.nonce;
     }
 
+    /**
+     * Gets the Data of the last block of theblockChain
+     *
+     * @return the Data of the last block
+     */
     public Data getLastBlockData(){
         return last.data;
     }
 
+    /**
+     * Gets the Hash of the last block of theblockChain
+     *
+     * @return the Hash of the last block
+     */
     public String getLastHash(){
         return last.hash;
     }
 
+    /**
+     * Gets the Reference of the last block of theblockChain
+     * to the previous block.
+     *
+     * @return the Reference of the last block to its previous
+     */
     public String getLastPrevious(){
         return last.previous;
     }
+
     /**
      * Checks if a index is valid
      *
@@ -244,8 +265,12 @@ public class BlockChain implements java.io.Serializable {
     }
 
 
-    /**El readDataFromFile deberia estar en la funcion que llama a modify y pasarle
-    directamente la data y el indice pero por ahora la pongo aca
+    /**
+     * @param index is the index of the block that we want to modify..
+     * @param filePath is the path to the file wich content we are going to read
+     *                 and set as the Data of the block corresponding to the block
+     *                 of the given index.
+     * @exception IOException if readDataFromFile throws IOException
      */
     public void modify (int index, String filePath) throws IOException {
         if(!isValidIndex(index))
@@ -263,6 +288,8 @@ public class BlockChain implements java.io.Serializable {
     /**
      * @param filePath is the absolute path of a file that we want to read
      * @return Returns on a String the content of the file.
+     * @exception IOException if the file corresponding to the given file
+     *            doesnt exist or couldn't be open.
      */
     private Data readDataFromFile(String filePath) throws IOException {
         RandomAccessFile fileReader =  new RandomAccessFile(filePath, "r");
