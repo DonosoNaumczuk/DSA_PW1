@@ -1,5 +1,7 @@
 package BackEnd;
 
+import FrontEnd.InvalidValueException;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -42,7 +44,7 @@ public class BlockChain implements java.io.Serializable {
         }
     }
 
-    public void add(int value) {
+    public boolean add(int value) {
         if(validate()) {
             long index = (last == null) ? 0 : last.index + 1;
             String previous = (last == null) ? "0000000000000000000000000000000000000000000000000000000000000000" : last.hash;
@@ -51,8 +53,10 @@ public class BlockChain implements java.io.Serializable {
             Block newBlock = new Block(index, data, previous, last);
             newBlock.hash = mine(newBlock, zeros);
             last = newBlock;
-
+            return true;
         }
+        else
+            return false;
 
     }
 
@@ -66,7 +70,7 @@ public class BlockChain implements java.io.Serializable {
         return hash;
     }
 
-    public void remove(int value) {
+    public boolean remove(int value) {
         if(validate()) {
             long index = (last == null) ? 0 : last.index + 1;
             String previous = (last == null) ? "0000000000000000000000000000000000000000000000000000000000000000" : last.hash;
@@ -75,9 +79,10 @@ public class BlockChain implements java.io.Serializable {
             Block newBlock = new Block(index, data, previous, last);
             newBlock.hash = mine(newBlock, zeros);
             last = newBlock;
-
+            return true;
         }
-        else return false;
+        else
+            return false;
     }
 
     /**
@@ -111,28 +116,30 @@ public class BlockChain implements java.io.Serializable {
         return true;
     }
 
-    /**El readDataFromFile deberia estar en la funcion que llama a modify y pasarle
-    directamente la data y el indice pero por ahora la pongo aca
-     */
-    public void modify (int index, String filePath){
-        if(index > last.index || index < 1)
-            return;
-        //busco el bloque
-        String data = readDataFromFile(filePath); //DATA YA NO ES STRING
-        //cambio la data del bloque por la que acabo de generar
-
-    }
     /**
      * @param value is the value that we want to get the index of the blocks
      *              that modified the node corresponding to the value..
      * @return Returns a Set with the indexes of the blocks that modified the node
      *         Otherwise, returns null
      */
-    public Set<Integer> lookUp(int value) {
+    public Set<Long> lookUp(int value) {
         if(validate()) {
             return tree.getModifiersBlocks(value);
         }
         return null;
+    }
+
+
+    /**El readDataFromFile deberia estar en la funcion que llama a modify y pasarle
+    directamente la data y el indice pero por ahora la pongo aca
+     */
+    public void modify (int index, String filePath){
+        if(index > last.index || index < 1)
+            throw new IndexOutOfBoundsException("The given index doesn't correspond to the blockchain.");
+        //busco el bloque
+        String data = readDataFromFile(filePath); //DATA YA NO ES STRING
+        //cambio la data del bloque por la que acabo de generar
+
     }
 
     /**
