@@ -31,17 +31,17 @@ public class Main {
              */
             try {
                 commInterface = new CommunicationInterface(ZEROS);
+                if (commInterface != null && commInterface.loadBlockchain()) {
+                    loaded = true;
+                    System.out.println("Blockchain loaded succesfully");
+                    System.out.println("The blockchain loaded has zeros set to " + commInterface.getBlockChain().getZeros());
+                }
+                else
+                    System.out.println("No blockchain to load");
             }
             catch (Exception e) {
                 e.printStackTrace();
             }
-            if (commInterface != null && commInterface.loadBlockchain()) {
-                loaded = true;
-                System.out.println("Blockchain loaded succesfully");
-                System.out.println("The blockchain loaded has zeros set to " + commInterface.getBlockChain().getZeros());
-            }
-            else
-                System.out.println("No blockchain to load");
         }
         else if (args.length == 0) {
             System.out.println("No arguments received");

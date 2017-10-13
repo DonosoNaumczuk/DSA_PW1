@@ -78,10 +78,7 @@ public class CommunicationInterface {
                 System.out.println("Adds the following block to the blockchain:");
                 printBlock(0);
             }
-
         }
-
-
         else if (s.matches(filter[1])) {
             int value = Integer.parseInt(s.substring(7,s.length()));
             if(!blockChain.remove(value))
