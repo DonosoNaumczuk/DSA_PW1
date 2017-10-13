@@ -31,7 +31,7 @@ public class AVLTree implements java.io.Serializable {
      * @return Returns the set of the modifier Blocks if the value isin the tree
      *         Otherwise, returns null
      */
-    public Set<Integer> getModifiersBlocks(int value){
+    public Set<Long> getModifiersBlocks(int value){
         Node n = search(root, value);
         return (n!=null)? n.getModifiersBlocks(): null;
     }
@@ -88,7 +88,7 @@ public class AVLTree implements java.io.Serializable {
      *  @return Returns true if value is not already in the tree.
      *          Otherwise, return false.
      */
-    public boolean add(int value, int blockIndex) {
+    public boolean add(int value, long blockIndex) {
         if(root == null) {
             root = new Node(value);
             root.addModifierBlock(blockIndex);
@@ -118,7 +118,7 @@ public class AVLTree implements java.io.Serializable {
      *         Otherwise, returns the root node of the tree with
      *         the value added.
      */
-    private Node add(Node root, int value, int blockIndex) {
+    private Node add(Node root, int value, long blockIndex) {
         if(value == root.value)
             return null;
 
@@ -149,7 +149,7 @@ public class AVLTree implements java.io.Serializable {
      * @return Returns false if the value was not in the tree.
      *         Otherwise, returns true.
      */
-    public boolean remove(int value, int blockIndex) {
+    public boolean remove(int value, long blockIndex) {
         if(root == null)
             return false;
 
@@ -177,7 +177,7 @@ public class AVLTree implements java.io.Serializable {
      *         Otherwise, returns the root node of the tree with
      *         the value removed.
      */
-    private Node remove(Node root, int value, int blockIndex) {
+    private Node remove(Node root, int value, long blockIndex) {
         if(root.value == value) {
             nodeQty--;
             if(root.right!=null) {
@@ -251,7 +251,7 @@ public class AVLTree implements java.io.Serializable {
      * @param root The root of the tree to be rotate
      * @return Returns the root of the rotated tree
      */
-    private Node rotateLeft(Node root, int blockIndex) {
+    private Node rotateLeft(Node root, long blockIndex) {
         Node newRoot = root.right;
         root.setRight(newRoot.left);
         newRoot.setLeft(root);
@@ -268,7 +268,7 @@ public class AVLTree implements java.io.Serializable {
      * @param root The root of the tree to be rotate
      * @return Returns the root of the rotated tree
      */
-    private Node rotateRight(Node root, int blockIndex) {
+    private Node rotateRight(Node root, long blockIndex) {
         Node newRoot = root.left;
         root.setLeft(newRoot.right);
         newRoot.setRight(root);
@@ -285,7 +285,7 @@ public class AVLTree implements java.io.Serializable {
      * @param root The root of the tree to be rotate
      * @return Returns the root of the rotated tree
      */
-    private Node rotateLeftRight(Node root, int blockIndex) {
+    private Node rotateLeftRight(Node root, long blockIndex) {
         root.setLeft(rotateLeft(root.left, blockIndex));
         return rotateRight(root, blockIndex);
     }
@@ -296,7 +296,7 @@ public class AVLTree implements java.io.Serializable {
      * @param root The root of the tree to be rotate
      * @return Returns the root of the rotated tree
      */
-    private Node rotateRightLeft(Node root, int blockIndex) {
+    private Node rotateRightLeft(Node root, long blockIndex) {
         root.setRight(rotateRight(root.right, blockIndex));
         return rotateLeft(root, blockIndex);
     }
@@ -307,7 +307,7 @@ public class AVLTree implements java.io.Serializable {
      * @param root The root of the tree to be balance
      * @return Returns the root of the balance tree
      */
-    private Node balance(Node root, int blockIndex) {
+    private Node balance(Node root, long blockIndex) {
         int bf = root.getBalanceFactor();
         if (bf > 1) {
             /* Left-Left case */
@@ -364,7 +364,7 @@ public class AVLTree implements java.io.Serializable {
         int height;
         Node left;
         Node right;
-        Set<Integer> modifiersBlocks;
+        Set<Long> modifiersBlocks;
 
         private Node(int value) {
             this.value = value;
@@ -372,11 +372,11 @@ public class AVLTree implements java.io.Serializable {
             modifiersBlocks = new HashSet<>();
         }
 
-        public Set<Integer> getModifiersBlocks() {
+        public Set<Long> getModifiersBlocks() {
             return modifiersBlocks;
         }
 
-        private void addModifierBlock(int blockIndex) {
+        private void addModifierBlock(long blockIndex) {
             modifiersBlocks.add(blockIndex);
         }
 

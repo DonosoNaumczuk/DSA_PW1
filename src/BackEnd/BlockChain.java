@@ -42,7 +42,7 @@ public class BlockChain implements java.io.Serializable {
         }
     }
 
-    public boolean add(int value) {
+    public void add(int value) {
         if(validate()) {
             long index = (last == null) ? 0 : last.index + 1;
             String previous = (last == null) ? "0000000000000000000000000000000000000000000000000000000000000000" : last.hash;
@@ -51,10 +51,9 @@ public class BlockChain implements java.io.Serializable {
             Block newBlock = new Block(index, data, previous, last);
             newBlock.hash = mine(newBlock, zeros);
             last = newBlock;
-            return true;
+
         }
-        else
-            return false;
+
     }
 
     public String mine(Block block, int zeros) {
@@ -65,6 +64,20 @@ public class BlockChain implements java.io.Serializable {
             hash = hashingMethod.hashData(message);
         } while(!isValid(hash, zeros));
         return hash;
+    }
+
+    public void remove(int value) {
+        if(validate()) {
+            long index = (last == null) ? 0 : last.index + 1;
+            String previous = (last == null) ? "0000000000000000000000000000000000000000000000000000000000000000" : last.hash;
+            boolean wasModified = tree.remove(value, index);
+            Data data = new Data("REMOVE", tree, wasModified);
+            Block newBlock = new Block(index, data, previous, last);
+            newBlock.hash = mine(newBlock, zeros);
+            last = newBlock;
+
+        }
+        else return false;
     }
 
     /**
