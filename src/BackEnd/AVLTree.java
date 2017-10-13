@@ -13,6 +13,11 @@ public class AVLTree implements java.io.Serializable {
         nodeQty = 0;
     }
 
+    /**
+     * Returns the root
+     *
+     * @return the root
+     */
     public Node getRoot(){
         return root;
     }
