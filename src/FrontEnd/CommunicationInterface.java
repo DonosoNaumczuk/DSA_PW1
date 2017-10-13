@@ -46,7 +46,6 @@ public class CommunicationInterface {
             if(print_id!=2)
                 System.out.println(prints[print_id]);
             if (print_id == EXIT){
-                saveBlockchain();
                 flag = false;
             }
 
@@ -55,7 +54,7 @@ public class CommunicationInterface {
 
     private static final String filter[]={"add -?[0-9]+","remove -?[0-9]+",
                                           "lookup -?[0-9]+", "validate",
-                                          "modify [0-9]+ .*","exit"};
+                                          "modify [0-9]+ .*","exit","save"};
 
     /**
      *  Validates the string and if they are valid it execute the right command.
@@ -123,6 +122,10 @@ public class CommunicationInterface {
         }
         else if (s.matches(filter[5])) {
             aux = EXIT;
+        }
+        else if(s.matches(filter[6])) {
+            aux = NO_ERROR;
+            saveBlockchain();
         }
         else
             aux = COMMAND_ERROR;
