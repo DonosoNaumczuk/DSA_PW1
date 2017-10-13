@@ -68,7 +68,7 @@ public class CommunicationInterface {
             if(!blockChain.add(Integer.parseInt(s.substring(4,s.length()))))
                 aux = INVALID_BLOCKCHAIN;
             else {
-                if(blockChain.getData().wasModified())
+                if(blockChain.getLastBlockData().wasModified())
                     System.out.println("Agrega el elemento " + Integer.parseInt(s.substring(4,s.length())) + " al arbol y crea el siguiente bloque: ");
                 else
                     System.out.println("El elemento ya estaba en el arbol y se genera el siguiente bloque:");
@@ -82,8 +82,8 @@ public class CommunicationInterface {
             if(!blockChain.remove(Integer.parseInt(s.substring(7,s.length()))))
                 aux = INVALID_BLOCKCHAIN;
             else {
-                if(blockChain.getData().wasModified())
-                    System.out.println("Elimina el elemento " + Integer.parseInt(s.substring(4,s.length())) + " al arbol y crea el siguiente bloque: ");
+                if(blockChain.getLastBlockData().wasModified())
+                    System.out.println("Elimina el elemento " + Integer.parseInt(s.substring(7,s.length())) + " al arbol y crea el siguiente bloque: ");
                 else
                     System.out.println("El elemento no estaba en el arbol y se genera el siguiente bloque:");
                 printBlock(1);
@@ -177,7 +177,7 @@ public class CommunicationInterface {
         System.out.println("Nonce: " + blockChain.getNonce());
         if(op == 2)
             value = " - true";
-        System.out.println("Dato " + blockChain.getData().getOperation() + value);
+        System.out.println("Dato " + blockChain.getLastBlockData().getOperation() + value);
         System.out.println("Hash: " + blockChain.getHash());
         System.out.println("Ref: " + blockChain.getPrevious());
         if(op ==  0 || op == 1) {

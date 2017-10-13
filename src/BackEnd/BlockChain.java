@@ -101,7 +101,7 @@ public class BlockChain implements java.io.Serializable {
         return last.nonce;
     }
 
-    public Data getData(){
+    public Data getLastBlockData(){
         return last.data;
     }
 
