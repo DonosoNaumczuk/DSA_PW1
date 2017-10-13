@@ -136,8 +136,15 @@ public class BlockChain implements java.io.Serializable {
     public void modify (int index, String filePath){
         if(index > last.index || index < 1)
             throw new IndexOutOfBoundsException("The given index doesn't correspond to the blockchain.");
-        //busco el bloque
-        String data = readDataFromFile(filePath); //DATA YA NO ES STRING
+        long i = last.index;
+        Block curr = last;
+        while(i > index) {
+            curr = curr.previousBlock;
+            i--;
+        }
+        Data data = readDataFromFile(filePath); //DATA YA NO ES STRING
+
+        curr.setData(data);
         //cambio la data del bloque por la que acabo de generar
 
     }
@@ -146,22 +153,28 @@ public class BlockChain implements java.io.Serializable {
      * @param filePath is the absolute path of a file that we want to read
      * @return Returns on a String the content of the file.
      */
-    private String readDataFromFile(String filePath){
+    private Data readDataFromFile(String filePath){
         BufferedReader br = null;
         FileReader fr = null;
-        String data = ""; //LA DATA YA NO ES STRING
+        //String data = ""; //LA DATA YA NO ES STRING
+        String operation = null;
+        //tree = null;
+        Boolean treeModified = false;
 
         try {
 
             //br = new BufferedReader(new FileReader(FILENAME));
             fr = new FileReader(filePath);
             br = new BufferedReader(fr);
-
-            String sCurrentLine;
-            while ((sCurrentLine = br.readLine()) != null) {
-                data += sCurrentLine;
+            operation = br.readLine();
+            if(operation != null) {
+               //tree.br.readLine();
+                int value;
+                value = br.read();
+                if(value!= -1)
+                    treeModified =(value==0)?false:true;
             }
-            System.out.println("La data leida fue:\n\t" + data);
+            //System.out.println("La data leida fue:\n\t" + data);
 
         }
         catch (IOException e) {
@@ -187,6 +200,7 @@ public class BlockChain implements java.io.Serializable {
             }
 
         }
-        return data;
+        return new Data(operation,tree,treeModified);
+
     }
 }

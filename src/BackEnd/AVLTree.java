@@ -79,7 +79,7 @@ public class AVLTree implements java.io.Serializable {
         if(n1.getRight()!=null)
             rightvalue = compareTree(n1.getRight(),n2.getRight());
 
-        return (leftvalue && rightvalue && n1.value == n2.value);
+        return (leftvalue && rightvalue && n1.getValue() == n2.getValue());
     }
 
     /**
@@ -119,10 +119,10 @@ public class AVLTree implements java.io.Serializable {
      *         the value added.
      */
     private Node add(Node root, int value, long blockIndex) {
-        if(value == root.value)
+        if(value == root.getValue())
             return null;
 
-        if(value > root.value) {
+        if(value > root.getValue()) {
             if(root.getRight() != null) {
                 root.setRight(add(root.getRight(), value, blockIndex));
             }
@@ -154,7 +154,7 @@ public class AVLTree implements java.io.Serializable {
             return false;
 
         if(nodeQty == 1) {
-            if (root.value == value) {
+            if (root.getValue() == value) {
                 root = null;
                 nodeQty = 0;
                 return true;
@@ -178,29 +178,29 @@ public class AVLTree implements java.io.Serializable {
      *         the value removed.
      */
     private Node remove(Node root, int value, long blockIndex) {
-        if(root.value == value) {
+        if(root.getValue() == value) {
             nodeQty--;
-            if(root.right!=null) {
-                Node aux = minimum(root.right);
-                aux.setLeft(root.left);
-                if(aux.value != root.right.value)
-                    aux.setRight(root.right);
+            if(root.getRight()!=null) {
+                Node aux = minimum(root.getRight());
+                aux.setLeft(root.getLeft());
+                if(aux.getValue() != root.getRight().getValue())
+                    aux.setRight(root.getRight());
                 return balance(aux, blockIndex);
             }
-            else if(root.left!=null) {
-                Node aux = maximum(root.left);
-                aux.setRight(root.right);
-                if(aux.value != root.left.value)
-                    aux.setLeft(root.left);
+            else if(root.getLeft()!=null) {
+                Node aux = maximum(root.getLeft());
+                aux.setRight(root.getRight());
+                if(aux.getValue() != root.getLeft().getValue())
+                    aux.setLeft(root.getLeft());
                 return balance(aux, blockIndex);
             }
             return null;
         }
-        else if(root.value < value && root.right !=null) {
-            root.setRight(remove(root.right, value, blockIndex));
+        else if(root.getValue() < value && root.getRight() !=null) {
+            root.setRight(remove(root.getRight(), value, blockIndex));
         }
-        else if(root.value > value && root.left!= null) {
-            root.setLeft(remove(root.left,value,blockIndex));
+        else if(root.getValue() > value && root.getLeft()!= null) {
+            root.setLeft(remove(root.getLeft(),value,blockIndex));
         }
         return balance(root, blockIndex);
     }
@@ -212,12 +212,12 @@ public class AVLTree implements java.io.Serializable {
      * @return Returns the minimum node from the given tree.
      */
     private Node minimum(Node root) {
-        if(root.left != null) {
-            Node aux = root.left;
-            if(aux.left!=null)
+        if(root.getLeft() != null) {
+            Node aux = root.getLeft();
+            if(aux.getLeft()!=null)
                 return minimum(aux);
             else {
-                root.setLeft(aux.right);
+                root.setLeft(aux.getRight());
                 return aux;
             }
         }
@@ -232,12 +232,12 @@ public class AVLTree implements java.io.Serializable {
      * @return Returns the maximum node from the given tree.
      */
     private Node maximum(Node root) {
-        if(root.right!=null){
-            Node aux = root.right;
-            if(aux.right!=null)
+        if(root.getRight()!=null) {
+            Node aux = root.getRight();
+            if(aux.getRight()!=null)
                 return maximum(aux);
             else {
-                root.setRight(aux.left);
+                root.setRight(aux.getLeft());
                 return aux;
             }
         }
@@ -252,8 +252,8 @@ public class AVLTree implements java.io.Serializable {
      * @return Returns the root of the rotated tree
      */
     private Node rotateLeft(Node root, long blockIndex) {
-        Node newRoot = root.right;
-        root.setRight(newRoot.left);
+        Node newRoot = root.getRight();
+        root.setRight(newRoot.getLeft());
         newRoot.setLeft(root);
         newRoot.addModifierBlock(blockIndex);
         root.addModifierBlock(blockIndex);
@@ -269,8 +269,8 @@ public class AVLTree implements java.io.Serializable {
      * @return Returns the root of the rotated tree
      */
     private Node rotateRight(Node root, long blockIndex) {
-        Node newRoot = root.left;
-        root.setLeft(newRoot.right);
+        Node newRoot = root.getLeft();
+        root.setLeft(newRoot.getRight());
         newRoot.setRight(root);
         newRoot.addModifierBlock(blockIndex);
         root.addModifierBlock(blockIndex);
@@ -286,7 +286,7 @@ public class AVLTree implements java.io.Serializable {
      * @return Returns the root of the rotated tree
      */
     private Node rotateLeftRight(Node root, long blockIndex) {
-        root.setLeft(rotateLeft(root.left, blockIndex));
+        root.setLeft(rotateLeft(root.getLeft(), blockIndex));
         return rotateRight(root, blockIndex);
     }
 
@@ -297,7 +297,7 @@ public class AVLTree implements java.io.Serializable {
      * @return Returns the root of the rotated tree
      */
     private Node rotateRightLeft(Node root, long blockIndex) {
-        root.setRight(rotateRight(root.right, blockIndex));
+        root.setRight(rotateRight(root.getRight(), blockIndex));
         return rotateLeft(root, blockIndex);
     }
 
@@ -311,7 +311,7 @@ public class AVLTree implements java.io.Serializable {
         int bf = root.getBalanceFactor();
         if (bf > 1) {
             /* Left-Left case */
-            if (root.left.getBalanceFactor() >= 0)
+            if (root.getLeft().getBalanceFactor() >= 0)
                 return rotateRight(root, blockIndex);
             /* Left-Right case */
             else
@@ -319,7 +319,7 @@ public class AVLTree implements java.io.Serializable {
         }
         if (bf < -1) {
             /* Right-Right case */
-            if (root.right.getBalanceFactor() <= 0)
+            if (root.getRight().getBalanceFactor() <= 0)
                 return rotateLeft(root, blockIndex);
             /* Right-Left case */
             else
