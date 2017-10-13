@@ -6,6 +6,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class CommunicationInterface {
     private BlockChain blockChain;
@@ -49,7 +51,7 @@ public class CommunicationInterface {
 
     private static final String filter[]={"add -?[0-9]+","remove -?[0-9]+",
                                           "lookup -?[0-9]+", "validate",
-                                          "modify [0-9]+","exit"};
+                                          "modify [0-9]+ .+","exit"};
 
     /**
      *  Validates the string and if they are valid it execute the right command.
@@ -58,7 +60,7 @@ public class CommunicationInterface {
      *  @return  0 if the command is exit, 2 if it is add, remove, lookup,
      *           validate or modify and 1 if it is invalid.
      */
-    private int command(String s) {
+    private int command(String s) throws IOException{
         int aux = NO_ERROR;
         if (s.matches(filter[0])) {
             if(!blockChain.add(Integer.parseInt(s.substring(4,s.length()))))
@@ -87,7 +89,15 @@ public class CommunicationInterface {
                 aux = VALID_BLOCKCHAIN;
         }
         else if (s.matches(filter[4])) {
-            //validar el path del archivo
+            Pattern pattern = Pattern.compile("[0-9]+");
+            Matcher matcher = pattern.matcher(s);
+            if (matcher.find()) {
+                String number = matcher.group(1);
+                String path = s.substring(7+number.length());
+                blockChain.modify(Integer.parseInt(number), path);
+            }
+            else
+                aux = COMMAND_ERROR;
         }
         else if (s.matches(filter[5])) {
             aux = EXIT;
