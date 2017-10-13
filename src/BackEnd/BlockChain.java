@@ -41,6 +41,10 @@ public class BlockChain implements java.io.Serializable {
         private void setData(Data data) {
             this.data = data;
         }
+
+        private String getHash(){
+            return hash;
+        }
     }
 
     public Block getBlock(long blockIndex) {
@@ -129,7 +133,7 @@ public class BlockChain implements java.io.Serializable {
         Block prev;
         while(last != null && curr.index > 1) {
             prev = curr.previousBlock;
-            if(!curr.previous.equals(prev.hash))
+            if((!isValid(curr.getHash(),zeros))||!curr.previous.equals(prev.hash))
                 return false;
             curr = prev;
         }
@@ -165,6 +169,8 @@ public class BlockChain implements java.io.Serializable {
         Data data = readDataFromFile(filePath); //DATA YA NO ES STRING
 
         curr.setData(data);
+        String message = curr.data.getOperation() + curr.data.getTreeState().getNodeQty() + curr.index + curr.previous + curr.nonce;
+        curr.hash = hashingMethod.hashData(message);
         //cambio la data del bloque por la que acabo de generar
 
     }
