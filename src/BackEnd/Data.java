@@ -16,6 +16,12 @@ public class Data implements java.io.Serializable{
         counter++;
     }
 
+    public Data (String operation, String path, boolean treeModified) {
+        this.operation = operation;
+        this.path = path;
+        this.treeModified = treeModified;
+    }
+
     /**
      * Gets the tree
      *

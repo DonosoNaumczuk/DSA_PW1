@@ -1,8 +1,7 @@
 package BackEnd;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.util.Set;
 import FrontEnd.NoBlockException;
 
@@ -234,77 +233,33 @@ public class BlockChain implements java.io.Serializable {
     /**El readDataFromFile deberia estar en la funcion que llama a modify y pasarle
     directamente la data y el indice pero por ahora la pongo aca
      */
-    public void modify (int index, String filePath){
-        if(index > last.index || index < 1)
+    public void modify (int index, String filePath) throws IOException {
+        if(!isValidIndex(index))
             throw new IndexOutOfBoundsException("The given index doesn't correspond to the blockchain.");
-        long i = last.index;
-        Block curr = last;
-        while(i > index) {
-            curr = curr.previousBlock;
-            i--;
+        Block block = last;
+        while(block.index > index) {
+            block = block.previousBlock;
         }
-        Data data = readDataFromFile(filePath); //DATA YA NO ES STRING
-
-        curr.setData(data);
-        String message = curr.data.getOperation() + curr.data.getTreeState().getNodeQty() + curr.index + curr.previous + curr.nonce;
-        curr.hash = hashingMethod.hashData(message);
-
-        //cambio la data del bloque por la que acabo de generar
-
+        Data data = readDataFromFile(filePath);
+        block.setData(data);
+        String message = block.data.getOperation() + block.data.getTreeState().getNodeQty() + block.index + block.previous + block.nonce;
+        block.hash = hashingMethod.hashData(message);
     }
 
     /**
      * @param filePath is the absolute path of a file that we want to read
      * @return Returns on a String the content of the file.
      */
-    private Data readDataFromFile(String filePath){
-        BufferedReader br = null;
-        FileReader fr = null;
-        //String data = ""; //LA DATA YA NO ES STRING
-        String operation = null;
-        //tree = null;
-        Boolean treeModified = false;
-
-        try {
-
-            //br = new BufferedReader(new FileReader(FILENAME));
-            fr = new FileReader(filePath);
-            br = new BufferedReader(fr);
-            operation = br.readLine();
-            if(operation != null) {
-               //tree.br.readLine();
-                int value;
-                value = br.read();
-                if(value!= -1)
-                    treeModified = value!=0;
-            }
-            //System.out.println("La data leida fue:\n\t" + data);
-
+    private Data readDataFromFile(String filePath) throws IOException {
+        RandomAccessFile fileReader =  new RandomAccessFile(filePath, "r");
+        String operation = fileReader.readLine();
+        String path = fileReader.readLine();
+        boolean modified = true;
+        String modifiedStr = fileReader.readLine();
+        if(modifiedStr == null || modifiedStr.equals("") || modifiedStr.equals("0")) {
+            modified = false;
         }
-        catch (IOException e) {
 
-            e.printStackTrace();
-
-        }
-        finally {
-
-            try {
-
-                if (br != null)
-                    br.close();
-
-                if (fr != null)
-                    fr.close();
-
-            }
-            catch (IOException ex) {
-
-                ex.printStackTrace();
-
-            }
-
-        }
-        return new Data(operation,tree,treeModified);
-
+        return new Data(operation, path, modified);
     }
 }
