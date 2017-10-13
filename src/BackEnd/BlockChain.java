@@ -36,9 +36,11 @@ public class BlockChain implements java.io.Serializable {
         public void setIndex(long index) {
             this.index = index;
         }
+
         public void setData(Data data) {
             this.data = data;
         }
+    }
 
     public boolean add(int value) {
         if(validate()) {
