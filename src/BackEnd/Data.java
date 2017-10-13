@@ -16,14 +16,29 @@ public class Data implements java.io.Serializable{
         counter++;
     }
 
+    /**
+     * Gets the tree
+     *
+     * @return the tree
+     */
     public AVLTree getTreeState() {
         return loadAVL();
     }
 
+    /**
+     * Gets the operation
+     *
+     * @return the operation
+     */
     public String getOperation() {
         return operation;
     }
 
+    /**
+     * Cheks if the tree was modified
+     *
+     * @return true if was modified and false otherwise
+     */
     public boolean wasModified() {
         return treeModified;
     }

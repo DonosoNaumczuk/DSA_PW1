@@ -9,10 +9,10 @@ import FrontEnd.NoBlockException;
 public class BlockChain implements java.io.Serializable {
     private Block last;
     private int zeros;
-    private HashFunction hashingMethod;
+    private SHA256 hashingMethod;
     private AVLTree tree;
 
-    public BlockChain(int zeros, HashFunction hashingMethod)
+    public BlockChain(int zeros, SHA256 hashingMethod)
     {
         this.zeros = zeros;
         this.hashingMethod = hashingMethod;
