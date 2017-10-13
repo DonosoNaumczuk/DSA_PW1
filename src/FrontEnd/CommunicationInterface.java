@@ -81,6 +81,8 @@ public class CommunicationInterface {
             else {
                 System.out.println("Retorna: ");
                 System.out.println(indexes);
+
+
                 System.out.println("y crea el siguiente bloque: ");
             }
             printBlock(2);

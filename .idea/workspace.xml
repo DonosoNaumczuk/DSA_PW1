@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7859a34e-270c-42a2-b0d3-02a05592346a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/DSA_PW1/BackEnd/BlockChain.class" afterPath="$PROJECT_DIR$/out/production/DSA_PW1/BackEnd/BlockChain.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/DSA_PW1/FrontEnd/CommunicationInterface.class" afterPath="$PROJECT_DIR$/out/production/DSA_PW1/FrontEnd/CommunicationInterface.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/test/DSA_PW1/BlockChainTest.class" afterPath="$PROJECT_DIR$/out/test/DSA_PW1/BlockChainTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/test/DSA_PW1/HashTest.class" afterPath="$PROJECT_DIR$/out/test/DSA_PW1/HashTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AVLTree_data/Data0.ser" afterPath="$PROJECT_DIR$/src/AVLTree_data/Data0.ser" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AVLTree_data/Data1.ser" afterPath="$PROJECT_DIR$/src/AVLTree_data/Data1.ser" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AVLTree_data/Data2.ser" afterPath="$PROJECT_DIR$/src/AVLTree_data/Data2.ser" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AVLTree_data/Data3.ser" afterPath="$PROJECT_DIR$/src/AVLTree_data/Data3.ser" />
+    <list default="true" id="7859a34e-270c-42a2-b0d3-02a05592346a" name="Default" comment="Comunication Interface bug fix">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FrontEnd/CommunicationInterface.java" afterPath="$PROJECT_DIR$/src/FrontEnd/CommunicationInterface.java" />
     </list>
@@ -42,12 +34,12 @@
             <state relative-caret-position="-45">
               <caret line="12" column="37" lean-forward="false" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="37" />
               <folding>
-                <marker date="1507875064332" expanded="false" signature="916:927" ph=" { " />
-                <marker date="1507875064332" expanded="false" signature="947:953" ph=" }" />
-                <marker date="1507875064332" expanded="true" signature="959:1073" ph="/**...*/" />
-                <marker date="1507875064332" expanded="true" signature="1113:1444" ph="{...}" />
-                <marker date="1507875064332" expanded="true" signature="1450:1556" ph="/**...*/" />
-                <marker date="1507875064332" expanded="true" signature="1587:2136" ph="{...}" />
+                <marker date="1507876545844" expanded="false" signature="1099:1110" ph=" { " />
+                <marker date="1507876545844" expanded="false" signature="1130:1136" ph=" }" />
+                <marker date="1507876545844" expanded="true" signature="1142:1256" ph="/**...*/" />
+                <marker date="1507876545844" expanded="true" signature="1296:1627" ph="{...}" />
+                <marker date="1507876545844" expanded="true" signature="1633:1739" ph="/**...*/" />
+                <marker date="1507876545844" expanded="true" signature="1770:2319" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -90,8 +82,8 @@
       <file leaf-file-name="CommunicationInterface.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/FrontEnd/CommunicationInterface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="83" column="64" lean-forward="false" selection-start-line="83" selection-start-column="64" selection-end-line="83" selection-end-column="64" />
+            <state relative-caret-position="300">
+              <caret line="85" column="67" lean-forward="false" selection-start-line="85" selection-start-column="67" selection-end-line="85" selection-end-column="67" />
               <folding />
             </state>
           </provider>
@@ -100,20 +92,11 @@
       <file leaf-file-name="BlockChain.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/BackEnd/BlockChain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="116">
-              <caret line="225" column="25" lean-forward="false" selection-start-line="225" selection-start-column="21" selection-end-line="225" selection-end-column="25" />
+            <state relative-caret-position="221">
+              <caret line="224" column="25" lean-forward="false" selection-start-line="224" selection-start-column="25" selection-end-line="224" selection-end-column="25" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2329#2330#0" expanded="true" />
-                <element signature="e#2362#2363#0" expanded="true" />
-                <element signature="e#2392#2393#0" expanded="true" />
-                <element signature="e#2425#2426#0" expanded="true" />
-                <element signature="e#2453#2454#0" expanded="true" />
-                <element signature="e#2485#2486#0" expanded="true" />
-                <element signature="e#2515#2516#0" expanded="true" />
-                <element signature="e#2547#2548#0" expanded="true" />
-                <element signature="e#2581#2582#0" expanded="true" />
-                <element signature="e#2617#2618#0" expanded="true" />
+                <marker date="1507876545844" expanded="true" signature="25:33" ph="..." />
+                <marker date="1507876545844" expanded="true" signature="7845:7851" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -988,7 +971,14 @@
       <option name="project" value="LOCAL" />
       <updated>1507875104759</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Comunication Interface">
+      <created>1507876535334</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1507876535334</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1126,8 +1116,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="print?" />
-    <MESSAGE value="Algo turbio: filtro de los comandos" />
     <MESSAGE value="Algo turbio: filtro de los comandos-2.0" />
     <MESSAGE value="Fix errors" />
     <MESSAGE value="AVL try to balance" />
@@ -1151,7 +1139,9 @@
     <MESSAGE value="Miner function disk memory access optimized" />
     <MESSAGE value="BlockChainTest implementation" />
     <MESSAGE value="PrintBlock in ComunicationInterface&#10;getters in blockchain" />
-    <option name="LAST_COMMIT_MESSAGE" value="PrintBlock in ComunicationInterface&#10;getters in blockchain" />
+    <MESSAGE value="Comunication Interface" />
+    <MESSAGE value="Comunication Interface bug fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Comunication Interface bug fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1298,12 +1288,12 @@
         <state relative-caret-position="-45">
           <caret line="12" column="37" lean-forward="false" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="37" />
           <folding>
-            <marker date="1507875064332" expanded="false" signature="916:927" ph=" { " />
-            <marker date="1507875064332" expanded="false" signature="947:953" ph=" }" />
-            <marker date="1507875064332" expanded="true" signature="959:1073" ph="/**...*/" />
-            <marker date="1507875064332" expanded="true" signature="1113:1444" ph="{...}" />
-            <marker date="1507875064332" expanded="true" signature="1450:1556" ph="/**...*/" />
-            <marker date="1507875064332" expanded="true" signature="1587:2136" ph="{...}" />
+            <marker date="1507876545844" expanded="false" signature="1099:1110" ph=" { " />
+            <marker date="1507876545844" expanded="false" signature="1130:1136" ph=" }" />
+            <marker date="1507876545844" expanded="true" signature="1142:1256" ph="/**...*/" />
+            <marker date="1507876545844" expanded="true" signature="1296:1627" ph="{...}" />
+            <marker date="1507876545844" expanded="true" signature="1633:1739" ph="/**...*/" />
+            <marker date="1507876545844" expanded="true" signature="1770:2319" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1318,28 +1308,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/BackEnd/BlockChain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="225" column="25" lean-forward="false" selection-start-line="225" selection-start-column="21" selection-end-line="225" selection-end-column="25" />
+        <state relative-caret-position="221">
+          <caret line="224" column="25" lean-forward="false" selection-start-line="224" selection-start-column="25" selection-end-line="224" selection-end-column="25" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2329#2330#0" expanded="true" />
-            <element signature="e#2362#2363#0" expanded="true" />
-            <element signature="e#2392#2393#0" expanded="true" />
-            <element signature="e#2425#2426#0" expanded="true" />
-            <element signature="e#2453#2454#0" expanded="true" />
-            <element signature="e#2485#2486#0" expanded="true" />
-            <element signature="e#2515#2516#0" expanded="true" />
-            <element signature="e#2547#2548#0" expanded="true" />
-            <element signature="e#2581#2582#0" expanded="true" />
-            <element signature="e#2617#2618#0" expanded="true" />
+            <marker date="1507876545844" expanded="true" signature="25:33" ph="..." />
+            <marker date="1507876545844" expanded="true" signature="7845:7851" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/FrontEnd/CommunicationInterface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="83" column="64" lean-forward="false" selection-start-line="83" selection-start-column="64" selection-end-line="83" selection-end-column="64" />
+        <state relative-caret-position="300">
+          <caret line="85" column="67" lean-forward="false" selection-start-line="85" selection-start-column="67" selection-end-line="85" selection-end-column="67" />
           <folding />
         </state>
       </provider>
