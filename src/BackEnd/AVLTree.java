@@ -92,12 +92,14 @@ public class AVLTree implements java.io.Serializable {
         if(root == null) {
             root = new Node(value);
             root.addModifierBlock(blockIndex);
+            nodeQty++;
             return  true;
         }
+        int qty = nodeQty;
+
         Node aux = add(root, value, blockIndex);
-        if(aux != null){
+        if(nodeQty > qty){
             root = aux;
-            nodeQty++;
             return true;
         }
         return false;
@@ -120,25 +122,31 @@ public class AVLTree implements java.io.Serializable {
      */
     private Node add(Node root, int value, long blockIndex) {
         if(value == root.getValue())
-            return null;
+            return root;
 
         if(value > root.getValue()) {
             if(root.getRight() != null) {
                 root.setRight(add(root.getRight(), value, blockIndex));
             }
-            Node newRight = new Node(value);
-            newRight.addModifierBlock(blockIndex);
-            root.setRight(newRight);
-            root.addModifierBlock(blockIndex);
+            else {
+                Node newRight = new Node(value);
+                newRight.addModifierBlock(blockIndex);
+                root.setRight(newRight);
+                root.addModifierBlock(blockIndex);
+                nodeQty++;
+            }
         }
         else {
             if(root.getLeft() != null) {
                 root.setLeft(add(root.getLeft(), value, blockIndex));
             }
-            Node newLeft = new Node(value);
-            newLeft.addModifierBlock(blockIndex);
-            root.setLeft(newLeft);
-            root.addModifierBlock(blockIndex);
+            else {
+                Node newLeft = new Node(value);
+                newLeft.addModifierBlock(blockIndex);
+                root.setLeft(newLeft);
+                root.addModifierBlock(blockIndex);
+                nodeQty++;
+            }
         }
         return balance(root, blockIndex);
     }
