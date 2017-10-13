@@ -109,7 +109,12 @@ public class CommunicationInterface {
         else if (s.matches(filter[4])) {
             String[] str = s.split(" ");
             if (str.length == 3 && str[1].matches("[0-9]+")) {
-                blockChain.modify(Integer.parseInt(str[1]), str[2]);
+                try {
+                    blockChain.modify(Integer.parseInt(str[1]), str[2]);
+                }
+                catch(Exception e) {
+                    System.out.println("El comando es invalido.");
+                }
             }
             else
                 aux = COMMAND_ERROR;
