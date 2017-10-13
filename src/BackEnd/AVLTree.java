@@ -359,7 +359,7 @@ public class AVLTree implements java.io.Serializable {
         return lbalance && rbalance;
     }
 
-    private static class Node implements TreePrinter.PrintableNode {
+    private static class Node implements TreePrinter.PrintableNode, java.io.Serializable {
         int value;
         int height;
         Node left;

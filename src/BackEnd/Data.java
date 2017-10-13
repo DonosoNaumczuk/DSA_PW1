@@ -13,7 +13,7 @@ public class Data implements java.io.Serializable{
         this.operation = operation;
         this.treeState = treeState;
         this.treeModified = treeModified;
-        this.path = "/AVLTree/Data"+counter;                   //chequear el path
+        this.path = "src/AVLTree/Data"+counter+"ser";                   //chequear el path
         counter++;
     }
 
@@ -29,11 +29,11 @@ public class Data implements java.io.Serializable{
         return treeModified;
     }
 
-    public void saveAVL(AVLTree t) {
+    public void saveAVL() {
         try {
             FileOutputStream fileOut = new FileOutputStream(path);
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(t);
+            out.writeObject(treeState);
             out.close();
             fileOut.close();
         }
@@ -42,7 +42,7 @@ public class Data implements java.io.Serializable{
         }
     }
 
-    public AVLTree loadAVL(String arbol) {
+    public AVLTree loadAVL() {
         AVLTree avlTree = null;
         try {
             FileInputStream fileIn = new FileInputStream(path);
