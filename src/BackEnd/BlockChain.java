@@ -34,11 +34,11 @@ public class BlockChain implements java.io.Serializable {
             this.previousBlock = previousBlock;
         }
 
-        public void setIndex(long index) {
+        private void setIndex(long index) {
             this.index = index;
         }
 
-        public void setData(Data data) {
+        private void setData(Data data) {
             this.data = data;
         }
     }

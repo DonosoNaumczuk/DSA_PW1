@@ -59,18 +59,18 @@ public class CommunicationInterface {
     private int command(String s) {
         int aux = NO_ERROR;
         if (s.matches(filter[0])) {
-            if(!add(Integer.parseInt(s.substring(4,s.length()))))
+            if(!blockChain.add(Integer.parseInt(s.substring(4,s.length()))))
                 aux = INVALID_BLOCKCHAIN;
         }
         else if (s.matches(filter[1])) {
-            if(!remove(Integer.parseInt(s.substring(7,s.length()))))
+            if(!blockChain.remove(Integer.parseInt(s.substring(7,s.length()))))
                 aux = INVALID_BLOCKCHAIN;
         }
         else if (s.matches(filter[2])) {
-            lookup(Integer.parseInt(s.substring(7,s.length())));
+            blockChain.lookUp(Integer.parseInt(s.substring(7,s.length())));
         }
         else if (s.matches(filter[3])) {
-            if(!validate())
+            if(!blockChain.validate())
                 aux = INVALID_BLOCKCHAIN;
             else
                 aux = VALID_BLOCKCHAIN;
@@ -86,64 +86,7 @@ public class CommunicationInterface {
         return aux;
     }
 
-    /**
-     * It execute the add of the tree and blockchain.
-     *
-     * @param number the number to be add
-     */
-    private boolean add(int number) {
-        String operation;
-        Data data;
-        if(avlTree.add(number))
-            operation ="Insert " + number;
-        else
-            operation = "Insertion failed.";
 
-       //no se que treestate ponerle
-        data = new Data(operation,null);
-        return blockChain.add(data);
-
-    }
-
-    /**
-     * It execute the remove of the tree and blockchain.
-     *
-     * @param number the number to be remove
-     */
-    private boolean remove(int number) {
-        Boolean aux;
-        String operation;
-        Data data;
-        if(avlTree.remove(number))
-            operation = "Remove " + number;
-        else
-            operation ="Removal failed";
-        //no se que poner en treeState
-        data = new Data(operation,null);
-        return blockChain.add(data);
-    }
-
-    /**
-     *
-     *
-     * @param number the number to look in the blockchain
-     * @return       the vector of the index of the block that modify the number
-     */
-    private int[] lookup(int number)
-    {
-        //Not implemented
-        return new int[0];
-    }
-
-    /**
-     * Checks that the blockchain is valid
-     *
-     * @return true if the blockchain is valid and false otherwise
-     */
-    private boolean validate()
-    {
-        return blockChain.validate();
-    }
     
     public void saveBlockchain() {
         try {
