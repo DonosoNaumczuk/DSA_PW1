@@ -22,7 +22,6 @@ public class HashTest{
         long lastIndex = blockChain.blockQty();
         String hash = blockChain.mine(blockChain.getBlock(lastIndex),4);
         String result = "";
-        System.out.println(hash);
         for(int i = 0; i < 4; i++)
             result += hash.charAt(i);
         assertEquals("Must have 4 zeros at begin.", "0000", result);
