@@ -136,8 +136,15 @@ public class BlockChain implements java.io.Serializable {
     public void modify (int index, String filePath){
         if(index > last.index || index < 1)
             throw new IndexOutOfBoundsException("The given index doesn't correspond to the blockchain.");
-        //busco el bloque
-        String data = readDataFromFile(filePath); //DATA YA NO ES STRING
+        int i = last.index;
+        Block curr = last;
+        while(i > index) {
+            curr = curr.previousBlock;
+            i--;
+        }
+        String operation = readDataFromFile(filePath); //DATA YA NO ES STRING
+
+        curr.setData();
         //cambio la data del bloque por la que acabo de generar
 
     }
@@ -146,7 +153,7 @@ public class BlockChain implements java.io.Serializable {
      * @param filePath is the absolute path of a file that we want to read
      * @return Returns on a String the content of the file.
      */
-    private String readDataFromFile(String filePath){
+    private Data readDataFromFile(String filePath){
         BufferedReader br = null;
         FileReader fr = null;
         String data = ""; //LA DATA YA NO ES STRING
